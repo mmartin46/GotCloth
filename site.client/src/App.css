@@ -18,7 +18,10 @@
 }
 
 .sections {
+    display: flex;
     height: fit-content;
+    justify-content: center;
+    align-content: center;
 }
 
 .sections .row {
