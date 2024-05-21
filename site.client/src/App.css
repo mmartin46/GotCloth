@@ -74,6 +74,10 @@
     color:azure;
 }
 
+    .carousel-inner h3 h6 {
+        font-size: 20px;
+    }
+
 
 .carousel-inner img {
     object-fit: cover;

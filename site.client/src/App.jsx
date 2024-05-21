@@ -51,7 +51,7 @@ function App() {
                     </div>
                 </div>*/}
                 <div className="carousel-inner">
-                    <h3 className="display-4">30% Off On Shorts</h3>
+                    <h3 className="display-4">30% Off On Shorts<h6>With a purchase over $15.00</h6></h3>
                     <img src={headImage} className="d-block w-100"></img>
                 </div>
                 <button className="carousel-control-prev" type="button" data-bs-target="#carouselIndicators" data-bs-slide="prev">
