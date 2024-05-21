@@ -62,7 +62,23 @@
 }
 
 
+.carousel-inner {
+    height: 600px;
+    text-align: center;
+}
 
+.carousel-inner h3 {
+    height: 0;
+    background-color: transparent;
+    transform: translateY(200px);
+    color:azure;
+}
+
+
+.carousel-inner img {
+    object-fit: cover;
+    height: 100%;
+}
 
 .sections h2 {
     background-color: white;
@@ -70,12 +86,10 @@
     margin-left: 40px;
     margin-right: 40px;
     font-size: 20px;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .footer {
-    position: absolute;
-    bottom: 0;
     width: 100%;
 
 
