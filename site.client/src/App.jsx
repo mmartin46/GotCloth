@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Carousel from 'react-bootstrap/Carousel';
+
 import './index.css'
 import headImage from 'C:\\Users\\mitch\\Downloads\\WebApp\\Site\\site.client\\src\\images\\headimage.jpg';
-
+import shutterImage from 'C:\\Users\\mitch\\Downloads\\shutterstock_266498825.jpg';
+ 
 const Header = () => {
 
     return (
@@ -38,31 +41,53 @@ const HeaderProducts = () => {
     );
 }
 
+const LinkButton = (props) => {
+    const { title } = props;
+
+    return (
+        <div className="make-big text-center">
+            <h2>40% Off On Jeans</h2>
+            <p>With a purchase over $45.00</p>
+
+            <div className="typicalButton">
+                <h3>{title.toUpperCase()}</h3>
+            </div>
+        </div>
+    );
+}
+
 
 function App() {
     return (
         <>
             <Header />
-            <div>
-                {/*
-                <div id="carouselIndicators" className="carousel slide">
-                    <div className="carousel-indicators">
-                        <button type="button" className="active" data-bs-target="#carouselIndicators" data-bs-slide-to="0" aria-current="true"></button>
-                    </div>
-                </div>*/}
-                <div className="carousel-inner">
-                    <h3 className="display-4">30% Off On Shorts<h6>With a purchase over $15.00</h6></h3>
-                    <img src={headImage} className="d-block w-100"></img>
-                </div>
-                <button className="carousel-control-prev" type="button" data-bs-target="#carouselIndicators" data-bs-slide="prev">
-                    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span className="visually-hidden">Previous</span>
-                </button>
-                <button className="carousel-control-next" type="button" data-bs-target="#carouselIndicators" data-bs-slide="next">
-                    <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span className="visually-hidden">Next</span>
-                </button>
-            </div>
+            <Carousel>
+                <Carousel.Item interval={1000}>
+                    <img
+                        className="d-block w-100"
+                        src={headImage}
+                    />
+                    <Carousel.Caption>
+                        <div className="make-big">
+                            <h2>30% Off On Shorts</h2>
+                            <p>With a purchase over $15.00</p>
+                            <div className="typicalButton">
+                                <h3>SHOP NOW</h3>
+                            </div>
+                        </div>
+
+                    </Carousel.Caption>
+                </Carousel.Item>
+                <Carousel.Item>
+                    <img
+                        className="d-block w-100"
+                        src={shutterImage}
+                    />
+                    <Carousel.Caption interval={1000}>
+                        <LinkButton title="Shop Now"/>
+                    </Carousel.Caption>
+                </Carousel.Item>
+            </Carousel>
             <HeaderProducts/>
             <Footer />
         </>

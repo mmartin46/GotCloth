@@ -62,26 +62,11 @@
 }
 
 
-.carousel-inner {
-    height: 600px;
-    text-align: center;
-}
-
-.carousel-inner h3 {
-    height: 0;
-    background-color: transparent;
-    transform: translateY(200px);
-    color:azure;
-}
-
-    .carousel-inner h3 h6 {
-        font-size: 20px;
-    }
 
 
 .carousel-inner img {
     object-fit: cover;
-    height: 100%;
+    height: 600px;
 }
 
 .sections h2 {
@@ -91,6 +76,47 @@
     margin-right: 40px;
     font-size: 20px;
     font-weight: 600;
+}
+
+.make-big h2 {
+    font-size: 40px;
+}
+
+.make-big > * {
+    display: flex;
+    align-content: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.typicalButton {
+    display: block;
+    color: black;
+    background-color: white;
+    font-weight: 500;
+    padding: 10px;
+    margin: 10px;
+    align-self: center;
+    text-align: center;
+    align-content: end;
+    transition-duration: 0.2s;
+    margin-left: 40%;
+    margin-right: 40%;
+}
+
+.typicalButton:hover {
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+
+.typicalButton:active {
+    transform: translateY(5px);
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.make-big {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 30px;
 }
 
 .footer {
