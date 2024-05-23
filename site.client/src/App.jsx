@@ -62,7 +62,7 @@ function App() {
         <>
             <Header />
             <Carousel>
-                <Carousel.Item interval={1000}>
+                <Carousel.Item interval={2000}>
                     <img
                         className="d-block w-100"
                         src={headImage}
@@ -83,7 +83,7 @@ function App() {
                         className="d-block w-100"
                         src={shutterImage}
                     />
-                    <Carousel.Caption interval={1000}>
+                    <Carousel.Caption interval={2000}>
                         <LinkButton title="Shop Now"/>
                     </Carousel.Caption>
                 </Carousel.Item>

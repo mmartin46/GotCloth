@@ -91,8 +91,8 @@
 
 .typicalButton {
     display: block;
-    color: black;
-    background-color: white;
+    color: white;
+    background-color: red;
     font-weight: 500;
     padding: 10px;
     margin: 10px;
@@ -105,18 +105,26 @@
 }
 
 .typicalButton:hover {
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(255, 0, 0, 0.7);
 }
 
 
 .typicalButton:active {
     transform: translateY(5px);
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 0, 0, 0.9);
 }
 
 .make-big {
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(255, 255, 255, 0.9);
     padding: 30px;
+    border-radius: 20px;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.make-big h2,
+.make-big p {
+    color: black;
 }
 
 .footer {
