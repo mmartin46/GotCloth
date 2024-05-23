@@ -8,7 +8,7 @@ import headImage from 'C:\\Users\\mitch\\Downloads\\WebApp\\Site\\site.client\\s
 import shutterImage from 'C:\\Users\\mitch\\Downloads\\shutterstock_266498825.jpg';
  
 const Header = () => {
-
+    // FIXME: Not fully implemented
     return (
         <div className="header">
             <ul>
@@ -16,6 +16,14 @@ const Header = () => {
         </div>
     );
 };
+
+const SecondaryHeader = () => {
+    // FIXME: Not fully implemented
+    return (
+        <div className="secondaryHeader">
+        </div>
+    );
+}
 
 
 const Footer = () => {
@@ -45,15 +53,15 @@ const HeaderProducts = () => {
 }
 
 const LinkButton = (props) => {
-    const { title } = props;
+    const { title, caption, buttonTitle } = props;
 
     return (
         <div className="make-big text-center">
-            <h2>40% Off On Jeans</h2>
-            <p>With a purchase over $45.00</p>
+            <h2>{title}</h2>
+            <p>{caption}</p>
 
             <div className="typicalButton">
-                <h3>{title.toUpperCase()}</h3>
+                <h3>{buttonTitle.toUpperCase()}</h3>
             </div>
         </div>
     );
@@ -64,6 +72,7 @@ function App() {
     return (
         <>
             <Header />
+            <SecondaryHeader/>
             <Carousel>
                 <Carousel.Item interval={2000}>
                     <img
@@ -71,23 +80,17 @@ function App() {
                         src={headImage}
                     />
                     <Carousel.Caption>
-                        <div className="make-big">
-                            <h2>30% Off On Shorts</h2>
-                            <p>With a purchase over $15.00</p>
-                            <div className="typicalButton">
-                                <h3>SHOP NOW</h3>
-                            </div>
-                        </div>
-
+                        <LinkButton title="40% Off Shirts" caption="With a purchase over $25.00" buttonTitle="Shop Now" />
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
                     <img
+                        id="carousel-img"
                         className="d-block w-100"
                         src={shutterImage}
                     />
                     <Carousel.Caption interval={2000}>
-                        <LinkButton title="Shop Now"/>
+                        <LinkButton title="30% Off Pants" caption="With a purchase over $15.00" buttonTitle="Shop Now"/>
                     </Carousel.Caption>
                 </Carousel.Item>
             </Carousel>
