@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Carousel from 'react-bootstrap/Carousel';
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 import './index.css'
 import headImage from 'C:\\Users\\mitch\\Downloads\\WebApp\\Site\\site.client\\src\\images\\headimage.jpg';
@@ -21,6 +22,20 @@ const SecondaryHeader = () => {
     // FIXME: Not fully implemented
     return (
         <div className="secondaryHeader">
+        </div>
+    );
+}
+
+const ScreenDisplay = () => {
+    return (
+        <div className="">
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/">
+                        <Route index element={<MainLayout />} />
+                    </Route>
+                </Routes>
+            </BrowserRouter>
         </div>
     );
 }
@@ -50,7 +65,7 @@ const HeaderProducts = () => {
             </div>
         </div>
     );
-}
+};
 
 const LinkButton = (props) => {
     const { title, caption, buttonTitle } = props;
@@ -65,14 +80,12 @@ const LinkButton = (props) => {
             </div>
         </div>
     );
-}
+};
 
 
-function App() {
+const MainLayout = () => {
     return (
-        <>
-            <Header />
-            <SecondaryHeader/>
+        <div>
             <Carousel>
                 <Carousel.Item interval={2000}>
                     <img
@@ -95,6 +108,16 @@ function App() {
                 </Carousel.Item>
             </Carousel>
             <HeaderProducts/>
+        </div>
+    );
+};
+
+function App() {
+    return (
+        <>
+            <Header />
+            <SecondaryHeader/>
+            <ScreenDisplay />
             <Footer />
         </>
     )
