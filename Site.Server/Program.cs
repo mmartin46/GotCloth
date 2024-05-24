@@ -1,3 +1,5 @@
+using Site.Server.Repositories;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +8,9 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddScoped<IImageRepository, ImageRepository>();
+
+
 
 var app = builder.Build();
 
@@ -27,6 +32,11 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}"
+);
 app.MapFallbackToFile("/index.html");
 
 app.Run();

@@ -27,6 +27,15 @@
     padding: 40px;
 }
 
+.my-container {
+    padding: 30px;
+}
+
+.my-container h4 {
+    font-weight: 600;
+    font-size: 30px;
+}
+
 
 .sections {
     display: flex;

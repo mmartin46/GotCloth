@@ -1,55 +1,75 @@
+// John 3:5
 import { useEffect, useState } from 'react';
+
+// For all files
+import Header from './components/Header.jsx';
+import SecondaryHeader from './components/SecondaryHeader.jsx';
+import Footer from './components/Footer.jsx';
+import axios from 'axios';
+
+
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Carousel from 'react-bootstrap/Carousel';
 import { BrowserRouter, Routes, Route } from "react-router-dom"
+import LinkButton from './components/LinkButton.jsx';
 
-import './index.css'
+import './index.css';
 import headImage from 'C:\\Users\\mitch\\Downloads\\WebApp\\Site\\site.client\\src\\images\\headimage.jpg';
 import shutterImage from 'C:\\Users\\mitch\\Downloads\\shutterstock_266498825.jpg';
+import PageCarousel from './components/PageCarousel.jsx';
  
-const Header = () => {
-    // FIXME: Not fully implemented
-    return (
-        <div className="header">
-            <ul>
-            </ul>
-        </div>
-    );
-};
 
-const SecondaryHeader = () => {
-    // FIXME: Not fully implemented
-    return (
-        <div className="secondaryHeader">
-        </div>
-    );
-}
 
-const ScreenDisplay = () => {
+const ScreenRoutes = () => {
     return (
         <div className="">
             <BrowserRouter>
                 <Routes>
                     <Route path="/">
                         <Route index element={<MainLayout />} />
+                        <Route path="pants" element={<PantsLayout />} />
+                        <Route path="shirts" element={<ShirtsLayout/>} />
                     </Route>
                 </Routes>
             </BrowserRouter>
         </div>
     );
-}
+};
 
+const PantsLayout = () => {
+    const [pantsImages, setPantsImages] = useState([]);
 
-const Footer = () => {
-    var currentTime = new Date();
-    var year = currentTime.getFullYear();
+    const pantsUrl = '/Home/Index';
+
+    useEffect(() => {
+        const fetchPantsImages = async () => {
+            try {
+                const response = await axios.get(pantsUrl);
+                setPantsImages(response.data);
+            } catch (error) {
+                console.error('Couldn\'t fetch images');
+            }
+        };
+
+        fetchPantsImages();
+    }, []);
+
     return (
-        <div className="footer text-center">
-            <h3>&copy;Copyright {year} Mitchell Martin</h3>
+        <div className="my-container">
+            <h4 className="text-center">PANTS</h4>
         </div>
     );
 };
+
+const ShirtsLayout = () => {
+    return (
+        <div>
+        </div>
+    )
+}
+
+
 
 const HeaderProducts = () => {
     return (
@@ -67,46 +87,12 @@ const HeaderProducts = () => {
     );
 };
 
-const LinkButton = (props) => {
-    const { title, caption, buttonTitle } = props;
-
-    return (
-        <div className="make-big text-center">
-            <h2>{title}</h2>
-            <p>{caption}</p>
-
-            <div className="typicalButton">
-                <h3>{buttonTitle.toUpperCase()}</h3>
-            </div>
-        </div>
-    );
-};
 
 
 const MainLayout = () => {
     return (
         <div>
-            <Carousel>
-                <Carousel.Item interval={2000}>
-                    <img
-                        className="d-block w-100"
-                        src={headImage}
-                    />
-                    <Carousel.Caption>
-                        <LinkButton title="40% Off Shirts" caption="With a purchase over $25.00" buttonTitle="Shop Now" />
-                    </Carousel.Caption>
-                </Carousel.Item>
-                <Carousel.Item>
-                    <img
-                        id="carousel-img"
-                        className="d-block w-100"
-                        src={shutterImage}
-                    />
-                    <Carousel.Caption interval={2000}>
-                        <LinkButton title="30% Off Pants" caption="With a purchase over $15.00" buttonTitle="Shop Now"/>
-                    </Carousel.Caption>
-                </Carousel.Item>
-            </Carousel>
+            <PageCarousel/>
             <HeaderProducts/>
         </div>
     );
@@ -117,7 +103,7 @@ function App() {
         <>
             <Header />
             <SecondaryHeader/>
-            <ScreenDisplay />
+            <ScreenRoutes />
             <Footer />
         </>
     )
