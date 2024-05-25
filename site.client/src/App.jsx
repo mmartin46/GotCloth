@@ -6,6 +6,7 @@ import Header from './components/Header.jsx';
 import SecondaryHeader from './components/SecondaryHeader.jsx';
 import Footer from './components/Footer.jsx';
 import axios from 'axios';
+import { Outlet, Link } from "react-router-dom"
 
 
 import './App.css';
@@ -29,7 +30,8 @@ const ScreenRoutes = () => {
                     <Route path="/">
                         <Route index element={<MainLayout />} />
                         <Route path="pants" element={<PantsLayout />} />
-                        <Route path="shirts" element={<ShirtsLayout/>} />
+                        <Route path="shirts" element={<ShirtsLayout />} />
+                        <Route path="shoes" element={<ShoesLayout/> } />
                     </Route>
                 </Routes>
             </BrowserRouter>
@@ -37,10 +39,17 @@ const ScreenRoutes = () => {
     );
 };
 
+const ShoesLayout = () => {
+    return (
+        <div>
+        </div>
+    );
+};
+
 const PantsLayout = () => {
     const [pantsImages, setPantsImages] = useState([]);
 
-    const pantsUrl = '/Home/Index';
+    const pantsUrl = 'https://localhost:7269/Images';
 
     useEffect(() => {
         const fetchPantsImages = async () => {
@@ -53,6 +62,8 @@ const PantsLayout = () => {
         };
 
         fetchPantsImages();
+
+        console.log(pantsImages);
     }, []);
 
     return (
@@ -75,13 +86,19 @@ const HeaderProducts = () => {
     return (
         <div className="sections row text-center">
             <div id="shirt" className="col">
-                <h2 className="display-4">SHIRTS</h2>
+                <Link to="/shirts" style={{ textDecoration: 'none' }}>
+                    <h2 className="display-4">SHIRTS</h2>
+                </Link>
             </div>
             <div id="jeans" className="col">
-                <h2 className="display-4">JEANS</h2>
+                <Link to="/pants" style={{ textDecoration: 'none' }}>
+                    <h2 className="display-4">JEANS</h2>
+                </Link>
             </div>
             <div id="shoes" className="col">
-                <h2 className="display-4">SHOES</h2>
+                <Link to="/shoes" style={{ textDecoration: 'none' }}>
+                    <h2 className="display-4">SHOES</h2>
+                </Link>
             </div>
         </div>
     );

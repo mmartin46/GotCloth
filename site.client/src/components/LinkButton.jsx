@@ -12,7 +12,7 @@ const LinkButton = (props) => {
             <p>{caption}</p>
 
             <div className="typicalButton">
-                <h3>{buttonTitle.toUpperCase()}</h3>
+                <h5>{buttonTitle.toUpperCase()}</h5>
             </div>
         </div>
     );

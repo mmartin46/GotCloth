@@ -1,13 +1,12 @@
 ﻿using Site.Server.Models;
 using Newtonsoft.Json;
 using Site.Server.Responses;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Site.Server.Repositories
 {
     public class ImageRepository : IImageRepository
     {
-
-
 
         public async Task<ImageModel[]> GetImages(string nameToSearch = "jeans")
         {

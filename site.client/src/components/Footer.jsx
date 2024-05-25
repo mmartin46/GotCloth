@@ -6,7 +6,7 @@ const Footer = () => {
     var year = currentTime.getFullYear();
     return (
         <div className="footer text-center">
-            <h3>&copy;Copyright {year} Mitchell Martin</h3>
+            <h6>&copy;Copyright {year} Mitchell Martin</h6>
         </div>
     );
 };

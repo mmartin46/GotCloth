@@ -11,7 +11,9 @@ namespace Site.Server.Controllers
             _imageRepository = imageRepository;
         }
 
-        public async Task<JsonResult> Index()
+        [HttpGet]
+        [Route("/Images")]
+        public async Task<JsonResult> Images()
         {
             var imageData = await _imageRepository.GetImages();
             return Json(imageData);
