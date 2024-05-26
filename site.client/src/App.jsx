@@ -54,8 +54,13 @@ const PantsLayout = () => {
     useEffect(() => {
         const fetchPantsImages = async () => {
             try {
-                const response = await axios.get(pantsUrl);
-                setPantsImages(response.data);
+                const response = await fetch(pantsUrl);
+                if (!response.ok) {
+                    throw new Error('Error getting pants data');
+                }
+                const data = await response.json();
+                console.log(data);
+                setPantsImages(data);
             } catch (error) {
                 console.error('Couldn\'t fetch images');
             }
@@ -64,7 +69,7 @@ const PantsLayout = () => {
         fetchPantsImages();
 
         console.log(pantsImages);
-    }, []);
+    }, [pantsUrl]);
 
     return (
         <div className="my-container">
@@ -86,17 +91,17 @@ const HeaderProducts = () => {
     return (
         <div className="sections row text-center">
             <div id="shirt" className="col">
-                <Link to="/shirts" style={{ textDecoration: 'none' }}>
+                <Link to="/shirts" style={{ textDecoration: 'none', color: 'black' }}>
                     <h2 className="display-4">SHIRTS</h2>
                 </Link>
             </div>
             <div id="jeans" className="col">
-                <Link to="/pants" style={{ textDecoration: 'none' }}>
+                <Link to="/pants" style={{ textDecoration: 'none', color: 'black' }}>
                     <h2 className="display-4">JEANS</h2>
                 </Link>
             </div>
             <div id="shoes" className="col">
-                <Link to="/shoes" style={{ textDecoration: 'none' }}>
+                <Link to="/shoes" style={{ textDecoration: 'none', color: 'black' }}>
                     <h2 className="display-4">SHOES</h2>
                 </Link>
             </div>
