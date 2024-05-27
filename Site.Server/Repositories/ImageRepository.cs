@@ -8,7 +8,7 @@ namespace Site.Server.Repositories
     public class ImageRepository : IImageRepository
     {
 
-        public async Task<ImageModel[]> GetImages(string nameToSearch = "jeans")
+        public async Task<ImageModel[]> GetImages(string nameToSearch = "pants")
         {
             HttpClient client = new HttpClient();
 

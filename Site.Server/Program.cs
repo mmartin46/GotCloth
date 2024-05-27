@@ -1,3 +1,4 @@
+using Site.Server.Options;
 using Site.Server.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,7 +9,9 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddScoped<IImageRepository, ImageRepository>();
+
+builder.Services.Configure<AppOptions>(builder.Configuration.GetSection(nameof(AppOptions)));
+builder.Services.AddTransient<IImageRepository, ImageRepository>();
 
 builder.Services.AddCors(options =>
 {

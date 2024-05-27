@@ -46,6 +46,31 @@ const ShoesLayout = () => {
     );
 };
 
+const PantsColumns = (props) => {
+    const { pantsImages } = props;
+    return (
+        <div className="container">
+            <div className="my-row">
+                {pantsImages.map((pants, index) => (
+                    <div key={index} className="col my-col">
+                        <img className="btn-for-image" src={pants.link} />
+                        <h5 style={{
+                            fontWeight: '300',
+                            color: 'rgba(0,0,0,.8)'
+                        }}>{pants.title.substring(0, 29) + '...'}</h5>
+                        <h5>$10.99</h5>
+                        <div className="btn-block">
+                            <span className="add-to-cart">Add to Cart</span>
+                            <span className="buy-now">Buy Now</span>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+}
+
+
 const PantsLayout = () => {
     const [pantsImages, setPantsImages] = useState([]);
 
@@ -73,17 +98,19 @@ const PantsLayout = () => {
 
     return (
         <div className="my-container">
-            <h4 className="text-center">PANTS</h4>
+            <h4 className="text-center title-label">PANTS</h4>
+            <PantsColumns pantsImages={pantsImages}/>
         </div>
     );
 };
+
 
 const ShirtsLayout = () => {
     return (
         <div>
         </div>
     )
-}
+};
 
 
 
