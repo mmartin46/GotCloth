@@ -18,9 +18,11 @@ namespace Site.Server.Controllers
 
         [HttpGet]
         [Route("/Images")]
-        public async Task<JsonResult> Images()
+        public async Task<JsonResult> Images(string? whichImage)
         {
-            string layout = _options.Value.Layout;
+
+            string? layout = null;
+            layout = (whichImage == null) ? _options.Value?.Layout : whichImage;
             var imageData = await _imageRepository.GetImages(layout);
             return Json(imageData);
         }

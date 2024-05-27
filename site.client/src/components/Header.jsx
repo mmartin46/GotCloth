@@ -7,6 +7,7 @@ const Header = () => {
     return (
         <div className="header">
             <ul>
+                <li><h5>$1.00 SHIPPING ON ALL ORDERS UNDER $16.00</h5></li>
             </ul>
         </div>
     );

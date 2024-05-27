@@ -1,11 +1,24 @@
 ﻿.header {
-    padding-top: 20px;
+    padding-top: 30px;
     height: fit-content;
-    padding-bottom: 50px;
+    padding-bottom: 40px;
     padding-left: 50px;
     background-color: rgba(0, 0, 0, 0.8);
     color: rgba(255, 255, 255, 0.7);
     filter: drop-shadow(0px 10px 10px rgba(0, 0, 0, 0.2));
+}
+
+.header ul {
+    animation: scrollText 20s linear infinite;
+}
+
+@keyframes scrollText {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
 }
 
 .secondaryHeader {
@@ -96,10 +109,16 @@
     padding: 40px;
 }
 
-.my-row {
+.my-row :not(#error-message) {
     display: flex;
     flex-wrap: wrap;
 }
+#error-message {
+    display: flex;
+    text-align: center;
+    align-content: center;
+}
+
 .my-col {
     display: block;
     border-width: 3px;
