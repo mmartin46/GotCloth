@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 const PantsColumns = (props) => {
     const [pantsImages, setPantsImages] = useState([]);
 
-    const pantsUrl = 'https://localhost:7269/Images';
+    const pantsUrl = 'https://localhost:7269/Images/pants';
 
     useEffect(() => {
         const fetchPantsImages = async () => {

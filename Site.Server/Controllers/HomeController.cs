@@ -17,7 +17,7 @@ namespace Site.Server.Controllers
         }
 
         [HttpGet]
-        [Route("/Images")]
+        [Route("/Images/{whichImage:alpha?}")]
         public async Task<JsonResult> Images(string? whichImage)
         {
 
