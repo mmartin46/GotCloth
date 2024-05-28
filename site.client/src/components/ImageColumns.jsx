@@ -2,17 +2,19 @@ import '../App.css';
 import { useEffect, useState } from 'react';
 
 
-const PantsColumns = (props) => {
+const ImageColumns = (props) => {
+    const { name } = props;
+
     const [pantsImages, setPantsImages] = useState([]);
 
-    const pantsUrl = 'https://localhost:7269/Images/pants';
+    const pantsUrl = `https://localhost:7269/Images/${name}`;
 
     useEffect(() => {
         const fetchPantsImages = async () => {
             try {
                 const response = await fetch(pantsUrl);
                 if (!response.ok) {
-                    throw new Error('Error getting pants data');
+                    throw new Error(`Error getting ${name} data`);
                 }
                 const data = await response.json();
                 console.log(data);
@@ -27,7 +29,7 @@ const PantsColumns = (props) => {
 
     return (
         <div className="container">
-            <div className="my-row">
+            <div className="row my-row">
                 {pantsImages && (
                     pantsImages.map((pants, index) => (
                         <div key={index} className="col my-col">
@@ -53,4 +55,4 @@ const PantsColumns = (props) => {
 }
 
 
-export default PantsColumns;
+export default ImageColumns;

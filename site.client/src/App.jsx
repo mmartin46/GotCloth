@@ -20,7 +20,7 @@ import headImage from 'C:\\Users\\mitch\\Downloads\\WebApp\\Site\\site.client\\s
 import shutterImage from 'C:\\Users\\mitch\\Downloads\\shutterstock_266498825.jpg';
 import PageCarousel from './components/PageCarousel.jsx';
 import BigLabel from './components/BigLabel.jsx'; 
-import PantsColumns from './components/PantsColumns.jsx';
+import ImageColumns from './components/ImageColumns.jsx';
 
 
 const ScreenRoutes = () => {
@@ -43,7 +43,10 @@ const ScreenRoutes = () => {
 const ShoesLayout = () => {
     return (
         <div>
-            <BigLabel header="SHOES" subheader="You may wanna wear more than socks today."/>
+            <BigLabel header="SHOES" subheader="You may wanna wear more than socks today." />
+            <div className="my-container">
+                <ImageColumns name="shoe" />
+            </div>
         </div>
     );
 };
@@ -56,7 +59,7 @@ const PantsLayout = () => {
         <>
             <BigLabel header="PANTS" subheader="Not in the mood to wear shorts, wear these instead"/>
             <div className="my-container">
-                <PantsColumns />
+                <ImageColumns name="pants" />
             </div>
         </>
     );
@@ -67,6 +70,9 @@ const ShirtsLayout = () => {
     return (
         <div>
             <BigLabel header="SHIRTS" subheader="Getting hot? You may not wanna wear a sweater." />
+            <div className="my-container">
+                <ImageColumns name="shirt" />
+            </div>
         </div>
     )
 };

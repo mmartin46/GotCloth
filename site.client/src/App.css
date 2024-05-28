@@ -109,10 +109,6 @@
     padding: 40px;
 }
 
-.my-row :not(#error-message) {
-    display: flex;
-    flex-wrap: wrap;
-}
 #error-message {
     display: flex;
     text-align: center;
@@ -122,7 +118,7 @@
 .my-col {
     display: block;
     border-width: 3px;
-    max-width: 400px;
+    /* max-width: 400px; */
     align-content: center;
     align-items: center;
     justify-content: center;

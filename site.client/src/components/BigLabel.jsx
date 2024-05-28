@@ -1,5 +1,4 @@
 import '../App.css';
-import PantsColumns from './PantsColumns.jsx'; 
 
 
 const BigLabel = (props) => {
@@ -25,9 +24,6 @@ const BigLabel = (props) => {
             <div className="big-label" style={{ backgroundColor: chosenColor }}>
                 <h1 className="text-center">{header.toUpperCase()}</h1>
                 <h4 className="text-center">{subheader}</h4>
-            </div>
-            <div className="my-container">
-                <PantsColumns />
             </div>
         </>
     );
