@@ -3,11 +3,10 @@ import { useEffect, useState } from 'react';
 
 // For all files
 import Header from './components/Header.jsx';
-import SecondaryHeader from './components/SecondaryHeader.jsx';
+/*import SecondaryHeader from './components/SecondaryHeader.jsx';*/
 import Footer from './components/Footer.jsx';
 import axios from 'axios';
-import { Outlet, Link } from "react-router-dom"
-
+import { Outlet, Link } from "react-router-dom";
 
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -21,24 +20,9 @@ import shutterImage from 'C:\\Users\\mitch\\Downloads\\shutterstock_266498825.jp
 import PageCarousel from './components/PageCarousel.jsx';
 import BigLabel from './components/BigLabel.jsx'; 
 import ImageColumns from './components/ImageColumns.jsx';
+import SecondaryHeader from './components/SecondaryHeader.jsx';
+import PlainLink from './components/PlainLink.jsx';
 
-
-const ScreenRoutes = () => {
-    return (
-        <div className="">
-            <BrowserRouter>
-                <Routes>
-                    <Route path="/">
-                        <Route index element={<MainLayout />} />
-                        <Route path="pants" element={<PantsLayout />} />
-                        <Route path="shirts" element={<ShirtsLayout />} />
-                        <Route path="shoes" element={<ShoesLayout/> } />
-                    </Route>
-                </Routes>
-            </BrowserRouter>
-        </div>
-    );
-};
 
 const ShoesLayout = () => {
     return (
@@ -83,9 +67,9 @@ const HeaderProducts = () => {
     return (
         <div className="sections row text-center">
             <div id="shirt" className="col">
-                <Link to="/shirts" style={{ textDecoration: 'none', color: 'black' }}>
+                <PlainLink to="/shirts" fontColor='black'>
                     <h2 className="display-4">SHIRTS</h2>
-                </Link>
+                </PlainLink>
             </div>
             <div id="jeans" className="col">
                 <Link to="/pants" style={{ textDecoration: 'none', color: 'black' }}>
@@ -112,14 +96,26 @@ const MainLayout = () => {
     );
 };
 
+
+const ScreenRoutes = () => {
+    return (
+       <Routes>
+           <Route path="/" element={<MainLayout />} />
+           <Route path="pants" element={<PantsLayout />} />
+           <Route path="shirts" element={<ShirtsLayout />} />
+           <Route path="shoes" element={<ShoesLayout />} />
+       </Routes>
+    );
+};
+
 function App() {
     return (
-        <>
+        <BrowserRouter>
             <Header />
             <SecondaryHeader/>
             <ScreenRoutes />
             <Footer />
-        </>
+        </BrowserRouter>
     )
 }
 

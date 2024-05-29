@@ -10,6 +10,17 @@
     white-space: nowrap;
 }
 
+.click-link {
+    transition-duration: 0.3s;
+}
+
+.click-link:hover {
+    transform: translateY(-5px);
+    opacity: 0.8;
+}
+
+
+
 .secondaryHeader {
     display: flex;
     flex-wrap: nowrap;
