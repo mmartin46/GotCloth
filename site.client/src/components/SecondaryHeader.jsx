@@ -13,6 +13,7 @@ const SecondaryHeader = () => {
                 <h4>PANTS</h4>
                 <h4>SHIRTS</h4>
                 <h4>SHOES</h4>
+                <h4 style={{ color: 'red' }}>CART</h4>
             </div>
         </div>
     );
