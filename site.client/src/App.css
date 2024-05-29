@@ -19,6 +19,13 @@
     opacity: 0.8;
 }
 
+@media (max-width: 900px) {
+    .secondaryHeader {
+        display: block;
+        align-content: center;
+        text-align: center;
+    }
+}
 
 
 .secondaryHeader {
@@ -26,10 +33,10 @@
     flex-wrap: nowrap;
     flex-direction: row;
     align-items: stretch;
-    justify-content: space-between;
+    justify-content: space-evenly;
     gap: 10px;
-    padding: 10px;
 }
+
 
 .otherSecondaryHeaders {
     display: flex;
@@ -38,7 +45,6 @@
     align-items: stretch;
     justify-content: flex-start;
     gap: 10px;
-    padding: 10px;
 }
 
 
@@ -152,7 +158,6 @@
 }
 
 .row {
-    padding: 40px;
 }
 
 #error-message {
@@ -305,13 +310,11 @@
 }
 
 .footer {
-    width: 100%;
 
 
     padding-top: 20px;
     height: fit-content;
     padding-bottom: 50px;
-    padding-left: 50px;
     background-color: rgba(0, 0, 0, 0.8);
     color: rgba(255, 255, 255, 0.7);
     filter: drop-shadow(0px 10px 10px rgba(0, 0, 0, 0.2));

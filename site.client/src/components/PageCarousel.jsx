@@ -17,7 +17,7 @@ const PageCarousel = () => {
                         src={headImage}
                     />
                     <Carousel.Caption>
-                        <LinkButton title="40% Off Shirts" caption="With a purchase over $25.00" buttonTitle="Shop Now" />
+                        <LinkButton to="/shirts" title="40% Off Shirts" caption="With a purchase over $25.00" buttonTitle="Shop Now" />
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
@@ -27,7 +27,7 @@ const PageCarousel = () => {
                         src={shutterImage}
                     />
                     <Carousel.Caption interval={2000}>
-                        <LinkButton title="30% Off Pants" caption="With a purchase over $15.00" buttonTitle="Shop Now" />
+                        <LinkButton to="/pants" title="30% Off Pants" caption="With a purchase over $15.00" buttonTitle="Shop Now" />
                     </Carousel.Caption>
                 </Carousel.Item>
             </Carousel>
