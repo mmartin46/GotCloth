@@ -10,6 +10,38 @@
     white-space: nowrap;
 }
 
+.secondaryHeader {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px;
+}
+
+.otherSecondaryHeaders {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 10px;
+}
+
+
+.otherSecondaryHeaders > * {
+    padding-right: 30px;
+    color: black;
+}
+
+.secondaryHeader > * {
+    color: red;
+    margin: 0;
+    font-family: Bahnschrift;
+}
+
 .header ul {
     animation: scrollText 20s linear infinite;
 }
