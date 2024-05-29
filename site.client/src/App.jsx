@@ -90,11 +90,87 @@ const HeaderProducts = () => {
 const MainLayout = () => {
     return (
         <div>
-            <PageCarousel/>
+            <PageCarousel />
             <HeaderProducts/>
+            <BodySection />
         </div>
     );
 };
+
+const BodySection = () => {
+
+    const [images, setImages] = useState([]);
+    const url = `https://localhost:7269/Images/shoes`;
+
+    useEffect(() => {
+        const fetchImages = async () => {
+            try {
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error(`Error getting ${name} data`);
+                }
+                const data = await response.json();
+                console.log(data);
+                setImages(data);
+            } catch (error) {
+                console.error('Couldn\'t fetch images');
+            }
+        }
+    }, [url]);
+
+    return (
+        <div className="body-section">
+            <h5>CHEAP SHOES</h5>
+            <div className="my-row row">
+                <div className="col">
+                    <div className="my-col debug-border">
+                        <img src="https://www.pixelstalk.net/wp-content/uploads/2016/07/3840x2160-Images-Free-Download.jpg" />
+                        <h6>Test Name</h6>
+                        <h5>$10.99</h5>
+                        <div className="btn-block">
+                            <span className="add-to-cart">Add to Cart</span>
+                            <span className="buy-now">Buy Now</span>
+                        </div>
+                    </div>
+                </div>
+                <div className="col">
+                    <div className="my-col debug-border">
+                        <img src="https://www.pixelstalk.net/wp-content/uploads/2016/07/3840x2160-Images-Free-Download.jpg" />
+                        <h6>Test Name</h6>
+                        <h5>$10.99</h5>
+                        <div className="btn-block">
+                            <span className="add-to-cart">Add to Cart</span>
+                            <span className="buy-now">Buy Now</span>
+                        </div>
+                    </div>
+                </div>
+                <div className="col">
+                    <div className="my-col debug-border">
+                        <img src="https://www.pixelstalk.net/wp-content/uploads/2016/07/3840x2160-Images-Free-Download.jpg" />
+                        <h6>Test Name</h6>
+                        <h5>$10.99</h5>
+                        <div className="btn-block">
+                            <span className="add-to-cart">Add to Cart</span>
+                            <span className="buy-now">Buy Now</span>
+                        </div>
+                    </div>
+                </div>
+                <div className="col">
+                    <div className="my-col debug-border">
+                        <img src="https://www.pixelstalk.net/wp-content/uploads/2016/07/3840x2160-Images-Free-Download.jpg" />
+                        <h6>Test Name</h6>
+                        <h5>$10.99</h5>
+                        <div className="btn-block">
+                            <span className="add-to-cart">Add to Cart</span>
+                            <span className="buy-now">Buy Now</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h5>View More</h5>
+        </div>
+    )
+}
 
 
 const ScreenRoutes = () => {

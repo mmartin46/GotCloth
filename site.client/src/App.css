@@ -33,6 +33,35 @@ html, body {
     }
 }
 
+.my-col {
+    max-width: 400px;
+    padding: 20px;
+}
+
+
+
+.debug-border {
+    border-width: 2px;
+    border-color: red;
+}
+
+.product-preview {
+
+}
+
+.body-section {
+    display: block;
+    align-content: center;
+    border-width: 2px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    border-color: red;
+    text-align: center;
+    padding-left: 5%;
+}
+
+
+
 @media (min-width: 901px) {
     .secondaryHeader  {
         display: flex;
