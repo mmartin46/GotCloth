@@ -1,4 +1,4 @@
-// John 3:5
+﻿// John 3:5
 import { useEffect, useState } from 'react';
 
 // For all files
@@ -120,7 +120,7 @@ const BodySection = () => {
 
     return (
         <div className="body-section">
-            <h5>CHEAP SHOES</h5>
+            <h2>CHEAP SHOES</h2>
             <div className="my-row row">
                 <div className="col">
                     <div className="my-col debug-border">
@@ -133,41 +133,9 @@ const BodySection = () => {
                         </div>
                     </div>
                 </div>
-                <div className="col">
-                    <div className="my-col debug-border">
-                        <img src="https://www.pixelstalk.net/wp-content/uploads/2016/07/3840x2160-Images-Free-Download.jpg" />
-                        <h6>Test Name</h6>
-                        <h5>$10.99</h5>
-                        <div className="btn-block">
-                            <span className="add-to-cart">Add to Cart</span>
-                            <span className="buy-now">Buy Now</span>
-                        </div>
-                    </div>
-                </div>
-                <div className="col">
-                    <div className="my-col debug-border">
-                        <img src="https://www.pixelstalk.net/wp-content/uploads/2016/07/3840x2160-Images-Free-Download.jpg" />
-                        <h6>Test Name</h6>
-                        <h5>$10.99</h5>
-                        <div className="btn-block">
-                            <span className="add-to-cart">Add to Cart</span>
-                            <span className="buy-now">Buy Now</span>
-                        </div>
-                    </div>
-                </div>
-                <div className="col">
-                    <div className="my-col debug-border">
-                        <img src="https://www.pixelstalk.net/wp-content/uploads/2016/07/3840x2160-Images-Free-Download.jpg" />
-                        <h6>Test Name</h6>
-                        <h5>$10.99</h5>
-                        <div className="btn-block">
-                            <span className="add-to-cart">Add to Cart</span>
-                            <span className="buy-now">Buy Now</span>
-                        </div>
-                    </div>
-                </div>
             </div>
-            <h5>View More</h5>
+            <h5 style={{ paddingTop: '30px' }}>View More -></h5>
+
         </div>
     )
 }
