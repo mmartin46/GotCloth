@@ -27,7 +27,7 @@ html, body {
 
 @media (max-width: 900px) {
     .secondaryHeader {
-        display: block;
+        display: flex;
         align-content: center;
         text-align: center;
     }
@@ -352,6 +352,12 @@ html, body {
     margin-right: 20%;
 }
 
+@media (max-width: 800px) {
+    .make-big {
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+}
 .make-big h2,
 .make-big p {
     color: black;
