@@ -104,6 +104,15 @@
     object-fit: cover;
 }
 
+.sections {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.sections .col {
+    min-width: 300px;
+}
+
 .add-to-cart:hover {
     background-color: rgba(100, 0, 0, 0.8);
 }
