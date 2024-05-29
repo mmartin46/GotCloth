@@ -164,11 +164,13 @@ html, body {
 .big-label {
     display: block;
     background-color: rgba(100, 0, 0, 1);
-    width: 100vw;
-    padding: 200px;
+    width: 100%;
+    padding-top: 200px;
+    padding-bottom: 200px;
+    padding-left: 10%;
+    padding-right: 10%;
     text-align: center;
 }
-
 
 
 .big-label > * {
