@@ -76,8 +76,9 @@
 .secondaryHeader {
     padding-top: 50px;
     height: fit-content;
+    padding-left: 10px;
+    padding-right: 10px;
     padding-bottom: 50px;
-    padding-left: 50px;
     background-color: antiquewhite;
     color: rgba(255, 255, 255, 0.7);
     filter: drop-shadow(0px 10px 10px rgba(0, 0, 0, 0.2));
@@ -263,26 +264,27 @@
     font-size: 40px;
 }
 
-.make-big > * {
-    display: flex;
-    align-content: center;
-    text-align: center;
-    justify-content: center;
-}
 
-.typicalButton {
-    display: block;
-    color: white;
-    background-color: red;
-    font-weight: 500;
-    padding: 10px;
-    margin: 10px;
-    align-self: center;
-    text-align: center;
-    align-content: end;
-    transition-duration: 0.2s;
-    margin-left: 30%;
-    margin-right: 30%;
+
+@media (max-width: 800px) {
+    .typicalButton {
+        display: block;
+        color: white;
+        background-color: red;
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+}
+@media (min-width: 801px) {
+    .typicalButton {
+        display: block;
+        color: white;
+        background-color: red;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        margin-left: 30%;
+        margin-right: 30%;
+    }
 }
 
 .typicalButton:hover {
