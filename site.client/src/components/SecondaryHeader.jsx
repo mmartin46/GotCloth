@@ -6,13 +6,13 @@ import PlainLink from './PlainLink';
 const SecondaryHeader = () => {
     // FIXME: Not fully implemented
     return (
-        <div className="secondaryHeader row">
+        <div className="secondaryHeader ">
             <div className="row">
                 <PlainLink to="/" fontColor="red">
                     <h2 className="click-link">GOTCLOTH.NET</h2>
                 </PlainLink>
             </div>
-            <div className="row">
+            <div className="innerLinkHeader row">
                 <div className="col">
                     <PlainLink to="/pants" fontColor="black"><h4 className="click-link">PANTS</h4></PlainLink>
                 </div>

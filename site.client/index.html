@@ -12,5 +12,26 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            const mobileLimitWidth = 900;
+
+            function onWindowResize(width) {
+                if ($(window).width() > width) {
+                    $(".secondaryHeader").removeClass("row");
+                } else {
+                    $(".secondaryHeader").addClass("row");
+                }
+            }
+
+            onWindowResize(mobileLimitWidth);
+
+            $(window).resize(function () {
+                onWindowResize(mobileLimitWidth);
+            });
+        });
+    </script>
   </body>
 </html>
