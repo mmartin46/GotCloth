@@ -25,6 +25,7 @@ const SecondaryHeader = () => {
                 <div className="col">
                     <PlainLink to="/" fontColor="black"><h4 className="click-link" style={{ color: 'red' }}>CART</h4></PlainLink>
                 </div>
+
             </div>
 
         </div>

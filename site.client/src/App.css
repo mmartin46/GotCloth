@@ -126,6 +126,10 @@ html, body {
     margin-right: 10px;
 }
 
+.my-container {
+    text-align: center;
+}
+
 .btn-for-image {
     width: 300px;
     height: 400px;
