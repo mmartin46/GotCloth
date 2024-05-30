@@ -32,7 +32,7 @@ const ImageColumns = (props) => {
             <div className="row my-row">
                 {pantsImages && (
                     pantsImages.map((pants, index) => (
-                        <div key={index} className="col my-col">
+                        <div key={index} className="sec col my-col">
                             <img className="btn-for-image" src={pants.link} />
                             <h5 style={{
                                 fontWeight: '300',

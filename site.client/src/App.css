@@ -52,15 +52,49 @@ html, body {
 .body-section {
     display: block;
     align-content: center;
-    border-width: 2px;
-    padding-top: 30px;
-    padding-bottom: 30px;
-    border-color: red;
-    text-align: start;
-    padding-left: 5%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    text-align: center;
+    justify-content: center;
+}
+
+.my-row {
+    display: block;
+    align-content: center;
+    justify-content: center;
+}
+
+.body-section {
+    padding: 30px;
+    display: block;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
 }
 
 
+.card {
+    background-color: white;
+    transition-duration: 0.3s;
+}
+
+.sec {
+    transition-duration: 0.3s;
+    opacity: 0.8;
+}
+
+.sec:hover {
+    transform: translateY(-5px);
+    opacity: 1;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.add-pad {
+    padding-top: 30px;
+}
 
 @media (min-width: 901px) {
     .secondaryHeader  {
@@ -202,6 +236,7 @@ html, body {
 }
 
 
+
 .big-label > * {
     color: white;
 }
@@ -230,8 +265,7 @@ html, body {
     margin-bottom: 30px;
 }
 
-.row {
-}
+
 
 #error-message {
     display: flex;
@@ -248,7 +282,6 @@ html, body {
     justify-content: center;
     padding-left: 25px;
     padding-top: 25px;
-    margin-right: 25px;
     margin-top: 25px;
 }
 
@@ -360,7 +393,7 @@ html, body {
 }
 
 .typicalButton:hover {
-    background-color: rgba(255, 0, 0, 0.7);
+    opacity: 1;
 }
 
 
@@ -371,6 +404,7 @@ html, body {
 
 .typicalButton {
     transition-duration: 0.3s;
+    opacity: 0.7;
 }
 
 
