@@ -47,7 +47,7 @@ const ImageColumns = (props) => {
                     ))
                 )}
                 {!pantsImages && 
-                    <h1 id="#error-message">Sorry, no products available :(</h1>
+                    <h4 id="#error-message">Sorry, no products available :(</h4>
                 }
             </div>
         </div>
