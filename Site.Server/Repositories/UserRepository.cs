@@ -30,13 +30,6 @@ namespace Site.Server.Repositories
             return userModels;
         }
 
-        public async Task<Boolean> DoesUserExist(UserModel userModel)
-        {
-            var allUsers = await GetUsers();
-            var matchingUsers = allUsers.Where(x => x.Username.Equals(userModel.Username)).ToList();
-            return matchingUsers.Any();
-        }
-
         public async Task InsertUser(UserModel userModel)
         {
             await _databaseContext.GotClothUsers.AddAsync
@@ -56,15 +49,7 @@ namespace Site.Server.Repositories
         public async Task<Boolean> AuthenticateUser(UserModel userModel)
         {
             List<UserModel> users = await GetUsers();
-            foreach (UserModel user in users)
-            {
-                if (user.Username.Equals(userModel.Username) &&
-                    user.Password.Equals(userModel.Password))
-                {
-                    return true;
-                }
-            }
-            return false;
+            return users.Any(user => user.Username.Equals(userModel.Username)); 
         }
     }
 }

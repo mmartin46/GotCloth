@@ -16,6 +16,27 @@ html, body {
     max-width: 100%;
 }
 
+.frame {
+    border-width: 2px;
+    border-color: red;
+    padding: 30px;
+}
+
+.frame div {
+    display: flex;
+    flex-direction: column;
+    border-width: 2px;
+    border-color: red;
+    padding: 30px;
+}
+
+.frame div input {
+    border-color: black;
+    border-width: 2px;
+    max-width: 200px;
+    padding: 10px;
+}
+
 .click-link {
     transition-duration: 0.3s;
 }

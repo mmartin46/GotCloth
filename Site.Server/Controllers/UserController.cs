@@ -28,10 +28,10 @@ namespace Site.Server.Controllers
             
             if (!userModel.Email.Equals(userModel.ConfirmEmail))
             {
-                return BadRequest("Emails don't match");
+                return BadRequest("Emails don't match!");
             }
 
-            bool doesUserExist = await _userRepository.DoesUserExist(userModel);
+            bool doesUserExist = await _userRepository.AuthenticateUser(userModel);
             if (doesUserExist)
             {
                 return BadRequest("Username already exists");
