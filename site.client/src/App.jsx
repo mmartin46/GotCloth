@@ -69,10 +69,10 @@ const ShirtsLayout = () => {
                     <ImageColumns name="shirt" />
                 </div>
             </div>
-                        <BodySection title="LOW-PRICE SHOES"
-                    description="Looking for low-priced shoes, feel free to look. Check here!"
-                    route="shoes"
-                    color="antiquewhite" />
+            <BodySection title="LOW-PRICE SHOES"
+                description="Looking for low-priced shoes, feel free to look. Check here!"
+                route="shoes"
+                color="antiquewhite" />
         </>
     )
 };
@@ -114,12 +114,91 @@ const MainLayout = () => {
                 color="antiquewhite" />
             <BodySection title="LOW-PRICE DEALS"
                 description="Looking for low-price pants, feel free to look. Check here!"
-                route="pants"
+                croute="pants"
                 color="white" />
         </div>
     );
 };
 
+const RegisterLayout = () => {
+    const [registrationProps, setRegistrationProps] = useState({
+        username: "",
+        password: "",
+        confirmPassword: "",
+        email: "",
+        confirmEmail: ""
+    });
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setRegistrationProps(prevState => ({
+            ...prevState,
+            [name]: value
+        }));
+    };
+
+    const onSubmit = async (e) => {
+        e.preventDefault();
+
+        const response = await fetch("https://localhost:7269/api/User/register", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(registrationProps)
+        });
+
+        if (response.ok) {
+            const result = await response.json();
+            console.log("Registration submitted successfully:", result);
+        } else {
+            console.error("Registration submission failed");
+        }
+    };
+
+    return (
+        <div>
+            <div className="frame">
+                <form onSubmit={onSubmit}>
+                    <div>
+                        <label htmlFor="username">Username</label>
+                        <input type="text" name="username" id="username"
+                            value={registrationProps.username}
+                            onChange={handleChange} />
+                    </div>
+                    <div>
+                        <label htmlFor="password">Password</label>
+                        <input type="password" name="password" id="password"
+                            value={registrationProps.password}
+                            onChange={handleChange}/>
+                    </div>
+                    <div>
+                        <label htmlFor="confirmPassword">Confirm Password</label>
+                        <input type="password" name="confirmPassword" id="confirmPassword"
+                            value={registrationProps.confirmPassword}
+                            onChange={handleChange}/>
+                    </div>
+                    <div>
+                        <label htmlFor="email">Email</label>
+                        <input type="email" name="email" id="email"
+                            value={registrationProps.email}
+                            onChange={handleChange}/>
+                    </div>
+                    <div>
+                        <label htmlFor="confirmEmail">Confirm Email</label>
+                        <input type="confirmEmail" name="confirmEmail" id="confirmEmail"
+                            value={registrationProps.confirmEmail}
+                            onChange={handleChange}/>
+                    </div>
+                    <div>
+                        <button type="submit">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    )
+};
 
 const BodySection = (props) => {
     const { title, description, route, color } = props;
@@ -188,6 +267,7 @@ const ScreenRoutes = () => {
            <Route path="pants" element={<PantsLayout />} />
            <Route path="shirts" element={<ShirtsLayout />} />
            <Route path="shoes" element={<ShoesLayout />} />
+           <Route path="register" element={<RegisterLayout />} />
        </Routes>
     );
 };

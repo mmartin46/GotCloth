@@ -1,7 +1,14 @@
+using Microsoft.EntityFrameworkCore;
+using Site.Server.Data;
 using Site.Server.Options;
 using Site.Server.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
+var configuration = builder.Configuration;
+
+builder.Services.AddDbContext<UserDatabaseContext>(options => options.UseSqlServer(
+    "Server=.;Database=GotClothUsers;Encrypt=False;Trusted_Connection=True;"
+));
 
 // Add services to the container.
 
@@ -12,6 +19,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.Configure<AppOptions>(builder.Configuration.GetSection(nameof(AppOptions)));
 builder.Services.AddTransient<IImageRepository, ImageRepository>();
+builder.Services.AddTransient<IUserRepository, UserRepository>();
 
 builder.Services.AddCors(options =>
 {
