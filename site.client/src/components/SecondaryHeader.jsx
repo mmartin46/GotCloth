@@ -2,14 +2,17 @@ import { Link } from 'react-router-dom';
 import '../index.css';
 import '../App.css';
 import PlainLink from './PlainLink';
+import { UsernameProvider, useUsername } from './UseUsername.jsx';
+
 
 const SecondaryHeader = () => {
     // FIXME: Not fully implemented
+    let username = useUsername();
     return (
         <div className="secondaryHeader ">
             <div className="row">
                 <PlainLink to="/" fontColor="red">
-                    <h2 className="click-link">Hello, Guest</h2>
+                    <h2 className="click-link">Hello, {username.current}</h2>
                 </PlainLink>
             </div>
             <div className="innerLinkHeader row">

@@ -1,5 +1,5 @@
 ﻿// John 3:5
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 // For all files
 import Header from './components/Header.jsx';
@@ -22,6 +22,7 @@ import BigLabel from './components/BigLabel.jsx';
 import ImageColumns from './components/ImageColumns.jsx';
 import SecondaryHeader from './components/SecondaryHeader.jsx';
 import PlainLink from './components/PlainLink.jsx';
+import { UsernameProvider, useUsername } from './components/UseUsername.jsx';
 
 
 const ShoesLayout = () => {
@@ -212,11 +213,13 @@ const RegisterLayout = () => {
     )
 };
 
-const LoginLayout = () => {
+const LoginLayout = (props) => {
     const [registrationProps, setRegistrationProps] = useState({
         username: "",
         password: ""
     });
+
+    const username = useUsername();
 
     const [error, setError] = useState("");
     const [successMessage, setSuccessMessage] = useState("");
@@ -244,6 +247,7 @@ const LoginLayout = () => {
             const result = await response.json();
             setSuccessMessage("Sucessfully Logged In!");
             console.log("Logged in successfully:", result);
+            username.current = result.Username;
         } else {
             const errorMessage = await response.text();
             console.error("Login failed");
@@ -285,7 +289,7 @@ const LoginLayout = () => {
 
 const BodySection = (props) => {
     const { title, description, route, color } = props;
-    
+
     const [images, setImages] = useState([]);
     const url = `https://localhost:7269/Images/${route}`;
 
@@ -309,7 +313,7 @@ const BodySection = (props) => {
     }, [url]);
 
     return (
-        <div className="body-section" style={{ backgroundColor: `${color}` } }>
+        <div className="body-section" style={{ backgroundColor: `${color}` }}>
             <div className="text-center">
                 <h1>
                     {title}
@@ -341,10 +345,10 @@ const BodySection = (props) => {
 
         </div>
     )
-}
+};
 
 
-const ScreenRoutes = () => {
+const ScreenRoutes = (props) => {
     return (
        <Routes>
            <Route path="/" element={<MainLayout />} />
@@ -358,14 +362,19 @@ const ScreenRoutes = () => {
 };
 
 function App() {
+
+    let username = useRef("Guest");
+
     return (
-        <BrowserRouter>
-            <Header />
-            <SecondaryHeader/>
-            <ScreenRoutes />
-            <Footer />
-        </BrowserRouter>
-    )
+        <UsernameProvider>
+            <BrowserRouter>
+                <Header />
+                <SecondaryHeader />
+                <ScreenRoutes />
+                <Footer />
+            </BrowserRouter>
+        </UsernameProvider>
+    );
 }
 
 export default App;

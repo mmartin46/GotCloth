@@ -5,6 +5,7 @@ import PlainLink from './PlainLink';
 
 const Header = () => {
     // FIXME: Not fully implemented
+
     return (
         <div className="header">
             <ul>

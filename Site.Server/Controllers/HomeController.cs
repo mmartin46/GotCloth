@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
+using Site.Server.Models;
 using Site.Server.Options;
 using Site.Server.Repositories;
 

@@ -13,7 +13,7 @@ namespace Site.Server.Repositories
         {
             HttpClient client = new HttpClient();
 
-            HttpResponseMessage responseMessage = await client.GetAsync($"https://www.googleapis.com/customsearch/v1?key={keys[keyIndex]}&cx=6592259b67dd34e0b&q={nameToSearch}&searchType=image");
+            HttpResponseMessage responseMessage = await client.GetAsync($"https://www.googleapis.com/customsearch/v1?key={keys[2]}&cx=6592259b67dd34e0b&q={nameToSearch}&searchType=image");
             if (responseMessage.IsSuccessStatusCode)
             {
                 var data = await responseMessage.Content.ReadAsStringAsync();
@@ -22,7 +22,7 @@ namespace Site.Server.Repositories
                 return items;
             }
 
-            if (keyIndex < 2)
+            if (keyIndex < keys.Length)
             {
                 return await GetImages(nameToSearch, ++keyIndex);
             }
