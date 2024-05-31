@@ -4,6 +4,6 @@ namespace Site.Server.Repositories
 {
     public interface IImageRepository
     {
-        Task<ImageModel[]> GetImages(string nameToSearch = "jeans");
+        Task<ImageModel[]> GetImages(string nameToSearch = "jeans", int keyIndex = 0);
     }
 }

@@ -433,6 +433,17 @@ html, body {
     font-size: 40px;
 }
 
+.my-row .col {
+    display: block;
+    align-content: center;
+    max-width: 330px;
+}
+
+.my-row .col > * {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
 
 
 @media (max-width: 800px) {
