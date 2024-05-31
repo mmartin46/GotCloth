@@ -24,7 +24,9 @@ const ImageColumns = (props) => {
             }
         };
 
-        fetchPantsImages();
+        if (pantsImages.length <= 0 || !pantsImages) {
+            fetchPantsImages();
+        }
     }, [pantsUrl]);
 
     return (

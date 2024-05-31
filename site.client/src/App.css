@@ -17,24 +17,67 @@ html, body {
 }
 
 .frame {
-    border-width: 2px;
-    border-color: red;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+
+    padding: 30px;
+    max-width: 100%;
+    text-align: center;
+}
+
+.frame > * {
+
     padding: 30px;
 }
 
-.frame div {
-    display: flex;
-    flex-direction: column;
-    border-width: 2px;
-    border-color: red;
-    padding: 30px;
+
+
+.regForm {
+    width: 500px;
+    background-color: rgba(200, 0, 0, 1);
+    color: white;
 }
 
 .frame div input {
-    border-color: black;
-    border-width: 2px;
     max-width: 200px;
-    padding: 10px;
+    padding: 5px;
+    margin-bottom: 10px;
+    align-self: flex-start;
+    transition-duration: 0.3s;
+    color: black;
+    text-align: center;
+}
+
+.frame div label {
+    display: block;
+    flex-direction: row;
+    transition-duration: 0.3s;
+}
+
+.regForm {
+
+}
+
+.whole-reg {
+    background-color: rgba(200, 0, 0, 1);
+    box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.3);
+}
+
+
+
+.register {
+    padding: 15px;
+    background-color: white;
+    color: red;
+    margin-top: 30px;
+    transition-duration: 0.3s;
+}
+
+.frame div input:hover,
+.register:hover {
+    transform: translateY(-5px);
+    box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.3);
 }
 
 .click-link {

@@ -157,9 +157,13 @@ const RegisterLayout = () => {
     };
 
     return (
-        <div>
+        <div className="whole-reg">
+
             <div className="frame">
-                <form onSubmit={onSubmit}>
+                <form className="regForm" onSubmit={onSubmit}>
+                    <br />
+                    <h1 className="text-center">Sign Up</h1>
+                    <br />
                     <div>
                         <label htmlFor="username">Username</label>
                         <input type="text" name="username" id="username"
@@ -190,8 +194,8 @@ const RegisterLayout = () => {
                             value={registrationProps.confirmEmail}
                             onChange={handleChange}/>
                     </div>
-                    <div>
-                        <button type="submit">Register</button>
+                    <div className="pad">
+                        <button className="register" type="submit">Register</button>
                     </div>
                 </form>
             </div>
@@ -220,8 +224,9 @@ const BodySection = (props) => {
                 console.error('Couldn\'t fetch images');
             }
         }
-
-        fetchImages();
+        if (!images || images.length <= 0) {
+            fetchImages();
+        }
     }, [url]);
 
     return (
