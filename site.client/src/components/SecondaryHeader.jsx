@@ -9,7 +9,7 @@ const SecondaryHeader = () => {
         <div className="secondaryHeader ">
             <div className="row">
                 <PlainLink to="/" fontColor="red">
-                    <h2 className="click-link">GOTCLOTH.NET</h2>
+                    <h2 className="click-link">Hello Guest</h2>
                 </PlainLink>
             </div>
             <div className="innerLinkHeader row">
@@ -24,12 +24,6 @@ const SecondaryHeader = () => {
                 </div>
                 <div className="col">
                     <PlainLink to="/" fontColor="black"><h4 className="click-link" style={{ color: 'red' }}>CART</h4></PlainLink>
-                </div>
-                <div className="col">
-                    <PlainLink to="/register" fontColor="black"><h4 className="click-link">REGISTER</h4></PlainLink>
-                </div>
-                <div className="col">
-                    <PlainLink to="/login" fontColor="black"><h4 className="click-link">LOGIN</h4></PlainLink>
                 </div>
             </div>
 

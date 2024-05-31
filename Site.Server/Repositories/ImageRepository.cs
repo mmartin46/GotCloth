@@ -19,10 +19,7 @@ namespace Site.Server.Repositories
                 var data = await responseMessage.Content.ReadAsStringAsync();
                 var imageData = JsonConvert.DeserializeObject<ImageApiResponse>(data);
                 var items = imageData.Items;
-                if (items != null || items.Length == 0)
-                {
-                    return items;
-                }
+                return items;
             }
 
             if (keyIndex < 2)
