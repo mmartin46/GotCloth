@@ -129,6 +129,8 @@ const RegisterLayout = () => {
         confirmEmail: ""
     });
 
+    const [error, setError] = useState("");
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setRegistrationProps(prevState => ({
@@ -152,7 +154,9 @@ const RegisterLayout = () => {
             const result = await response.json();
             console.log("Registration submitted successfully:", result);
         } else {
+            const errorMessage = await response.text();
             console.error("Registration submission failed");
+            setError(errorMessage);
         }
     };
 
@@ -165,6 +169,7 @@ const RegisterLayout = () => {
                     <h1 className="text-center">Sign Up</h1>
                     <br />
                     <div>
+                        {error && <h6 style={{ color: 'white', opacity : '0.7' } }>{error}</h6>}
                         <label htmlFor="username">Username</label>
                         <input type="text" name="username" id="username"
                             value={registrationProps.username}
@@ -190,7 +195,7 @@ const RegisterLayout = () => {
                     </div>
                     <div>
                         <label htmlFor="confirmEmail">Confirm Email</label>
-                        <input type="confirmEmail" name="confirmEmail" id="confirmEmail"
+                        <input type="email" name="confirmEmail" id="confirmEmail"
                             value={registrationProps.confirmEmail}
                             onChange={handleChange}/>
                     </div>
