@@ -19,15 +19,13 @@ const Header = () => {
                     </div>
                     <div className="col">
                         <div className="row">
-                            <div className="col">
+                            <div className="col end-col">
                                 <PlainLink to="/login" fontColor="white">
                                     <span>Login</span>&nbsp;
                                 </PlainLink>
                                 <PlainLink to="/register" fontColor="white">
                                     <span>Register</span>
                                 </PlainLink>
-                            </div>
-                            <div className="col">
                             </div>
                         </div>
                     </div>

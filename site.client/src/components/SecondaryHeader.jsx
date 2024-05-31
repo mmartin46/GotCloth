@@ -9,7 +9,7 @@ const SecondaryHeader = () => {
         <div className="secondaryHeader ">
             <div className="row">
                 <PlainLink to="/" fontColor="red">
-                    <h2 className="click-link">Hello Guest</h2>
+                    <h2 className="click-link">Hello, Guest</h2>
                 </PlainLink>
             </div>
             <div className="innerLinkHeader row">
