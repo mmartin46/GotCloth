@@ -247,7 +247,9 @@ const LoginLayout = (props) => {
             const result = await response.json();
             setSuccessMessage("Sucessfully Logged In!");
             console.log("Logged in successfully:", result);
-            username.current = result.Username;
+
+            username.current = result.username;
+            console.log(username.current);
         } else {
             const errorMessage = await response.text();
             console.error("Login failed");
