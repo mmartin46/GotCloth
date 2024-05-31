@@ -219,7 +219,7 @@ const LoginLayout = (props) => {
         password: ""
     });
 
-    const username = useUsername();
+    let username = useUsername();
 
     const [error, setError] = useState("");
     const [successMessage, setSuccessMessage] = useState("");
