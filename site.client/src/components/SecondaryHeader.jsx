@@ -28,6 +28,9 @@ const SecondaryHeader = () => {
                 <div className="col">
                     <PlainLink to="/register" fontColor="black"><h4 className="click-link">REGISTER</h4></PlainLink>
                 </div>
+                <div className="col">
+                    <PlainLink to="/login" fontColor="black"><h4 className="click-link">LOGIN</h4></PlainLink>
+                </div>
             </div>
 
         </div>

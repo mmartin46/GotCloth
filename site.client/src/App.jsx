@@ -130,6 +130,7 @@ const RegisterLayout = () => {
     });
 
     const [error, setError] = useState("");
+    const [successMessage, setSuccessMessage] = useState("");
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -152,6 +153,7 @@ const RegisterLayout = () => {
 
         if (response.ok) {
             const result = await response.json();
+            setSuccessMessage("Account Created!");
             console.log("Registration submitted successfully:", result);
         } else {
             const errorMessage = await response.text();
@@ -169,7 +171,8 @@ const RegisterLayout = () => {
                     <h1 className="text-center">Sign Up</h1>
                     <br />
                     <div>
-                        {error && <h6 style={{ color: 'white', opacity : '0.7' } }>{error}</h6>}
+                        {error && !successMessage && < h6 style={{ color: 'white', opacity: '0.7' }}>{error}</h6>}
+                        {successMessage && <h6 style={{ color: 'white', opacity: '0.7' }}>Account Created</h6>}
                         <label htmlFor="username">Username</label>
                         <input type="text" name="username" id="username"
                             value={registrationProps.username}
@@ -201,6 +204,77 @@ const RegisterLayout = () => {
                     </div>
                     <div className="pad">
                         <button className="register" type="submit">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    )
+};
+
+const LoginLayout = () => {
+    const [registrationProps, setRegistrationProps] = useState({
+        username: "",
+        password: ""
+    });
+
+    const [error, setError] = useState("");
+    const [successMessage, setSuccessMessage] = useState("");
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setRegistrationProps(prevState => ({
+            ...prevState,
+            [name]: value
+        }));
+    };
+
+    const onSubmit = async (e) => {
+        e.preventDefault();
+
+        const response = await fetch("https://localhost:7269/api/User/login", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(registrationProps)
+        });
+
+        if (response.ok) {
+            const result = await response.json();
+            setSuccessMessage("Sucessfully Logged In!");
+            console.log("Logged in successfully:", result);
+        } else {
+            const errorMessage = await response.text();
+            console.error("Login failed");
+            setError(errorMessage);
+        }
+    };
+
+    return (
+        <div className="whole-reg">
+
+            <div className="frame">
+                <form className="regForm" onSubmit={onSubmit}>
+                    <br />
+                    <h1 className="text-center">Login Page</h1>
+                    <br />
+                    <div>
+                        {error && !successMessage && < h6 style={{ color: 'white', opacity: '0.7' }}>{error}</h6>}
+                        {successMessage && <h6 style={{ color: 'white', opacity: '0.7' }}>Sucessfully Logged In</h6>}
+                        <label htmlFor="username">Username</label>
+                        <input type="text" name="username" id="username"
+                            value={registrationProps.username}
+                            onChange={handleChange} />
+                    </div>
+                    <div>
+                        <label htmlFor="password">Password</label>
+                        <input type="password" name="password" id="password"
+                            value={registrationProps.password}
+                            onChange={handleChange} />
+                    </div>
+                    <div className="pad">
+                        <button className="register" type="submit">Login</button>
                     </div>
                 </form>
             </div>
@@ -278,6 +352,7 @@ const ScreenRoutes = () => {
            <Route path="shirts" element={<ShirtsLayout />} />
            <Route path="shoes" element={<ShoesLayout />} />
            <Route path="register" element={<RegisterLayout />} />
+           <Route path="login" element={<LoginLayout/> }/>
        </Routes>
     );
 };

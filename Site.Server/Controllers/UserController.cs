@@ -42,5 +42,18 @@ namespace Site.Server.Controllers
             return Json(userModel);
         }
 
+        [HttpPost("login")]
+        public async Task<IActionResult> Login([FromBody] LoginModel userModel)
+        {
+            bool doesUserExist = await _userRepository.AuthenticateUserWithPassword(userModel);
+            if (!doesUserExist)
+            {
+                return BadRequest("Username doesn't exist");
+            }
+
+            return Json(userModel);
+        }
     }
+
+
 }

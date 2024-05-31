@@ -7,5 +7,6 @@ namespace Site.Server.Repositories
         Task<List<UserModel>> GetUsers();
         Task InsertUser(UserModel userModel);
         Task<Boolean> AuthenticateUser(UserModel userModel);
+        Task<Boolean> AuthenticateUserWithPassword(LoginModel userModel);
     }
 }

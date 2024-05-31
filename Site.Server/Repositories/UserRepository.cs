@@ -45,11 +45,17 @@ namespace Site.Server.Repositories
             await _databaseContext.SaveChangesAsync();
         }
 
-        // Not Tested
         public async Task<Boolean> AuthenticateUser(UserModel userModel)
         {
             List<UserModel> users = await GetUsers();
             return users.Any(user => user.Username.Equals(userModel.Username)); 
+        }
+
+        public async Task<Boolean> AuthenticateUserWithPassword(LoginModel userModel)
+        {
+            var users = await GetUsers();
+            return users.Any(user => user.Username.Equals(userModel.Username) &&
+                                     user.Password.Equals(userModel.Password));
         }
     }
 }
