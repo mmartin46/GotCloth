@@ -29,10 +29,15 @@ namespace Site.Server.Controllers
             return Json(imageData);
         }
 
+
         [HttpGet]
-        public async Task<JsonResult> Product([FromBody] ImageModel imageModel)
+        [Route("/Product")]
+        public async Task<JsonResult> Product(string title, string category)
         {
-            return Json(imageModel);
+            var imageData = await _imageRepository.GetImages(category);
+            var smallerTitle = title.Substring(0, title.Length - 4);
+            var firstImage = imageData.Where(x => x.Title.Contains(smallerTitle)).First<ImageModel>();
+            return Json(firstImage);
         }
 
     }

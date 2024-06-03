@@ -9,6 +9,7 @@ const ImageColumns = (props) => {
     const [pantsImages, setPantsImages] = useState([]);
 
     const pantsUrl = `https://localhost:7269/Images/${name}`;
+    let link = "";
 
     useEffect(() => {
         const fetchPantsImages = async () => {
@@ -36,7 +37,8 @@ const ImageColumns = (props) => {
                 {pantsImages && (
                     pantsImages.map((pants, index) => (
                         <div key={index} className="sec col my-col">
-                            <PlainLink to="/product?p=1" fontColor='black'>
+                            {link = `/product?title=${pants.title}&category=${name}`}
+                            <PlainLink to={link} fontColor='black'>
                                 <img className="btn-for-image" src={pants.link} />
                                 <h5 style={{
                                     fontWeight: '300',

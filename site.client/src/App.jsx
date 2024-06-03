@@ -214,22 +214,49 @@ const RegisterLayout = () => {
 };
 
 const ProductLayout = () => {
+    const [imageData, setImageData] = useState([]);
+
+    useEffect(() => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const title = urlParams.get('title');
+        const category = urlParams.get('category');
+        console.log(title.substring(0, title.length - 4), category);
+
+        let url = `https://localhost:7269/Product?title=${title}&category=${category}`;
+        fetch(url)
+            .then(response => {
+                if (!response.ok) {
+                    console.log('Response wasn\'t okay');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log(data);
+                setImageData(data);
+            })
+            .catch(error => { 'Failed fetch', error });
+
+    }, []);
+
+
     return (
         <div className="prod-bkg">
-            <div className="row prod-row">
-                <div className="col">
-                    <img src="https://tse1.mm.bing.net/th?id=OIP.Gr7hcjTcqf6vnQBkv0kfbgHaFj&pid=Api&P=0&h=220" />
-                </div>
-                <div className="col prod-sec">
-                    <h2>Product Title</h2>
-                    <p>Adiqi ipefi aoata usuzu uzeuw ceqbe ifive akodi ounuf egawu, evufe aneyu uzino usaxi utden eiret awogo izalo ufole ipedi, upoir oibob usidu iqaqe avage okozi odaxi ozoxk evata iwuve, pievo uxoye wabea esiro avaxy uqayo ezovp ecife uiowi ucicu.</p>
-                    <h6>$10.00</h6>
+            {imageData &&
+                <div className="row prod-row">
+                    <div className="col">
+                        <img src={imageData.link} />
+                    </div>
+                    <div className="col prod-sec">
+                        <h2>{imageData.title}</h2>
+                        <p>Adiqi ipefi aoata usuzu uzeuw ceqbe ifive akodi ounuf egawu, evufe aneyu uzino usaxi utden eiret awogo izalo ufole ipedi, upoir oibob usidu iqaqe avage okozi odaxi ozoxk evata iwuve, pievo uxoye wabea esiro avaxy uqayo ezovp ecife uiowi ucicu.</p>
+                        <h6>$10.00</h6>
 
-                    <div className="add-cart-btn">
-                        Add To Cart
+                        <div className="add-cart-btn">
+                            Add To Cart
+                        </div>
                     </div>
                 </div>
-            </div>
+            }
         </div>
     );
 };
@@ -319,6 +346,8 @@ const BodySection = (props) => {
 
     const linkRoute = `/${route}`;
 
+    let link = ""
+
     useEffect(() => {
         const fetchImages = async () => {
             try {
@@ -350,10 +379,9 @@ const BodySection = (props) => {
             <div className="my-row row">
                 {images && (
                     images.slice(0, 4).map((image, index) => (
-
-
                         <div key={index} className="col">
-                            <PlainLink to="/product?p=1">
+                            { link = `/product?title=${image.title}&category=${route}` }
+                            <PlainLink to={link} >
                                 <div className="sec my-col card">
                                     <img className="btn-for-image" src={image.link} />
                                     <h6>{image.title.substring(0, 29) + '...'}</h6>
