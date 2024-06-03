@@ -7,7 +7,11 @@ var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
 
 builder.Services.AddDbContext<UserDatabaseContext>(options => options.UseSqlServer(
-    "Server=.;Database=GotClothUsers;Encrypt=False;Trusted_Connection=True;"
+    configuration.GetConnectionString("ClothUsers")
+));
+
+builder.Services.AddDbContext<CartDatabaseContext>(options => options.UseSqlServer(
+    configuration.GetConnectionString("Cars")     
 ));
 
 // Add services to the container.
