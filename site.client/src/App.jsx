@@ -257,6 +257,7 @@ const ProductLayout = () => {
                     </div>
                 </div>
             }
+            {!imageData && <h3>Product Not Found :(</h3>}
         </div>
     );
 };
@@ -344,7 +345,11 @@ const BodySection = (props) => {
     const [images, setImages] = useState([]);
     const url = `https://localhost:7269/Images/${route}`;
 
-    const linkRoute = `/${route}`;
+    let linkRoute = `/${route}`;
+
+    if (linkRoute === '/shoe') {
+        linkRoute += 's';
+    }
 
     let link = ""
 
@@ -378,22 +383,24 @@ const BodySection = (props) => {
 
             <div className="my-row row">
                 {images && (
-                    images.slice(0, 4).map((image, index) => (
-                        <div key={index} className="col">
-                            { link = `/product?title=${image.title}&category=${route}` }
-                            <PlainLink to={link} >
-                                <div className="sec my-col card">
-                                    <img className="btn-for-image" src={image.link} />
-                                    <h6>{image.title.substring(0, 29) + '...'}</h6>
-                                    <h5>$10.99</h5>
-                                    <div className="btn-block">
-                                        <span className="add-to-cart">Add to Cart</span>
-                                        <span className="buy-now">Buy Now</span>
+                    images.slice(0, 4).map((image, index) => {
+                        const link = `/product?title=${image.title}&category=${route}`;
+                        return (
+                            <div key={index} className="col">
+                                <PlainLink to={link} >
+                                    <div className="sec my-col card">
+                                        <img className="btn-for-image" src={image.link} />
+                                        <h6>{image.title.substring(0, 29) + '...'}</h6>
+                                        <h5>$10.99</h5>
+                                        <div className="btn-block">
+                                            <span className="add-to-cart">Add to Cart</span>
+                                            <span className="buy-now">Buy Now</span>
+                                        </div>
                                     </div>
-                                </div>
-                            </PlainLink>
-                        </div>
-                    ))
+                                </PlainLink>
+                            </div>
+                        );
+                    })
                 )}
                 {!images && (<div className="text-center"><h6>No products found :(</h6></div>)}
             </div>
