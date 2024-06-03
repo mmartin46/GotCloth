@@ -554,8 +554,6 @@ html, body {
 }
 
 .prod-row .col {
-    border-color: wheat;
-    border-width: 2px;
     padding: 20px;
     background-color: white;
     max-height: 600px;
