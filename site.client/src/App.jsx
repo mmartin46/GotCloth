@@ -121,6 +121,13 @@ const MainLayout = () => {
     );
 };
 
+const CartLayout = () => {
+    return (
+        <>
+        </>
+    );
+}
+
 const RegisterLayout = () => {
     const [registrationProps, setRegistrationProps] = useState({
         username: "",
@@ -351,7 +358,7 @@ const BodySection = (props) => {
         linkRoute += 's';
     }
 
-    let link = ""
+    let link = "";
 
     useEffect(() => {
         const fetchImages = async () => {
@@ -423,6 +430,7 @@ const ScreenRoutes = (props) => {
            <Route path="register" element={<RegisterLayout />} />
            <Route path="login" element={<LoginLayout />} />
            <Route path="product" element={<ProductLayout />} />
+           <Route path="cart" element={<CartLayout />} />
        </Routes>
     );
 };
