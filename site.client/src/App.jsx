@@ -317,6 +317,8 @@ const BodySection = (props) => {
     const [images, setImages] = useState([]);
     const url = `https://localhost:7269/Images/${route}`;
 
+    const linkRoute = `/${route}`;
+
     useEffect(() => {
         const fetchImages = async () => {
             try {
@@ -367,7 +369,7 @@ const BodySection = (props) => {
                 )}
                 {!images && (<div className="text-center"><h6>No products found :(</h6></div>)}
             </div>
-            <PlainLink to="/shoes" fontColor='black'>
+            <PlainLink to={linkRoute} fontColor='black'>
                 {images && (<h4 className="sec text-center add-pad">View More</h4>)}
             </PlainLink>
 
