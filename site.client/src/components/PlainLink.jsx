@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 
 const PlainLink = (props) => {
 
-    const { to , fontColor, children, className } = props;
+    const { to , fontColor, children, className, title } = props;
+
 
     return (
         <Link to={to} style={{ textDecoration: 'none', color: fontColor }}>

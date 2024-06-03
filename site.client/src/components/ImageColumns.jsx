@@ -1,5 +1,6 @@
 import '../App.css';
 import { useEffect, useState } from 'react';
+import PlainLink from './PlainLink.jsx';
 
 
 const ImageColumns = (props) => {
@@ -35,16 +36,18 @@ const ImageColumns = (props) => {
                 {pantsImages && (
                     pantsImages.map((pants, index) => (
                         <div key={index} className="sec col my-col">
-                            <img className="btn-for-image" src={pants.link} />
-                            <h5 style={{
-                                fontWeight: '300',
-                                color: 'rgba(0,0,0,.8)'
-                            }}>{pants.title.substring(0, 29) + '...'}</h5>
-                            <h5>$10.99</h5>
-                            <div className="btn-block">
-                                <span className="add-to-cart">Add to Cart</span>
-                                <span className="buy-now">Buy Now</span>
-                            </div>
+                            <PlainLink to="/product?p=1" fontColor='black'>
+                                <img className="btn-for-image" src={pants.link} />
+                                <h5 style={{
+                                    fontWeight: '300',
+                                    color: 'rgba(0,0,0,.8)'
+                                }}>{pants.title.substring(0, 29) + '...'}</h5>
+                                <h5>$10.99</h5>
+                                <div className="btn-block">
+                                    <span className="add-to-cart">Add to Cart</span>
+                                    <span className="buy-now">Buy Now</span>
+                                </div>
+                            </PlainLink>
                         </div>
                     ))
                 )}

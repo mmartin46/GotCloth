@@ -213,7 +213,29 @@ const RegisterLayout = () => {
     )
 };
 
-const LoginLayout = (props) => {
+const ProductLayout = () => {
+    return (
+        <div className="prod-bkg">
+            <div className="row prod-row">
+                <div className="col">
+                    <img src="https://tse1.mm.bing.net/th?id=OIP.Gr7hcjTcqf6vnQBkv0kfbgHaFj&pid=Api&P=0&h=220" />
+                </div>
+                <div className="col prod-sec">
+                    <h2>Product Title</h2>
+                    <p>Adiqi ipefi aoata usuzu uzeuw ceqbe ifive akodi ounuf egawu, evufe aneyu uzino usaxi utden eiret awogo izalo ufole ipedi, upoir oibob usidu iqaqe avage okozi odaxi ozoxk evata iwuve, pievo uxoye wabea esiro avaxy uqayo ezovp ecife uiowi ucicu.</p>
+                    <h6>$10.00</h6>
+
+                    <div className="add-cart-btn">
+                        Add To Cart
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+
+const LoginLayout = () => {
     const [registrationProps, setRegistrationProps] = useState({
         username: "",
         password: ""
@@ -326,16 +348,20 @@ const BodySection = (props) => {
             <div className="my-row row">
                 {images && (
                     images.slice(0, 4).map((image, index) => (
+
+
                         <div key={index} className="col">
-                            <div className="sec my-col card">
-                                <img className="btn-for-image" src={image.link} />
-                                <h6>{image.title.substring(0, 29) + '...'}</h6>
-                                <h5>$10.99</h5>
-                                <div className="btn-block">
-                                    <span className="add-to-cart">Add to Cart</span>
-                                    <span className="buy-now">Buy Now</span>
+                            <PlainLink to="/product?p=1">
+                                <div className="sec my-col card">
+                                    <img className="btn-for-image" src={image.link} />
+                                    <h6>{image.title.substring(0, 29) + '...'}</h6>
+                                    <h5>$10.99</h5>
+                                    <div className="btn-block">
+                                        <span className="add-to-cart">Add to Cart</span>
+                                        <span className="buy-now">Buy Now</span>
+                                    </div>
                                 </div>
-                            </div>
+                            </PlainLink>
                         </div>
                     ))
                 )}
@@ -358,7 +384,8 @@ const ScreenRoutes = (props) => {
            <Route path="shirts" element={<ShirtsLayout />} />
            <Route path="shoes" element={<ShoesLayout />} />
            <Route path="register" element={<RegisterLayout />} />
-           <Route path="login" element={<LoginLayout/> }/>
+           <Route path="login" element={<LoginLayout />} />
+           <Route path="product" element={<ProductLayout />} />
        </Routes>
     );
 };

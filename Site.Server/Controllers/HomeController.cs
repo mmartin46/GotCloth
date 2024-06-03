@@ -29,5 +29,11 @@ namespace Site.Server.Controllers
             return Json(imageData);
         }
 
+        [HttpGet]
+        public async Task<JsonResult> Product([FromBody] ImageModel imageModel)
+        {
+            return Json(imageModel);
+        }
+
     }
 }

@@ -427,6 +427,25 @@ html, body {
 }
 
 
+.prod-row .col {
+    margin: 10px;
+    min-width: 400px;
+}
+
+.prod-sec {
+    display: block;
+    align-content: center;
+    text-align: center;
+    padding-left: 10px;
+}
+
+.prod-row {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    margin: 30px;
+    padding: 30px;
+}
 
 
 .carousel-inner img {
@@ -496,12 +515,55 @@ html, body {
     opacity: 0.7;
 }
 
+.prod-row {
+}
+
+.prod-sec {
+    margin: 30px;
+}
+
+.add-cart-btn {
+    background-color: rgba(200, 0, 0);
+    text-align: center;
+    padding: 10px;
+    color: white;
+    opacity: 0.8;
+    transition-duration: 0.3s;
+
+}
+.add-cart-btn:hover {
+    opacity: 1;
+    transform: translateY(-5px);
+}
+
+.add-cart-btn:active {
+    opacity: 1;
+    transform: translateY(3px);
+}
 
 .make-big {
     background-color: rgba(255, 255, 255, 0.9);
     padding: 30px;
     margin-left: 20%;
     margin-right: 20%;
+}
+
+.prod-bkg {
+    padding: 50px;
+    background-color: rgb(200, 0, 0);
+}
+
+.prod-row .col {
+    border-color: wheat;
+    border-width: 2px;
+}
+
+
+
+.prod-row img {
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
 }
 
 #container {
@@ -558,3 +620,15 @@ html, body {
     margin-left: auto;
     margin-right: 0;
 }
+
+.prod-sec {
+    border-width: 2px;
+    border-color: red;
+    padding: 30px;
+    background-color: white;
+}
+
+.prod-sec h2, p {
+    opacity: 0.8;
+}
+
