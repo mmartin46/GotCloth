@@ -9,6 +9,6 @@ namespace Site.Server.Data
 
         }
 
-        DbSet<Products> Carts { get; set; }
+        public DbSet<Products> Carts { get; set; }
     }
 }
