@@ -631,6 +631,12 @@ html, body {
         margin-left: 10%;
         margin-right: 10%;
     }
+
+    .shop-col,
+    .total-pricing {
+        display: block;
+        text-align: center;
+    }
 }
 .make-big h2,
 .make-big p {

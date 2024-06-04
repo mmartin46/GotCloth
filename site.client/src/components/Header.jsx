@@ -25,7 +25,10 @@ const Header = () => {
                                     <span>Login</span>&nbsp;
                                 </PlainLink>
                                 <PlainLink to="/register" fontColor="white">
-                                    <span>Register</span>
+                                    <span>Register</span>&nbsp;
+                                </PlainLink>
+                                <PlainLink to="/cart" fontColor="white">
+                                    <span>Cart</span>
                                 </PlainLink>
                             </div>
                         </div>

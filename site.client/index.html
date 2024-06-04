@@ -18,11 +18,14 @@
 
             const mobileLimitWidth = 900;
 
+
             function onWindowResize(width) {
                 if ($(window).width() > width) {
                     $(".secondaryHeader").removeClass("row");
+                    $(".price-col").addClass("col");
                 } else {
                     $(".secondaryHeader").addClass("row");
+                    $(".price-col").removeClass("col");
                 }
             }
 
