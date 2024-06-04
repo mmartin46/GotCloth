@@ -201,20 +201,22 @@ html, body {
     gap: 10px;
 }
 
-
+.lowerHeader {
+    padding-left: 6%;
+}
 
 .lowerHeader .row {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    text-align: left;
-    padding-left: 50px;
+    text-align: center;
 }
 
 .end-col {
+    padding: 10px;
     display: flex;
-    align-content: end;
-    justify-content: end;
+    align-content: center;
+    justify-content: space-between;
     text-align: center;
 }
 

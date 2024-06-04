@@ -15,7 +15,7 @@ const SecondaryHeader = () => {
         <div className="secondaryHeader ">
             <div className="row">
                 <PlainLink to="/" fontColor="red">
-                    <h2 className="click-link">Hello, {username.current}</h2>
+                    <h2 ref={username}  className="click-link">Hello, {username.current}</h2>
                 </PlainLink>
             </div>
             <div className="innerLinkHeader row">
