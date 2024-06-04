@@ -401,6 +401,7 @@ const BodySection = (props) => {
 
     let cartLink = '/cart';
 
+    let username = useUsername();
     if (username.current === 'Guest') {
         cartLink = '/login';
     }
