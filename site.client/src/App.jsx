@@ -330,6 +330,7 @@ const LoginLayout = () => {
     };
 
     const onSubmit = async (e) => {
+
         e.preventDefault();
 
         const response = await fetch("https://localhost:7269/api/User/login", {
