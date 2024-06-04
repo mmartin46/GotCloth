@@ -133,8 +133,9 @@ const CartLayout = () => {
                 </div>
                 <div className="col">
                     <div>
-                        <h6>Test Product $10.00</h6>
-                        <h6>Quantity</h6>
+                        <span>Test Product</span>
+                        <span>$10.00</span>
+                        <span>Quantity</span>
                         <input className="counter" type="number"></input>
                     </div>
                 </div>
