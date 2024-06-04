@@ -123,8 +123,23 @@ const MainLayout = () => {
 
 const CartLayout = () => {
     return (
-        <>
-        </>
+        <div>
+            <div className="row">
+                <div className="col">
+                    <div className="shop-pg">
+                        <h1>Shopping Cart</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ac tortor vitae purus faucibus ornare.</p>
+                    </div>
+                </div>
+                <div className="col">
+                    <div>
+                        <h6>Test Product $10.00</h6>
+                        <h6>Quantity</h6>
+                        <input className="counter" type="number"></input>
+                    </div>
+                </div>
+            </div>
+        </div>
     );
 }
 

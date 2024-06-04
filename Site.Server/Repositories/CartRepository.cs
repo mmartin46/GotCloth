@@ -13,7 +13,7 @@ namespace Site.Server.Repositories
         }
 
         // NOT TESTED
-        public async List<ProductModel> GetAllProducts()
+        public async Task<List<ProductModel>> GetAllProducts()
         {
             var productsFromDb = await _context.Carts.ToListAsync();
             List<ProductModel> models = new List<ProductModel>();
