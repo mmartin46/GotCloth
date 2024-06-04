@@ -125,7 +125,7 @@ const CartLayout = () => {
     return (
         <div>
             <div className="row">
-                <div className="col">
+                <div className="shop-col col">
                     <div className="col">
                         <div className="shop-pg">
                             <h1>Shopping Cart</h1>
@@ -133,10 +133,11 @@ const CartLayout = () => {
                         </div>
                     </div>
                 </div>
-                <div className="col">
+                <div className="price-col col">
                     <div className="total-div">
                         <div className="row">
                             <div className="products">
+                                {/* fixme: fill with database entries */ }
                                 <Product name="Test Product" defaultValue="1" price="10.00" />
                                 <Product name="Test Product" defaultValue="1" price="10.00" />
                                 <Product name="Test Product" defaultValue="1" price="10.00" />
@@ -155,7 +156,7 @@ const CartLayout = () => {
                             <div className="total-pricing">
                                 <h3>Subtotal: $50.00</h3>
                                 <p>Tax: $2.50</p>
-                                <h3>Total: $52.50</h3>
+                                <h3 className="total-price">Total: $52.50</h3>
                             </div>
 
                         </div>

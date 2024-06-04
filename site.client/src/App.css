@@ -574,21 +574,37 @@ html, body {
     width: 100%;
 }
 
+.products {
+    background-color: rgba(200, 0, 0, 0.3);
+    box-shadow: 5px 10px 3px rgba(0, 0, 0, 0.1);
+}
+
+.price-col {
+    background-color: rgba(200, 0, 0);
+}
+
 .shop-pg {
     padding: 30px;
     //max-width: 600px;
     width: fit-content;
 }
 
+.shop-col {
+
+    background-color: rgb(200, 0, 0);
+    color: white;
+}
+
 .total-div {
-    border-color: red;
-    border-width: 2px;
     padding: 30px;
+
+}
+
+.total-price {
+    color: white;
 }
 
 .products {
-    border-width: 2px;
-    border-color: red;
     overflow-y: scroll;
     height: 200px;
 }
@@ -597,6 +613,7 @@ html, body {
 .total-pricing {
     padding-top: 30px;
     text-align: right;
+    color: white;
 }
 
 .product-purchase {
