@@ -2,6 +2,7 @@ import '../App.css';
 import { useEffect, useState } from 'react';
 import PlainLink from './PlainLink.jsx';
 import Invisible from './Invisible';
+import { useUsername } from './UseUsername';
 
 const ImageColumns = (props) => {
     const { name } = props;
@@ -10,6 +11,15 @@ const ImageColumns = (props) => {
 
     const pantsUrl = `https://localhost:7269/Images/${name}`;
     let link = "";
+    let username = useUsername();
+
+    let cartLink = '/cart';
+
+    if (username.current === 'Guest') {
+        cartLink = '/login';
+    }
+
+    console.log(cartLink);
 
     useEffect(() => {
         const fetchPantsImages = async () => {
@@ -49,7 +59,9 @@ const ImageColumns = (props) => {
                                 <h5>$10.99</h5>
                                 <div className="btn-block">
                                     <span className="add-to-cart">Add to Cart</span>
-                                    <span className="buy-now">Buy Now</span>
+                                    <PlainLink to={cartLink} fontColor='black'>
+                                        <span className="buy-now">Buy Now</span>
+                                    </PlainLink>
                                 </div>
                             </PlainLink>
                         </div>

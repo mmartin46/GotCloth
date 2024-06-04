@@ -29,6 +29,6 @@ const SecondaryHeader = () => {
 
         </div>
     );
-}
+};
 
 export default SecondaryHeader;

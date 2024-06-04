@@ -441,7 +441,9 @@ const BodySection = (props) => {
                                         <h5>$10.99</h5>
                                         <div className="btn-block">
                                             <span className="add-to-cart">Add to Cart</span>
-                                            <span className="buy-now">Buy Now</span>
+                                            <PlainLink to="/cart" fontColor='black'>
+                                                <span className="buy-now">Buy Now</span>
+                                            </PlainLink>
                                         </div>
                                     </div>
                                 </PlainLink>
