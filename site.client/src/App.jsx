@@ -398,7 +398,13 @@ const BodySection = (props) => {
         linkRoute += 's';
     }
 
-    let link = "";
+
+    let cartLink = '/cart';
+
+    if (username.current === 'Guest') {
+        cartLink = '/login';
+    }
+
 
     useEffect(() => {
         const fetchImages = async () => {
@@ -441,7 +447,7 @@ const BodySection = (props) => {
                                         <h5>$10.99</h5>
                                         <div className="btn-block">
                                             <span className="add-to-cart">Add to Cart</span>
-                                            <PlainLink to="/cart" fontColor='black'>
+                                            <PlainLink to={cartLink} fontColor='black'>
                                                 <span className="buy-now">Buy Now</span>
                                             </PlainLink>
                                         </div>

@@ -3,11 +3,14 @@ import '../index.css';
 import '../App.css';
 import PlainLink from './PlainLink';
 import { UsernameProvider, useUsername } from './UseUsername.jsx';
+import { useEffect } from 'react';
 
 
 const SecondaryHeader = () => {
     // FIXME: Not fully implemented
     let username = useUsername();
+
+
     return (
         <div className="secondaryHeader ">
             <div className="row">
