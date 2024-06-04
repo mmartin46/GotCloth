@@ -23,7 +23,7 @@ import ImageColumns from './components/ImageColumns.jsx';
 import SecondaryHeader from './components/SecondaryHeader.jsx';
 import PlainLink from './components/PlainLink.jsx';
 import { UsernameProvider, useUsername } from './components/UseUsername.jsx';
-
+import Product from './components/Product.jsx';
 
 const ShoesLayout = () => {
     return (
@@ -126,20 +126,43 @@ const CartLayout = () => {
         <div>
             <div className="row">
                 <div className="col">
-                    <div className="shop-pg">
-                        <h1>Shopping Cart</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ac tortor vitae purus faucibus ornare.</p>
+                    <div className="col">
+                        <div className="shop-pg">
+                            <h1>Shopping Cart</h1>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ac tortor vitae purus faucibus ornare.</p>
+                        </div>
                     </div>
                 </div>
                 <div className="col">
-                    <div>
-                        <span>Test Product</span>
-                        <span>$10.00</span>
-                        <span>Quantity</span>
-                        <input className="counter" type="number"></input>
+                    <div className="total-div">
+                        <div className="row">
+                            <div className="products">
+                                <Product name="Test Product" defaultValue="1" price="10.00" />
+                                <Product name="Test Product" defaultValue="1" price="10.00" />
+                                <Product name="Test Product" defaultValue="1" price="10.00" />
+                                <Product name="Test Product" defaultValue="1" price="10.00" />
+                                <Product name="Test Product" defaultValue="1" price="10.00" />
+                                <Product name="Test Product" defaultValue="1" price="10.00" />
+                                <Product name="Test Product" defaultValue="1" price="10.00" />
+                                <Product name="Test Product" defaultValue="1" price="10.00" />
+                                <Product name="Test Product" defaultValue="1" price="10.00" />
+                                <Product name="Test Product" defaultValue="1" price="10.00" />
+                                <Product name="Test Product" defaultValue="1" price="10.00" />
+                                <Product name="Test Product" defaultValue="1" price="10.00" />
+
+                            </div>
+
+                            <div className="total-pricing">
+                                <h3>Subtotal: $50.00</h3>
+                                <p>Tax: $2.50</p>
+                                <h3>Total: $52.50</h3>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </div>
+
         </div>
     );
 }

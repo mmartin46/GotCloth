@@ -576,7 +576,37 @@ html, body {
 
 .shop-pg {
     padding: 30px;
-    max-width: 600px;
+    //max-width: 600px;
+    width: fit-content;
+}
+
+.total-div {
+    border-color: red;
+    border-width: 2px;
+    padding: 30px;
+}
+
+.products {
+    border-width: 2px;
+    border-color: red;
+    overflow-y: scroll;
+    height: 200px;
+}
+
+
+.total-pricing {
+    padding-top: 30px;
+    text-align: right;
+}
+
+.product-purchase {
+    display: flex;
+    justify-content: space-between;
+    padding: 4%;
+    margin: 0.3%;
+
+    background-color: white;
+    box-shadow: 5px 10px 3px rgba(0, 0, 0, 0.3);
 }
 
 @media (max-width: 800px) {
