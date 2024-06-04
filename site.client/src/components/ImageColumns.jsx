@@ -1,7 +1,7 @@
 import '../App.css';
 import { useEffect, useState } from 'react';
 import PlainLink from './PlainLink.jsx';
-
+import Invisible from './Invisible';
 
 const ImageColumns = (props) => {
     const { name } = props;
@@ -37,7 +37,9 @@ const ImageColumns = (props) => {
                 {pantsImages && (
                     pantsImages.map((pants, index) => (
                         <div key={index} className="sec col my-col">
-                            {link = `/product?title=${pants.title}&category=${name}`}
+                            <Invisible>
+                                {link = `/product?title=${pants.title}&category=${name}`}
+                            </Invisible>
                             <PlainLink to={link} fontColor='black'>
                                 <img className="btn-for-image" src={pants.link} />
                                 <h5 style={{

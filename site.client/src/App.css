@@ -616,6 +616,12 @@ html, body {
     color: white;
 }
 
+.invisible {
+    visibility: hidden;
+    height: 0;
+    width: 0;
+}
+
 .product-purchase {
     display: flex;
     justify-content: space-between;
