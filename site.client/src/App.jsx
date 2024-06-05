@@ -263,6 +263,8 @@ const RegisterLayout = () => {
 const ProductLayout = () => {
     const [imageData, setImageData] = useState([]);
 
+    const { username } = useUsername();
+
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
         const title = urlParams.get('title');
@@ -286,6 +288,32 @@ const ProductLayout = () => {
     }, []);
 
 
+    const addToCart = async (username, title) => {
+        try {
+            const response = await fetch("https://localhost:7269/AddToCart", {
+                method: "POST",
+                body: JSON.stringify({
+                    username: username,
+                    title: title
+                }),
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! ${response.status}`);
+            }
+
+            const json = await response.json();
+            console.log(json);
+        } catch (error) {
+            console.error('Error adding to cart:', error);
+        }
+
+    };
+
+
     return (
         <div className="prod-bkg">
             {imageData &&
@@ -298,7 +326,7 @@ const ProductLayout = () => {
                         <p>Adiqi ipefi aoata usuzu uzeuw ceqbe ifive akodi ounuf egawu, evufe aneyu uzino usaxi utden eiret awogo izalo ufole ipedi, upoir oibob usidu iqaqe avage okozi odaxi ozoxk evata iwuve, pievo uxoye wabea esiro avaxy uqayo ezovp ecife uiowi ucicu.</p>
                         <h6>$10.00</h6>
 
-                        <div className="add-cart-btn">
+                        <div className="add-cart-btn" onClick={() => addToCart(username, imageData.title)}>
                             Add To Cart
                         </div>
                     </div>

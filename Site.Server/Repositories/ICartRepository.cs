@@ -4,7 +4,7 @@ namespace Site.Server.Repositories
 {
     public interface ICartRepository
     {
-        Task AddToCart(string username, string title);
+        Task AddToCart(CartItemModel cartItemModel);
         Task<List<ProductModel>> GetAllProducts();
     }
 }

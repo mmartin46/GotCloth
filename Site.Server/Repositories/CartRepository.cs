@@ -49,7 +49,7 @@ namespace Site.Server.Repositories
             return models;
         }
 
-        public async Task AddToCart(string username, string title)
+        public async Task AddToCart(CartItemModel cartItem)
         {
             await InitializeImageDictonary();
             var productsFromDb = await _context.Carts.ToListAsync();
@@ -58,14 +58,15 @@ namespace Site.Server.Repositories
             {
                 foreach (var entry in allImages)
                 {
-                    ImageModel? match = entry.Value.Where(x => x.Title.Contains(title)).ToList().FirstOrDefault();
+                    ImageModel? match = entry.Value.Where(x => x.Title.Contains(cartItem.Title)).ToList().FirstOrDefault();
                     if (match != null)
                     {
                         Products products = new Products()
                         {
-                            Username = username,
+                            Username = cartItem.Username,
                             Title = match.Title,
-                            Link = match.Link
+                            Link = match.Link,
+                            Price = 10.00
                         };
                         await _context.Carts.AddAsync(products);
                         await _context.SaveChangesAsync();

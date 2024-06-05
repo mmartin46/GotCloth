@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Site.Server.Models;
 using Site.Server.Repositories;
 
 
@@ -14,10 +15,15 @@ namespace Site.Server.Controllers
 
         [HttpPost]
         [Route("/AddToCart")]
-        public async Task<IActionResult> AddToCart(string username, string title)
+        public async Task<IActionResult> AddToCart([FromBody] CartItemModel cartItem)
         {
-            await _cartRepository.AddToCart(username, title);
-            return new EmptyResult();
+            if (cartItem == null)
+            {
+                return BadRequest();
+            }
+
+            await _cartRepository.AddToCart(cartItem);
+            return Ok();
         }
     }
 }

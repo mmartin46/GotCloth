@@ -22,6 +22,31 @@ const ImageColumns = (props) => {
     console.log(cartLink);
     console.log(username);
 
+    const addToCart = async (username, title) => {
+        try {
+            const response = await fetch("https://localhost:7269/AddToCart", {
+                method: "POST",
+                body: JSON.stringify({
+                    username: username,
+                    title: title
+                }),
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! ${response.status}`);
+            }
+
+            const json = await response.json();
+            console.log(json);
+        } catch (error) {
+            console.error('Error adding to cart:', error);
+        }
+
+    };
+
     useEffect(() => {
         const fetchPantsImages = async () => {
             try {
@@ -59,7 +84,7 @@ const ImageColumns = (props) => {
                                 }}>{pants.title.substring(0, 29) + '...'}</h5>
                                 <h5>$10.99</h5>
                                 <div className="btn-block">
-                                    <span className="add-to-cart">Add to Cart</span>
+                                    <span className="add-to-cart" onClick={() => addToCart(username, pants.title)}>Add to Cart</span>
                                     <PlainLink to={cartLink} fontColor='black'>
                                         <span className="buy-now">Buy Now</span>
                                     </PlainLink>
