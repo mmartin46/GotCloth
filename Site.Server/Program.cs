@@ -11,7 +11,7 @@ builder.Services.AddDbContext<UserDatabaseContext>(options => options.UseSqlServ
 ));
 
 builder.Services.AddDbContext<CartDatabaseContext>(options => options.UseSqlServer(
-    configuration.GetConnectionString("Cars")     
+    configuration.GetConnectionString("Carts")     
 ));
 
 // Add services to the container.
@@ -24,6 +24,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.Configure<AppOptions>(builder.Configuration.GetSection(nameof(AppOptions)));
 builder.Services.AddTransient<IImageRepository, ImageRepository>();
 builder.Services.AddTransient<IUserRepository, UserRepository>();
+builder.Services.AddTransient<ICartRepository, CartRepository>();
 
 builder.Services.AddCors(options =>
 {
