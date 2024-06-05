@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const PlainLink = (props) => {
 
-    const { to , fontColor, children, className, title } = props;
+    const { to , fontColor, children, className } = props;
 
 
     return (

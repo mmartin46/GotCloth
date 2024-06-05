@@ -1,13 +1,13 @@
 // John 3:5
-import { createContext, useRef, useContext } from 'react';
+import { createContext, useContext, useState } from 'react';
 
 const UsernameContext = createContext();
 
 export const UsernameProvider = ({ children }) => {
-    const username = useRef("Guest");
+    const [username, setUsername] = useState("Guest");
 
     return (
-        <UsernameContext.Provider value={username}>
+        <UsernameContext.Provider value={{ username, setUsername }}>
             {children}
         </UsernameContext.Provider>
     );

@@ -316,7 +316,7 @@ const LoginLayout = () => {
         password: ""
     });
 
-    let username = useUsername();
+    const { setUsername } = useUsername();
 
     const [error, setError] = useState("");
     const [successMessage, setSuccessMessage] = useState("");
@@ -346,8 +346,7 @@ const LoginLayout = () => {
             setSuccessMessage("Sucessfully Logged In!");
             console.log("Logged in successfully:", result);
 
-            username.current = result.username;
-            console.log(username.current);
+            setUsername(result.username);
         } else {
             const errorMessage = await response.text();
             console.error("Login failed");
@@ -400,13 +399,14 @@ const BodySection = (props) => {
     }
 
 
-    let cartLink = '/cart';
+    let cartLink = '/login';
 
-    let username = useUsername();
-    if (username.current === 'Guest') {
-        cartLink = '/login';
+    const { username } = useUsername();
+    if (username !== 'Guest') {
+        cartLink = '/cart';
     }
-
+    console.log(cartLink);
+    console.log(username);
 
     useEffect(() => {
         const fetchImages = async () => {
@@ -487,17 +487,13 @@ const ScreenRoutes = (props) => {
 
 function App() {
 
-    let username = useRef("Guest");
-
     return (
-        <UsernameProvider>
-            <BrowserRouter>
-                <Header />
-                <SecondaryHeader />
-                <ScreenRoutes />
-                <Footer />
-            </BrowserRouter>
-        </UsernameProvider>
+        <BrowserRouter>
+            <Header />
+            <SecondaryHeader />
+            <ScreenRoutes />
+            <Footer />
+        </BrowserRouter>
     );
 }
 

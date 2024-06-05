@@ -11,15 +11,16 @@ const ImageColumns = (props) => {
 
     const pantsUrl = `https://localhost:7269/Images/${name}`;
     let link = "";
-    let username = useUsername();
+    const { username } = useUsername();
 
-    let cartLink = '/cart';
+    let cartLink = '/login';
 
-    if (username.current === 'Guest') {
-        cartLink = '/login';
+    if (username !== 'Guest') {
+        cartLink = '/cart';
     }
 
     console.log(cartLink);
+    console.log(username);
 
     useEffect(() => {
         const fetchPantsImages = async () => {

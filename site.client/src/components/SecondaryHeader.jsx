@@ -8,14 +8,14 @@ import { useEffect } from 'react';
 
 const SecondaryHeader = () => {
     // FIXME: Not fully implemented
-    let username = useUsername();
+    const { username }  = useUsername();
 
 
     return (
         <div className="secondaryHeader ">
             <div className="row">
                 <PlainLink to="/" fontColor="red">
-                    <h2 ref={username}  className="click-link">Hello, {username.current}</h2>
+                    <h2 className="click-link">Hello, {username}</h2>
                 </PlainLink>
             </div>
             <div className="innerLinkHeader row">

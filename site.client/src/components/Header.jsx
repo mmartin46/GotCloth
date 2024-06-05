@@ -1,10 +1,15 @@
 import '../index.css';
 import '../App.css';
 import PlainLink from './PlainLink';
-
+import { useUsername } from './UseUsername';
 
 const Header = () => {
     // FIXME: Not fully implemented
+    const { username } = useUsername();
+    let cartLink = username !== 'Guest' ? '/cart' : '/login';
+
+
+    console.log(`Header() => ${cartLink} ${username}`);
 
     return (
         <div className="header">
@@ -28,7 +33,7 @@ const Header = () => {
                                     <PlainLink to="/register" fontColor="white">
                                         <span>Register</span>&nbsp;
                                     </PlainLink>
-                                    <PlainLink to="/cart" fontColor="white">
+                                    <PlainLink to={cartLink} fontColor="white">
                                         <span>Cart</span>
                                     </PlainLink>
                                 </div>
