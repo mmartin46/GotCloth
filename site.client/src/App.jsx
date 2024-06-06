@@ -24,6 +24,7 @@ import SecondaryHeader from './components/SecondaryHeader.jsx';
 import PlainLink from './components/PlainLink.jsx';
 import { UsernameProvider, useUsername } from './components/UseUsername.jsx';
 import Product from './components/Product.jsx';
+import Invisible from './components/Invisible.jsx';
 
 const ShoesLayout = () => {
     return (
@@ -124,8 +125,15 @@ const MainLayout = () => {
 const CartLayout = () => {
 
     const [cartItems, setCartItems] = useState([]);
-
+    const taxRate = 0.05;
     const { username } = useUsername();
+
+
+    const [cartInfo, setCartInfo] = useState({
+        "subtotal": 0,
+        "tax": 0,
+        "total": 0
+    });
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -147,6 +155,27 @@ const CartLayout = () => {
         };
     }, []);
 
+
+    const recalculateTotal = () => {
+        const subtotal = cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
+        const tax = subtotal * taxRate;
+        const total = subtotal + tax;
+
+        setCartInfo(prevCartInfo => ({
+            ...prevCartInfo,
+            subtotal: subtotal,
+            tax: tax,
+            total: total,
+            items: cartItems
+        }));
+    };
+
+
+    useEffect(() => {
+        recalculateTotal();
+    }, [cartItems, taxRate]);
+
+
     return (
         <div>
             <div className="row">
@@ -162,20 +191,23 @@ const CartLayout = () => {
                     <div className="total-div">
                         <div className="row">
                             <div className="products">
-                                {/* fixme: fill with database entries */ }
+                                {/* fixme: fill with database entries */}
+
                                 {cartItems.map((item, index) => (
                                     <Product
                                         key={index}
                                         name={item.title}
                                         defaultValue={item.quantity}
-                                        price="10.00"/>
+                                        price="10.00"
+                                        onQuantityChange={() => item.quantity}
+                                    />
                                 ))}
                             </div>
 
                             <div className="total-pricing">
-                                <h3>Subtotal: $50.00</h3>
-                                <p>Tax: $2.50</p>
-                                <h3 className="total-price">Total: $52.50</h3>
+                                <h3>Subtotal: ${cartInfo["subtotal"].toFixed(2)}</h3>
+                                <p>Tax: ${cartInfo["tax"].toFixed(2)}</p>
+                                <h3 className="total-price">Total: ${cartInfo["total"].toFixed(2)}</h3>
                             </div>
 
                         </div>
@@ -368,6 +400,13 @@ const LoginLayout = () => {
     const [error, setError] = useState("");
     const [successMessage, setSuccessMessage] = useState("");
 
+    useEffect(() => {
+        const savedUsername = localStorage.getItem('username');
+        if (savedUsername) {
+            setUsername(savedUsername);
+        }
+    }, []);
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setRegistrationProps(prevState => ({
@@ -393,6 +432,7 @@ const LoginLayout = () => {
             setSuccessMessage("Sucessfully Logged In!");
             console.log("Logged in successfully:", result);
 
+            localStorage.setItem('username', result.username);
             setUsername(result.username);
         } else {
             const errorMessage = await response.text();
