@@ -12,5 +12,6 @@ namespace Site.Server.Data
         public string Title { get; set; }
         public string Link { get; set; }
         public double Price { get; set; }
+        public int Quantity { get; set; }
     }
 }

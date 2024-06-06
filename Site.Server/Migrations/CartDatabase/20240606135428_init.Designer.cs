@@ -11,8 +11,8 @@ using Site.Server.Data;
 namespace Site.Server.Migrations.CartDatabase
 {
     [DbContext(typeof(CartDatabaseContext))]
-    [Migration("20240603170011_additions2")]
-    partial class additions2
+    [Migration("20240606135428_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -38,6 +38,9 @@ namespace Site.Server.Migrations.CartDatabase
 
                     b.Property<double>("Price")
                         .HasColumnType("float");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
 
                     b.Property<string>("Title")
                         .IsRequired()

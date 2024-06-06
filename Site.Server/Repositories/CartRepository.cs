@@ -43,14 +43,28 @@ namespace Site.Server.Repositories
 
             foreach (Products product in productsFromDb)
             {
-                models.Add(
+                var existingCartItems = models.Where(x => x.Username.Equals(product.Username) &&
+                                                          x.Title.Equals(product.Title)).ToList();
+
+                if (!existingCartItems.Any())
+                {
+                    models.Add(
                     new ProductModel
                     {
                         Title = product.Title,
                         Link = product.Link,
                         Price = product.Price,
-                        Username = product.Username
+                        Username = product.Username,
+                        Quantity = product.Quantity
                     });
+                }
+                else
+                {
+                    // Find the item and increment the quantity
+                    ProductModel existingItem = existingCartItems.First();
+                    existingItem.Quantity += 1;
+                }
+                
             }
             return models;
         }
@@ -72,7 +86,7 @@ namespace Site.Server.Repositories
                             Username = cartItem.Username,
                             Title = match.Title,
                             Link = match.Link,
-                            Price = 10.00
+                            Price = 10.00 
                         };
                         await _context.Carts.AddAsync(products);
                         await _context.SaveChangesAsync();

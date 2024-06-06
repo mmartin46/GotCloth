@@ -167,7 +167,7 @@ const CartLayout = () => {
                                     <Product
                                         key={index}
                                         name={item.title}
-                                        defaultValue="1"
+                                        defaultValue={item.quantity}
                                         price="10.00"/>
                                 ))}
                             </div>
