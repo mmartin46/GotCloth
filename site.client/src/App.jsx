@@ -208,7 +208,7 @@ const CartLayout = () => {
                                         key={index}
                                         name={item.title}
                                         defaultValue={item.quantity}
-                                        price="10.00"
+                                        price={(item.quantity * 10.00).toFixed(2) }
                                         onQuantityChange={() => item.quantity}
                                     />
                                 ))}
