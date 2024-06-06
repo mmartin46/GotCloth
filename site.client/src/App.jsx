@@ -126,7 +126,7 @@ const CartLayout = () => {
 
     const [cartItems, setCartItems] = useState([]);
     const taxRate = 0.05;
-    const { username } = useUsername();
+    const { username, setUsername } = useUsername();
 
 
     const [cartInfo, setCartInfo] = useState({
@@ -136,9 +136,19 @@ const CartLayout = () => {
     });
 
     useEffect(() => {
+        const savedUsername = localStorage.getItem('username');
+        if (savedUsername) {
+            setUsername(savedUsername);
+        }
+    }, []);
+
+    useEffect(() => {
         const fetchProducts = async () => {
             if (username !== 'Guest') {
-
+                const savedUsername = localStorage.getItem('username');
+                if (savedUsername) {
+                    setUsername(savedUsername);
+                }
                 fetch(`https://localhost:7269/GetCart?username=${username}`)
                     .then((response) => response.json())
                     .then((json) => {
@@ -153,7 +163,7 @@ const CartLayout = () => {
         return () => {
 
         };
-    }, []);
+    }, [username]);
 
 
     const recalculateTotal = () => {
