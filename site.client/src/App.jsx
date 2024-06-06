@@ -122,6 +122,31 @@ const MainLayout = () => {
 };
 
 const CartLayout = () => {
+
+    const [cartItems, setCartItems] = useState([]);
+
+    const { username } = useUsername();
+
+    useEffect(() => {
+        const fetchProducts = async () => {
+            if (username !== 'Guest') {
+
+                fetch(`https://localhost:7269/GetCart?username=${username}`)
+                    .then((response) => response.json())
+                    .then((json) => {
+                        console.log(json);
+                        setCartItems(json);
+                    });
+            }
+
+        };
+        fetchProducts();
+
+        return () => {
+
+        };
+    }, []);
+
     return (
         <div>
             <div className="row">
@@ -138,19 +163,13 @@ const CartLayout = () => {
                         <div className="row">
                             <div className="products">
                                 {/* fixme: fill with database entries */ }
-                                <Product name="Test Product" defaultValue="1" price="10.00" />
-                                <Product name="Test Product" defaultValue="1" price="10.00" />
-                                <Product name="Test Product" defaultValue="1" price="10.00" />
-                                <Product name="Test Product" defaultValue="1" price="10.00" />
-                                <Product name="Test Product" defaultValue="1" price="10.00" />
-                                <Product name="Test Product" defaultValue="1" price="10.00" />
-                                <Product name="Test Product" defaultValue="1" price="10.00" />
-                                <Product name="Test Product" defaultValue="1" price="10.00" />
-                                <Product name="Test Product" defaultValue="1" price="10.00" />
-                                <Product name="Test Product" defaultValue="1" price="10.00" />
-                                <Product name="Test Product" defaultValue="1" price="10.00" />
-                                <Product name="Test Product" defaultValue="1" price="10.00" />
-
+                                {cartItems.map((item, index) => (
+                                    <Product
+                                        key={index}
+                                        name={item.title}
+                                        defaultValue="1"
+                                        price="10.00"/>
+                                ))}
                             </div>
 
                             <div className="total-pricing">

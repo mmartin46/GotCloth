@@ -22,11 +22,12 @@ namespace Site.Server.Repositories
                 return items;
             }
 
+            /*
             if (keyIndex < keys.Length)
             {
                 return await GetImages(nameToSearch, ++keyIndex);
             }
-
+            */
             return null;
         }
     }

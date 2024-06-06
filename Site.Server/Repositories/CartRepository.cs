@@ -19,7 +19,7 @@ namespace Site.Server.Repositories
         private async Task InitializeImageDictonary()
         {
             allImages = new Dictionary<string, ImageModel[]>();
-            string[] names = { "jeans", "shirts", "shoes" };
+            string[] names = { "pants", "shirt", "shoe", "shoes" };
 
 
             foreach (string name in names)
@@ -27,6 +27,12 @@ namespace Site.Server.Repositories
                 ImageModel[] images = await _imageRepository.GetImages(name);
                 allImages.Add(name, images);
             }
+        }
+
+        public List<ProductModel> GetCartByUsername(string username)
+        {
+           List<ProductModel> productsByUsername = GetAllProducts().Result.Where(x => x.Username == username).ToList();
+           return productsByUsername;
         }
 
         // NOT TESTED
@@ -58,7 +64,7 @@ namespace Site.Server.Repositories
             {
                 foreach (var entry in allImages)
                 {
-                    ImageModel? match = entry.Value.Where(x => x.Title.Contains(cartItem.Title)).ToList().FirstOrDefault();
+                    ImageModel? match = entry.Value.Where(x => x.Title.Contains(cartItem.Title.Substring(0, 5))).ToList().FirstOrDefault();
                     if (match != null)
                     {
                         Products products = new Products()

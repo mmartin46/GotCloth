@@ -6,5 +6,6 @@ namespace Site.Server.Repositories
     {
         Task AddToCart(CartItemModel cartItemModel);
         Task<List<ProductModel>> GetAllProducts();
+        List<ProductModel> GetCartByUsername(string username);
     }
 }

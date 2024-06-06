@@ -25,5 +25,18 @@ namespace Site.Server.Controllers
             await _cartRepository.AddToCart(cartItem);
             return Ok();
         }
+
+        [HttpGet]
+        [Route("/GetCart")]
+        public IActionResult GetCart(UserModel userModel)
+        {
+            if (userModel.Username == null)
+            {
+                return BadRequest();
+            }
+
+            List<ProductModel> productsBought = _cartRepository.GetCartByUsername(userModel.Username);
+            return Ok(productsBought);
+        }
     }
 }
