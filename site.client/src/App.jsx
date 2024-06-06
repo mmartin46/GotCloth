@@ -165,7 +165,7 @@ const CartLayout = () => {
         };
     }, [username]);
 
-
+    
     const recalculateTotal = () => {
         const subtotal = cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
         const tax = subtotal * taxRate;
@@ -224,7 +224,6 @@ const CartLayout = () => {
                     </div>
                 </div>
             </div>
-
         </div>
     );
 }
