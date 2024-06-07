@@ -28,7 +28,7 @@ import Invisible from './components/labels/Invisible.jsx';
 import CartLayout from './components/layouts/authentification/CartLayout.jsx';
 import RegisterLayout from './components/layouts/authentification/RegisterLayout.jsx';
 import LoginLayout from './components/layouts/authentification/LoginLayout.jsx';
-
+import HeaderProducts from './components/sections/HeaderProducts.jsx';
 
 const GeneralImageLayout = ({ header, subheader, name, title, description, route, color }) => {
     return (
@@ -100,29 +100,6 @@ const ShirtsLayout = () => {
     )
 };
 
-
-
-const HeaderProducts = () => {
-    return (
-        <div className="sections row text-center">
-            <div id="shirt" className="sec col">
-                <PlainLink to="/shirts" fontColor='black'>
-                    <h2 className="display-4">SHIRTS</h2>
-                </PlainLink>
-            </div>
-            <div id="jeans" className="sec col">
-                <Link to="/pants" style={{ textDecoration: 'none', color: 'black' }}>
-                    <h2 className="display-4">JEANS</h2>
-                </Link>
-            </div>
-            <div id="shoes" className="sec col">
-                <Link to="/shoes" style={{ textDecoration: 'none', color: 'black' }}>
-                    <h2 className="display-4">SHOES</h2>
-                </Link>
-            </div>
-        </div>
-    );
-};
 
 
 
