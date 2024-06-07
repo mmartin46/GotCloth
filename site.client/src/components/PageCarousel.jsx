@@ -4,7 +4,7 @@ import headImage from 'C:\\Users\\mitch\\Downloads\\WebApp\\Site\\site.client\\s
 import shutterImage from 'C:\\Users\\mitch\\Downloads\\shutterstock_266498825.jpg';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Carousel from 'react-bootstrap/Carousel';
-import LinkButton from './LinkButton.jsx';
+import LinkButton from './buttons/LinkButton.jsx';
 
 
 const PageCarousel = () => {

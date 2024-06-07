@@ -1,7 +1,7 @@
 
-import '../App.css';
+import '../../App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../index.css';
+import '../../index.css';
 import PlainLink from './PlainLink';
 
 const LinkButton = (props) => {

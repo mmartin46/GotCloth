@@ -1,6 +1,6 @@
 import '../../index.css';
 import '../../App.css';
-import PlainLink from '../PlainLink';
+import PlainLink from '../buttons/PlainLink';
 import { useUsername } from '../UseUsername';
 
 const Header = () => {

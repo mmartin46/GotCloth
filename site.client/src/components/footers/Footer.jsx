@@ -1,5 +1,5 @@
-import '../index.css';
-import '../App.css';
+import '../../index.css';
+import '../../App.css';
 
 const Footer = () => {
     var currentTime = new Date();
