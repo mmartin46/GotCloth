@@ -38,5 +38,32 @@ namespace Site.Server.Controllers
             List<ProductModel> productsBought = _cartRepository.GetCartByUsername(userModel.Username);
             return Ok(productsBought);
         }
+
+        [HttpPatch]
+        [Route("/PatchCart")]
+        public async Task<IActionResult> UpdateCart([FromBody] ProductModel cartItem)
+        {
+            if (cartItem == null) 
+            {
+                return BadRequest();
+            }
+            await _cartRepository.UpdateCart(cartItem);
+            return Ok();
+        }
+
+        [HttpDelete]
+        [Route("/FilterCart")]
+        public async Task<IActionResult> FilterCarts()
+        {
+            try
+            {
+                await _cartRepository.FilterCarts();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            return Ok();
+        }
     }
 }

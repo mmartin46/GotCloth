@@ -6,7 +6,7 @@ import { useEffect, useState, useRef } from 'react';
 
 
 const Product = (props) => {
-    const { name, price, defaultValue, onQuantityChange } = props;
+    const { username, name, link, defaultValue, price, onQuantityChange } = props;
     const [quantity, setQuantity] = useState(defaultValue);
 
     const handleQuantityChange = (e) => {
@@ -14,7 +14,31 @@ const Product = (props) => {
         console.log(newQuantity);
         setQuantity(newQuantity);
         onQuantityChange(newQuantity);
+        updateCart();
     }
+
+
+    const updateCart = async () => {
+        const response = await fetch("https://localhost:7269/PatchCart", {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                username: username,
+                title: name,
+                price: price,
+                quantity: quantity,
+                link: link
+            })
+        });
+
+        if (response.ok) {
+            console.log('Sucess', response);
+        } else {
+            console.log("Failed to put ", await response.text());
+        }
+    };
 
     return (
         <div className="row">

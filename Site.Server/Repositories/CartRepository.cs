@@ -35,6 +35,38 @@ namespace Site.Server.Repositories
            return productsByUsername;
         }
 
+        public async Task UpdateCart(ProductModel cartItem)
+        {
+            var product = _context.Carts.FirstOrDefault(x => x.Username.Equals(cartItem.Username) &&
+                                                                      x.Title.Equals(cartItem.Title));
+            
+            if (product != null)
+            {
+                product.Quantity = cartItem.Quantity;
+                product.Title = cartItem.Title;
+                product.Username = cartItem.Username;
+                product.Price = cartItem.Price;
+                product.Link = cartItem.Link;
+
+                _context.Carts.Attach(product);
+                _context.Entry(product).State = EntityState.Modified;
+
+
+                await _context.SaveChangesAsync();
+            }
+
+        }
+
+        public async Task FilterCarts()
+        {
+            var duplicates = _context.Carts.GroupBy(c => new { c.Username, c.Title })
+                                    .SelectMany(g => g.OrderByDescending(c => c.Id).Skip(1))
+                                    .ToList();
+            _context.Carts.RemoveRange(duplicates);
+            await _context.SaveChangesAsync();
+        }
+
+
         // NOT TESTED
         public async Task<List<ProductModel>> GetAllProducts()
         {

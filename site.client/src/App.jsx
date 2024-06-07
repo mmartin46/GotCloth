@@ -140,6 +140,7 @@ const CartLayout = () => {
         if (savedUsername) {
             setUsername(savedUsername);
         }
+        console.log('found the ',username);
     }, []);
 
     useEffect(() => {
@@ -202,15 +203,17 @@ const CartLayout = () => {
                         <div className="row">
                             <div className="products">
                                 {/* fixme: fill with database entries */}
-
                                 {cartItems.map((item, index) => (
                                     <Product
+                                        username={String(username)}
                                         key={index}
                                         name={item.title}
+                                        link={item.link }
                                         defaultValue={item.quantity}
                                         price={(item.quantity * 10.00).toFixed(2) }
                                         onQuantityChange={() => item.quantity}
                                     />
+
                                 ))}
                             </div>
 
