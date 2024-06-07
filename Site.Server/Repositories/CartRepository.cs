@@ -37,6 +37,7 @@ namespace Site.Server.Repositories
 
         public async Task UpdateCart(ProductModel cartItem)
         {
+            // Something here causes an off by one logic error.
             var product = _context.Carts.FirstOrDefault(x => x.Username.Equals(cartItem.Username) &&
                                                                       x.Title.Equals(cartItem.Title));
             
@@ -59,10 +60,16 @@ namespace Site.Server.Repositories
 
         public async Task FilterCarts()
         {
-            var duplicates = _context.Carts.GroupBy(c => new { c.Username, c.Title })
-                                    .SelectMany(g => g.OrderByDescending(c => c.Id).Skip(1))
-                                    .ToList();
-            _context.Carts.RemoveRange(duplicates);
+            var filterQuery = @"
+                with cte as (
+	                select id, username, title, price, quantity, link, row_number() over 
+	                (partition by username, title order by id) rn
+	                from carts
+                )
+                delete from cte where rn > 1;
+            ";
+
+            await _context.Database.ExecuteSqlRawAsync(filterQuery);
             await _context.SaveChangesAsync();
         }
 
@@ -118,7 +125,7 @@ namespace Site.Server.Repositories
                             Username = cartItem.Username,
                             Title = match.Title,
                             Link = match.Link,
-                            Price = 10.00 
+                            Price = 10.00
                         };
                         await _context.Carts.AddAsync(products);
                         await _context.SaveChangesAsync();
