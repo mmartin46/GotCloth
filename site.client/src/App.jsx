@@ -15,8 +15,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import LinkButton from './components/buttons/LinkButton.jsx';
 
 import './index.css';
-import headImage from 'C:\\Users\\mitch\\Downloads\\WebApp\\Site\\site.client\\src\\images\\headimage.jpg';
-import shutterImage from 'C:\\Users\\mitch\\Downloads\\shutterstock_266498825.jpg';
 import PageCarousel from './components/PageCarousel.jsx';
 import BigLabel from './components/labels/BigLabel.jsx'; 
 import ImageColumns from './components/ImageColumns.jsx';
@@ -29,6 +27,10 @@ import CartLayout from './components/layouts/authentification/CartLayout.jsx';
 import RegisterLayout from './components/layouts/authentification/RegisterLayout.jsx';
 import LoginLayout from './components/layouts/authentification/LoginLayout.jsx';
 import HeaderProducts from './components/sections/HeaderProducts.jsx';
+
+import headImage from 'C:\\Users\\mitch\\Downloads\\WebApp\\Site\\site.client\\src\\images\\headimage.jpg';
+import shutterImage from 'C:\\Users\\mitch\\Downloads\\shutterstock_266498825.jpg';
+
 
 const GeneralImageLayout = ({ header, subheader, name, title, description, route, color }) => {
     return (
@@ -100,13 +102,38 @@ const ShirtsLayout = () => {
     )
 };
 
-
+class Image {
+    constructor(imgSrc, link, title, caption, btnTitle) {
+        this.imgSrc = imgSrc;
+        this.link = link;
+        this.title = title;
+        this.caption = caption;
+        this.btnTitle = btnTitle;
+    }
+};
 
 
 const MainLayout = () => {
+    const images = [];
+    images.push(new Image(
+        headImage,
+        '/shirts',
+        '40% Off Shirts',
+        'With a purchase over $25.00',
+        'Shop Now'
+    ));
+    images.push(new Image(
+        shutterImage,
+        '/pants',
+        '30% Off Pants',
+        'With a purchase over $15.00',
+        'Shop Now'
+    ));
+
+
     return (
         <div>
-            <PageCarousel />
+            <PageCarousel images={images} />
             <HeaderProducts />
             <BodySection title="CHEAP SHOES"
                 description="Need some solid deals for shoes as low as $10.99. Check here!"
