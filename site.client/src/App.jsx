@@ -29,6 +29,24 @@ import CartLayout from './components/layouts/authentification/CartLayout.jsx';
 import RegisterLayout from './components/layouts/authentification/RegisterLayout.jsx';
 import LoginLayout from './components/layouts/authentification/LoginLayout.jsx';
 
+
+const GeneralImageLayout = ({ header, subheader, name, title, description, route, color }) => {
+    return (
+        <>
+            <div>
+                <BigLabel header={header} subheader={subheader} />
+                <div className="my-container">
+                    <ImageColumns name={name} />
+                </div>
+            </div>
+            <BodySection title={title}
+                description={description}
+                route={route}
+                color={color} />
+        </>
+    )
+};
+
 const ShoesLayout = () => {
     return (
         <>
