@@ -205,6 +205,22 @@ html, body {
     padding-left: 5%;
 }
 
+
+.buyBtn {
+    padding: 20px;
+    text-align: center;
+    transition-duration: 0.3s;
+    background-color: rgba(100, 0, 0, 0.9);
+}
+
+.buyBtn:hover {
+    background-color: rgba(100, 0, 0, 1);
+}
+
+.buyBtn:active {
+    transform: translateY(5px);
+}
+
 .lowerHeader .row {
     width: 100%;
     display: flex;

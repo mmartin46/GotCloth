@@ -229,6 +229,9 @@ const CartLayout = () => {
                                 <h3>Subtotal: ${cartInfo["subtotal"].toFixed(2)}</h3>
                                 <p>Tax: ${cartInfo["tax"].toFixed(2)}</p>
                                 <h3 className="total-price">Total: ${cartInfo["total"].toFixed(2)}</h3>
+                                <div className="buyBtn">
+                                    Buy Now
+                                </div>
                             </div>
 
                         </div>
