@@ -285,7 +285,7 @@ const RegisterLayout = () => {
     };
 
     return (
-        <div className="whole-reg">
+        <div className="whole-reg ">
 
             <div className="frame">
                 <form className="regForm" onSubmit={onSubmit}>
@@ -599,10 +599,12 @@ function App() {
 
     return (
         <BrowserRouter>
-            <Header />
-            <SecondaryHeader />
-            <ScreenRoutes />
-            <Footer />
+            <div className="fullscreen">
+                <Header />
+                <SecondaryHeader />
+                <ScreenRoutes />
+                <Footer />
+            </div>
         </BrowserRouter>
     );
 }
