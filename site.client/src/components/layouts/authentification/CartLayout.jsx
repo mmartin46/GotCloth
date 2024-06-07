@@ -1,10 +1,10 @@
 
 import { useEffect, useState } from 'react';
-import { useUsername } from '../UseUsername.jsx';
-import Product from '../Product.jsx';
+import { useUsername } from '../../UseUsername.jsx';
+import Product from '../../Product.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../../index.css';
-import '../../App.css';
+import '../../../index.css';
+import '../../../App.css';
 
 
 const CartLayout = () => {

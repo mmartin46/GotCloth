@@ -25,9 +25,9 @@ import PlainLink from './components/buttons/PlainLink.jsx';
 import { UsernameProvider, useUsername } from './components/UseUsername.jsx';
 import Product from './components/Product.jsx';
 import Invisible from './components/labels/Invisible.jsx';
-import CartLayout from './components/layouts/CartLayout.jsx';
-import RegisterLayout from './components/layouts/RegisterLayout.jsx';
-import LoginLayout from './components/layouts/LoginLayout.jsx';
+import CartLayout from './components/layouts/authentification/CartLayout.jsx';
+import RegisterLayout from './components/layouts/authentification/RegisterLayout.jsx';
+import LoginLayout from './components/layouts/authentification/LoginLayout.jsx';
 
 const ShoesLayout = () => {
     return (

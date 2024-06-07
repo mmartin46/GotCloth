@@ -14,7 +14,4 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="src\components\layouts\" />
-  </ItemGroup>
 </Project>
