@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
-import '../index.css';
-import '../App.css';
-import PlainLink from './PlainLink';
-import { UsernameProvider, useUsername } from './UseUsername.jsx';
+import '../../index.css';
+import '../../App.css';
+import PlainLink from '../PlainLink';
+import { UsernameProvider, useUsername } from '../UseUsername.jsx';
 import { useEffect } from 'react';
 
 

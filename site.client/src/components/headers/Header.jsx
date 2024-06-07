@@ -1,7 +1,7 @@
-import '../index.css';
-import '../App.css';
-import PlainLink from './PlainLink';
-import { useUsername } from './UseUsername';
+import '../../index.css';
+import '../../App.css';
+import PlainLink from '../PlainLink';
+import { useUsername } from '../UseUsername';
 
 const Header = () => {
     // FIXME: Not fully implemented

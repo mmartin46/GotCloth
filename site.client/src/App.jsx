@@ -2,7 +2,7 @@
 import { useEffect, useState, useRef, useReducer } from 'react';
 
 // For all files
-import Header from './components/Header.jsx';
+import Header from './components/headers/Header.jsx';
 /*import SecondaryHeader from './components/SecondaryHeader.jsx';*/
 import Footer from './components/Footer.jsx';
 import axios from 'axios';
@@ -20,7 +20,7 @@ import shutterImage from 'C:\\Users\\mitch\\Downloads\\shutterstock_266498825.jp
 import PageCarousel from './components/PageCarousel.jsx';
 import BigLabel from './components/BigLabel.jsx'; 
 import ImageColumns from './components/ImageColumns.jsx';
-import SecondaryHeader from './components/SecondaryHeader.jsx';
+import SecondaryHeader from './components/headers/SecondaryHeader.jsx';
 import PlainLink from './components/PlainLink.jsx';
 import { UsernameProvider, useUsername } from './components/UseUsername.jsx';
 import Product from './components/Product.jsx';
