@@ -37,7 +37,6 @@ namespace Site.Server.Repositories
 
         public async Task UpdateCart(ProductModel cartItem)
         {
-            // Something here causes an off by one logic error.
             var product = _context.Carts.FirstOrDefault(x => x.Username.Equals(cartItem.Username) &&
                                                                       x.Title.Equals(cartItem.Title));
             

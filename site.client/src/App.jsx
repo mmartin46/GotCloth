@@ -1,5 +1,5 @@
 ﻿// John 3:5
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useReducer } from 'react';
 
 // For all files
 import Header from './components/Header.jsx';
@@ -25,6 +25,7 @@ import PlainLink from './components/PlainLink.jsx';
 import { UsernameProvider, useUsername } from './components/UseUsername.jsx';
 import Product from './components/Product.jsx';
 import Invisible from './components/Invisible.jsx';
+
 
 const ShoesLayout = () => {
     return (
@@ -186,6 +187,13 @@ const CartLayout = () => {
         recalculateTotal();
     }, [cartItems, taxRate]);
 
+    const handleQuantityChange = (index, newQuantity) => {
+        setCartItems(prevItems => {
+            const newItems = [...prevItems];
+            newItems[index].quantity = newQuantity;
+            return newItems;
+        });
+    }
 
     return (
         <div>
@@ -210,8 +218,8 @@ const CartLayout = () => {
                                         name={item.title}
                                         link={item.link }
                                         defaultValue={item.quantity}
-                                        price={(item.quantity * 10.00).toFixed(2) }
-                                        onQuantityChange={() => item.quantity}
+                                        price={(item.quantity * 10.00).toFixed(2)}
+                                        onQuantityChange={(newQuantity) => handleQuantityChange(index, newQuantity)}
                                     />
 
                                 ))}
