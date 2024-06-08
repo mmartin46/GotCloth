@@ -31,60 +31,7 @@ import HeaderProducts from './components/sections/HeaderProducts.jsx';
 import headImage from 'C:\\Users\\mitch\\Downloads\\WebApp\\Site\\site.client\\src\\images\\headimage.jpg';
 import shutterImage from 'C:\\Users\\mitch\\Downloads\\shutterstock_266498825.jpg';
 import BodySection from './components/sections/BodySection.jsx';
-import GeneralImageLayout from './components/layouts/general/GeneralImageLayout.jsx';
-
-const ShoesLayout = () => {
-    return (
-        <>
-            <div>
-                <BigLabel header="SHOES" subheader="You may wanna wear more than socks today." />
-                <div className="my-container">
-                    <ImageColumns name="shoe" />
-                </div>
-            </div>
-            <BodySection title="LOW-PRICE PANTS"
-                    description="Looking for low-priced pants, feel free to look. Check here!"
-                    route="pants"
-                    color="antiquewhite" />
-        </>
-    );
-};
-
-
-
-const PantsLayout = () => {
-
-    return (
-        <>
-            <BigLabel header="PANTS" subheader="Not in the mood to wear shorts, wear these instead"/>
-            <div className="my-container">
-                <ImageColumns name="pants" />
-            </div>
-            <BodySection title="LOW-PRICE SHOES"
-                description="Looking for low-priced shoes, feel free to look. Check here!"
-                route="shoes"
-                color="antiquewhite" />
-        </>
-    );
-};
-
-
-const ShirtsLayout = () => {
-    return (
-        <>
-            <div>
-                <BigLabel header="SHIRTS" subheader="Getting hot? You may not wanna wear a sweater." />
-                <div className="my-container">
-                    <ImageColumns name="shirt" />
-                </div>
-            </div>
-            <BodySection title="LOW-PRICE SHOES"
-                description="Looking for low-priced shoes, feel free to look. Check here!"
-                route="shoes"
-                color="antiquewhite" />
-        </>
-    )
-};
+import { ShoesLayout, PantsLayout, ShirtsLayout } from './components/layouts/general/MainLayouts.jsx';
 
 class Image {
     constructor(imgSrc, link, title, caption, btnTitle) {
