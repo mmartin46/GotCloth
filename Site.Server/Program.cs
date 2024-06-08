@@ -17,6 +17,7 @@ builder.Services.AddDbContext<CartDatabaseContext>(options => options.UseSqlServ
     configuration.GetConnectionString("Carts")     
 ));
 
+/*
 builder.Services.AddRateLimiter(options =>
 {
     options.GlobalLimiter = PartitionedRateLimiter.CreateChained(
@@ -38,7 +39,7 @@ builder.Services.AddRateLimiter(options =>
                  }))
         );
 });
-
+*/
 
 // Add services to the container.
 

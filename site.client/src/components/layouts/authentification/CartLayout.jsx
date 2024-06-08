@@ -5,6 +5,8 @@ import Product from '../../general/Product.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../../index.css';
 import '../../../App.css';
+import LinkButton from '../../buttons/LinkButton.jsx';
+import PlainLink from '../../buttons/PlainLink.jsx';
 
 
 const CartLayout = () => {
@@ -113,9 +115,12 @@ const CartLayout = () => {
                                 <h3>Subtotal: ${cartInfo["subtotal"].toFixed(2)}</h3>
                                 <p>Tax: ${cartInfo["tax"].toFixed(2)}</p>
                                 <h3 className="total-price">Total: ${cartInfo["total"].toFixed(2)}</h3>
-                                <div className="buyBtn">
-                                    Buy Now
-                                </div>
+
+                                <PlainLink to="/payment" fontColor="white">
+                                    <div className="buyBtn">
+                                        Buy Now
+                                    </div>
+                                </PlainLink>
                             </div>
 
                         </div>

@@ -29,7 +29,25 @@ html, body {
     padding: 30px;
 }
 
+.debug-border {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    justify-content: left;
+}
 
+.paymentFrame {
+    display: block;
+    justify-content: center;
+    text-align: center;
+    align-content: center;
+    background-color: white;
+    border-color: red;
+    border-width: 2px;
+    padding: 30px;
+    margin: 10%;
+}
 
 .regForm {
     width: 500px;
@@ -612,7 +630,7 @@ html, body {
 
 .shop-pg {
     padding: 30px;
-    //max-width: 600px;
+    /*max-width: 600px;*/
     width: fit-content;
 }
 

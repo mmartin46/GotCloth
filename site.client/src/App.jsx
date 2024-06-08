@@ -28,9 +28,30 @@ const ScreenRoutes = () => {
            <Route path="register" element={<RegisterLayout />} />
            <Route path="login" element={<LoginLayout />} />
            <Route path="product" element={<ProductLayout />} />
-           <Route path="cart" element={<CartLayout />} />
-       </Routes>
+            <Route path="cart" element={<CartLayout />} />
+            <Route path="payment" element={<PaymentLayout />} />
+        </Routes>
     );
+};
+
+const PaymentLayout = () => {
+    return (
+        <>
+            <form action="/payment">
+                <div className="paymentFrame">
+                    <h4>Payment Information</h4>
+                    <div className="debug-border">
+                        <label>Card Number</label>
+                        <input type="text"></input>
+                        <label>Expiration Date</label>
+                        <input type="text"></input>
+                        <label>CVC</label>
+                        <input type="text"></input>
+                    </div>
+                </div>
+            </form>
+        </>
+    )
 };
 
 function App() {
