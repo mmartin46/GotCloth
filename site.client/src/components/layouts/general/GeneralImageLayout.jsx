@@ -4,7 +4,7 @@ import BodySection from "../../sections/BodySection";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../../index.css';
 import '../../../App.css';
-import ImageColumns from "../../ImageColumns";
+import ImageColumns from "../../general/ImageColumns";
 
 const GeneralImageLayout = ({ header, subheader, name, title, description, route, color }) => {
     return (

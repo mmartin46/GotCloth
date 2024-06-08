@@ -1,8 +1,8 @@
 // John 3:5
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../index.css';
-import '../App.css';
-import { useEffect, useState, useRef, useCallback } from 'react';
+import '../../index.css';
+import '../../App.css';
+import { useEffect, useState, useCallback } from 'react';
 
 
 const Product = (props) => {

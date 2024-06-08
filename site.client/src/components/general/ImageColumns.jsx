@@ -1,8 +1,8 @@
-import '../App.css';
+import '../../App.css';
 import { useEffect, useState } from 'react';
-import PlainLink from './buttons/PlainLink.jsx';
-import Invisible from './labels/Invisible';
-import { useUsername } from './UseUsername';
+import PlainLink from '../buttons/PlainLink.jsx';
+import Invisible from '../labels/Invisible';
+import { useUsername } from '../UseUsername';
 
 const ImageColumns = (props) => {
     const { name } = props;

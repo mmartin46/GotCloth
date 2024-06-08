@@ -1,8 +1,8 @@
 
-import '../index.css';
+import '../../index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Carousel from 'react-bootstrap/Carousel';
-import LinkButton from './buttons/LinkButton.jsx';
+import LinkButton from '../buttons/LinkButton.jsx';
 
 
 const PageCarousel = ({ images }) => {
