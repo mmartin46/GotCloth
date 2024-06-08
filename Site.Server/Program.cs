@@ -1,7 +1,10 @@
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Site.Server.Data;
 using Site.Server.Options;
 using Site.Server.Repositories;
+using System.Threading.RateLimiting;
+using System.Net;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
@@ -14,6 +17,29 @@ builder.Services.AddDbContext<CartDatabaseContext>(options => options.UseSqlServ
     configuration.GetConnectionString("Carts")     
 ));
 
+builder.Services.AddRateLimiter(options =>
+{
+    options.GlobalLimiter = PartitionedRateLimiter.CreateChained(
+        PartitionedRateLimiter.Create<HttpContext, string>(httpContext =>
+            RateLimitPartition.GetFixedWindowLimiter(httpContext.Connection.RemoteIpAddress.ToString(), partition =>
+                new FixedWindowRateLimiterOptions
+                {
+                    AutoReplenishment = true,
+                    PermitLimit = 2,
+                    Window = TimeSpan.FromMinutes(1)
+                })),
+        PartitionedRateLimiter.Create<HttpContext, string>(httpContext =>
+             RateLimitPartition.GetFixedWindowLimiter(httpContext.Connection.RemoteIpAddress.ToString(), partition =>
+                 new FixedWindowRateLimiterOptions
+                 {
+                     AutoReplenishment = true,
+                     PermitLimit = 3,
+                     Window = TimeSpan.FromMinutes(5)
+                 }))
+        );
+});
+
+
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -22,7 +48,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.Configure<AppOptions>(builder.Configuration.GetSection(nameof(AppOptions)));
-builder.Services.AddTransient<IImageRepository, ImageRepository>();
+builder.Services.AddSingleton<IImageRepository, ImageRepository>();
 builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<ICartRepository, CartRepository>();
 

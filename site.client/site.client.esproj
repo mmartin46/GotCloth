@@ -16,6 +16,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="src\components\layouts\featured\" />
-    <Folder Include="src\components\sections\" />
+    <Folder Include="src\components\layouts\general\" />
   </ItemGroup>
 </Project>
