@@ -29,16 +29,16 @@ namespace Site.Server.Repositories
                 allImages.Add(name, images);
             }
         }
-
+        // NOT TESTED
         public async Task RemoveProductFromCart(ProductModel cartItem)
         {
-            var product = _context.Carts.FirstOrDefault(x => x.Username(cartItem.Username) &&
+            var product = _context.Carts.FirstOrDefault(x => x.Username.Equals(cartItem.Username) &&
                                                              x.Title.Equals(cartItem.Title) &&
                                                              x.Link.Equals(cartItem.Link));
 
             if (product != null)
             {
-                await _context.Carts.Remove(product);
+                _context.Carts.Remove(product);
                 await _context.SaveChangesAsync();
             }
         }
@@ -87,7 +87,6 @@ namespace Site.Server.Repositories
         }
 
 
-        // NOT TESTED
         public async Task<List<ProductModel>> GetAllProducts()
         {
             var productsFromDb = await _context.Carts.ToListAsync();

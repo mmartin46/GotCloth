@@ -66,6 +66,7 @@ const Product = (props) => {
         <div className="row">
             <div className="col">
                 <div className="product-purchase">
+                    <span style={{ paddingRight: '30px', color: 'rgba(0,0,0, 0.5)' } }>x</span>
                     <span>
                         <input min="1"
                             placeholder={defaultValue}

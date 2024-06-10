@@ -16,6 +16,7 @@
 html, body {
     overflow-x: hidden;
     max-width: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
 }
 
 .frame {
@@ -93,7 +94,6 @@ html, body {
 
 .whole-reg {
     background-color: rgba(200, 0, 0, 1);
-    box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.3);
     height: 100%;
 }
 
@@ -762,14 +762,11 @@ html, body {
 }
 
 .footer {
-
-
     padding-top: 20px;
     height: fit-content;
     padding-bottom: 50px;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.85);
     color: rgba(255, 255, 255, 0.7);
-    filter: drop-shadow(0px 10px 10px rgba(0, 0, 0, 0.2));
 }
 
 
