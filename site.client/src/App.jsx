@@ -41,7 +41,7 @@ const PaymentLayout = () => {
 
                 <div className="paymentFrame">
                     <h4>Payment Information</h4>
-                    <div className="debug-border card-form">
+                    <div className="pay-inputs debug-border">
                         
                         <label>Owner</label>
                         <input type="text"></input>
@@ -52,9 +52,11 @@ const PaymentLayout = () => {
                         <label>CVC</label>
                         <input type="text"></input>
                         <br />
-                        <div className="total debug-border">
-                            <h4>Total</h4>
-                            <h2>$150.00</h2>
+                        <div className="total">
+                            <h6>Tax: $6.00</h6>
+                            <h6>Subtotal: $6.00</h6>
+                            <h4>Total: $150.00</h4>
+
                         </div>
                         <div className="buyBtn" style={{ color: 'white' }}>
                             Purchase

@@ -53,11 +53,17 @@ html, body {
     text-align: center;
     align-content: center;
     background-color: white;
-    border-color: red;
-    border-width: 2px;
-    padding: 30px;
-    margin: 10%;
+
+    padding-top: 30px;
+
 }
+
+.pay-inputs {
+    margin-bottom: 30px;
+}
+
+
+
 
 .regForm {
     width: 500px;
@@ -129,11 +135,14 @@ html, body {
     padding: 20px;
 }
 
+.pay-inputs label {
+    padding-left: 5px;
+}
+
 
 
 .debug-border {
-    border-width: 2px;
-    border-color: red;
+
 }
 
 .product-preview {
@@ -229,13 +238,23 @@ html, body {
     gap: 10px;
 }
 
-.fullscreen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    overflow: auto;
+.pay-inputs {
+    background-color: white;
+    color: rgba(200, 0, 0, 0.8);
+    margin-left: 20%;
+    margin-right: 20%;
+    padding: 20px;
+}
+
+.pay-inputs input {
+    margin-bottom: 5px;
+    border-width: 1px;
+    box-shadow: 0px 5px 5px rgba(0,0,0,0.3);
+}
+
+.paymentFrame input {
+    padding: 5px;
+    color: black;
 }
 
 .lowerHeader {
@@ -542,6 +561,10 @@ html, body {
         padding-top: 15px;
         padding-bottom: 15px;
     }
+
+    .paymentFrame > * {
+        text-align: center;
+    }
 }
 @media (min-width: 801px) {
     .typicalButton {
@@ -553,6 +576,8 @@ html, body {
         margin-left: 30%;
         margin-right: 30%;
     }
+
+
 }
 
 .typicalButton:hover {
@@ -642,7 +667,7 @@ html, body {
     padding: 20px;
 }
 .total {
-    padding: 20px;
+    padding: 5px;
 }
 
 .paymentFrame {
@@ -650,6 +675,14 @@ html, body {
     color: white;
 }
 
+.pay-inputs {
+    box-shadow: 0px 10px 5px rgba(0, 0, 0, 0.2);
+}
+
+.card-form {
+    width: 100vh;
+    height: 100vh;
+}
 
 
 .card-form > * {
