@@ -28,29 +28,41 @@ const ScreenRoutes = () => {
            <Route path="register" element={<RegisterLayout />} />
            <Route path="login" element={<LoginLayout />} />
            <Route path="product" element={<ProductLayout />} />
-            <Route path="cart" element={<CartLayout />} />
-            <Route path="payment" element={<PaymentLayout />} />
+           <Route path="cart" element={<CartLayout />} />
+           <Route path="payment" element={<PaymentLayout />} />
         </Routes>
     );
 };
 
 const PaymentLayout = () => {
     return (
-        <>
+        <div>
             <form action="/payment">
+
                 <div className="paymentFrame">
                     <h4>Payment Information</h4>
-                    <div className="debug-border">
+                    <div className="debug-border card-form">
+                        
+                        <label>Owner</label>
+                        <input type="text"></input>
                         <label>Card Number</label>
                         <input type="text"></input>
                         <label>Expiration Date</label>
                         <input type="text"></input>
                         <label>CVC</label>
                         <input type="text"></input>
+                        <br />
+                        <div className="total debug-border">
+                            <h4>Total</h4>
+                            <h2>$150.00</h2>
+                        </div>
+                        <div className="buyBtn" style={{ color: 'white' }}>
+                            Purchase
+                        </div>
                     </div>
                 </div>
             </form>
-        </>
+        </div>
     )
 };
 

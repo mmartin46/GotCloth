@@ -7,7 +7,7 @@ namespace Site.Server.Models
     {
         [CreditCard]
         public string CardNumber { get; set; }
-        
+        [ExpirationDate]
         public string ExpirationDate { get; set; }
         [CVC]
         public string CVC { get; set; }

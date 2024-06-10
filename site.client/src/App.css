@@ -9,6 +9,10 @@
     white-space: nowrap;
 }
 
+.paymentFrame {
+    background-color: rgba(200, 0, 0, 1);
+}
+
 html, body {
     overflow-x: hidden;
     max-width: 100%;
@@ -29,12 +33,18 @@ html, body {
     padding: 30px;
 }
 
+
 .debug-border {
     text-align: left;
     display: flex;
     flex-direction: column;
     align-content: flex-start;
     justify-content: left;
+}
+
+.paymentFrame div > * {
+    display: block;
+    justify-content: center;
 }
 
 .paymentFrame {
@@ -628,11 +638,31 @@ html, body {
     background-color: rgba(200, 0, 0);
 }
 
+.card-form {
+    padding: 20px;
+}
+.total {
+    padding: 20px;
+}
+
+.paymentFrame {
+    background-color: rgb(200, 0, 0);
+    color: white;
+}
+
+
+
+.card-form > * {
+    padding: 5px;
+}
+
 .shop-pg {
     padding: 30px;
     /*max-width: 600px;*/
     width: fit-content;
 }
+
+
 
 .shop-col {
 

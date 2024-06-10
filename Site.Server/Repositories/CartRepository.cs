@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Site.Server.Data;
 using Site.Server.Models;
 using Site.Server.Repositories;
@@ -132,6 +133,12 @@ namespace Site.Server.Repositories
                     }
                 }
             }
+        }
+
+        [HttpPost]
+        public async Task PaymentProcess()
+        {
+
         }
     }
 }
