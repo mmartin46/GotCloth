@@ -53,7 +53,7 @@ namespace Site.Server.Controllers
 
         [HttpDelete]
         [Route("/RemoveProduct")]
-        public async Task<IActionResult> DeleteFromCart([FromBody] ProductModel cartItem)
+        public async Task<IActionResult> RemoveProduct([FromBody] ProductModel cartItem)
         {
             if (cartItem == null)
             {

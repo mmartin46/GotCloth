@@ -39,6 +39,29 @@ const Product = (props) => {
         }
     };
 
+    const removeFromCart = async () => {
+        const response = await fetch("https://localhost:7269/RemoveProduct", {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                username: username,
+                title: name,
+                price: 10.00,
+                quantity: quantity,
+                link: link
+            })
+        });
+
+        if (response.ok) {
+            console.log('successfully deleted!');
+            updateState({});
+        } else {
+            console.log('Failed to delete ', await response.text());
+        }
+    }
+
 
     const updateCart = async (quantityToUpdate) => {
         const response = await fetch("https://localhost:7269/PatchCart", {
@@ -66,7 +89,8 @@ const Product = (props) => {
         <div className="row">
             <div className="col">
                 <div className="product-purchase">
-                    <span style={{ paddingRight: '30px', color: 'rgba(0,0,0, 0.5)' } }>x</span>
+                    <span style={{ paddingRight: '30px', color: 'rgba(0,0,0, 0.5)' }}
+                        onClick={removeFromCart}>x</span>
                     <span>
                         <input min="1"
                             placeholder={defaultValue}
