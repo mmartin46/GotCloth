@@ -43,11 +43,23 @@ namespace Site.Server.Controllers
         [Route("/PatchCart")]
         public async Task<IActionResult> UpdateCart([FromBody] ProductModel cartItem)
         {
-            if (cartItem == null) 
+            if (cartItem == null)
             {
                 return BadRequest();
             }
             await _cartRepository.UpdateCart(cartItem);
+            return Ok();
+        }
+
+        [HttpDelete]
+        [Route("/RemoveProduct")]
+        public async Task<IActionResult> DeleteFromCart([FromBody] ProductModel cartItem)
+        {
+            if (cartItem == null)
+            {
+                return BadRequest();
+            }
+            await _cartRepository.RemoveProductFromCart(cartItem);
             return Ok();
         }
 

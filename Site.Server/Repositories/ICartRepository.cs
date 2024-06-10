@@ -9,5 +9,6 @@ namespace Site.Server.Repositories
         Task<List<ProductModel>> GetAllProducts();
         List<ProductModel> GetCartByUsername(string username);
         Task UpdateCart(ProductModel cartItem);
+        Task RemoveProductFromCart(ProductModel cartItem);
     }
 }

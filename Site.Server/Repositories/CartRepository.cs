@@ -30,6 +30,19 @@ namespace Site.Server.Repositories
             }
         }
 
+        public async Task RemoveProductFromCart(ProductModel cartItem)
+        {
+            var product = _context.Carts.FirstOrDefault(x => x.Username(cartItem.Username) &&
+                                                             x.Title.Equals(cartItem.Title) &&
+                                                             x.Link.Equals(cartItem.Link));
+
+            if (product != null)
+            {
+                await _context.Carts.Remove(product);
+                await _context.SaveChangesAsync();
+            }
+        }
+
         public List<ProductModel> GetCartByUsername(string username)
         {
            List<ProductModel> productsByUsername = GetAllProducts().Result.Where(x => x.Username == username).ToList();
