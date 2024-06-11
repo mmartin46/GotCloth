@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Site.Server.Models;
 using System.Threading.Tasks;
 
-namespace Site.Server.Repositories
+namespace Site.Server.Controllers
 {
 
     public class PaymentController : Controller
