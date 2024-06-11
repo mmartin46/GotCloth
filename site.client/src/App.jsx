@@ -17,6 +17,8 @@ import LoginLayout from './components/layouts/authentification/LoginLayout.jsx';
 import { ShoesLayout, PantsLayout, ShirtsLayout } from './components/layouts/general/MainLayouts.jsx';
 import ProductLayout from './components/layouts/general/ProductLayout.jsx';
 import { MainLayout } from './components/layouts/general/MainLayout.jsx';
+import { useUsername } from './components/UseUsername.jsx';
+import Invisible from './components/labels/Invisible.jsx';
 
 const ScreenRoutes = () => {
     return (
@@ -35,19 +37,25 @@ const ScreenRoutes = () => {
 };
 
 const PaymentLayout = () => {
+    const { username } = useUsername();
+
     const [paymentModel, setPaymentModel] = useState({
+        username: username,
         owner: '',
         cardNumber: '',
         expirationDate: '',
         cvc: ''
     });
 
+
     const setChanges = (e) => {
         setPaymentModel({
             ...paymentModel,
-            [e.target.name]: e.target.value
+            [e.target.name]: e.target.value,
         });
     };
+
+
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -76,7 +84,6 @@ const PaymentLayout = () => {
                 <div className="paymentFrame">
                     <h4>Payment Information</h4>
                     <div className="pay-inputs debug-border">
-                        
                         <label htmlFor="owner">Owner</label>
                         <input onChange={setChanges} type="text" name="owner" id="owner" value={paymentModel.owner}></input>
                         <label htmlFor="cardNumber">Card Number</label>

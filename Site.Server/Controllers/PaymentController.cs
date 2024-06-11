@@ -14,10 +14,16 @@ namespace Site.Server.Controllers
         [Route("/payment")]
         public async Task<IActionResult> Payment([FromBody] PaymentModel paymentModel)
         {
-            if (paymentModel == null || ModelState.IsValid)
+            if (paymentModel == null)
             {
                 return BadRequest();
             }
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             return Ok();
         }
     }
