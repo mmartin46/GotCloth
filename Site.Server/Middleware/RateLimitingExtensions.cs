@@ -13,12 +13,13 @@ namespace Site.Server.Middleware
             {
                 ConfigureRateLimiter("login", ref options);
                 ConfigureRateLimiter("register", ref options);
+                ConfigureRateLimiter("cart", ref options, permitLimit: 20);
             });
 
             return services;
         }
 
-        private static void ConfigureRateLimiter(string policyName, ref RateLimiterOptions options, string windowLimiter = "fixed")
+        private static void ConfigureRateLimiter(string policyName, ref RateLimiterOptions options, string windowLimiter = "fixed", int permitLimit = 10)
         {
             options.OnRejected = async (context, _) =>
             {
@@ -42,7 +43,7 @@ namespace Site.Server.Middleware
                         options.AddFixedWindowLimiter(policyName: policyName, fixedOptions =>
                         {
                             fixedOptions.AutoReplenishment = true;
-                            fixedOptions.PermitLimit = 10;
+                            fixedOptions.PermitLimit = permitLimit;
                             fixedOptions.Window = TimeSpan.FromMinutes(1);
                         });
                         break;
@@ -52,7 +53,7 @@ namespace Site.Server.Middleware
                         options.AddSlidingWindowLimiter(policyName: policyName, fixedOptions =>
                         {
                             fixedOptions.AutoReplenishment = true;
-                            fixedOptions.PermitLimit = 10;
+                            fixedOptions.PermitLimit = permitLimit;
                             fixedOptions.Window = TimeSpan.FromMinutes(1);
                         });
                         break;

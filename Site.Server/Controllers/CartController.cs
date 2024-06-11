@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using Site.Server.Models;
 using Site.Server.Repositories;
 
@@ -13,6 +14,7 @@ namespace Site.Server.Controllers
             _cartRepository = cartRepository;
         }
 
+        [EnableRateLimiting("cart")]
         [HttpPost]
         [Route("/AddToCart")]
         public async Task<IActionResult> AddToCart([FromBody] CartItemModel cartItem)
@@ -39,6 +41,7 @@ namespace Site.Server.Controllers
             return Ok(productsBought);
         }
 
+        [DisableRateLimiting]
         [HttpPatch]
         [Route("/PatchCart")]
         public async Task<IActionResult> UpdateCart([FromBody] ProductModel cartItem)
@@ -51,6 +54,7 @@ namespace Site.Server.Controllers
             return Ok();
         }
 
+        [EnableRateLimiting("cart")]
         [HttpDelete]
         [Route("/RemoveProduct")]
         public async Task<IActionResult> RemoveProduct([FromBody] ProductModel cartItem)
