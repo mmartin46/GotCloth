@@ -10,7 +10,8 @@ namespace Site.Server.Attributes
             {
                 return false;
             }
-            return (value as string).Length == 3;
+            bool lengthOfThree = (value as string).Length == 3;
+            return lengthOfThree;
         }
     }
 }

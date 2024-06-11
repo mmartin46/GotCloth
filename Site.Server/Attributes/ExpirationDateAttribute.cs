@@ -13,7 +13,8 @@ namespace Site.Server.Attributes
             }
 
             Regex matchRegex = new Regex("(1[0-2]|0?[1-9])/");
-            return matchRegex.IsMatch(value as string); 
+            bool validMatch = matchRegex.IsMatch(value as string);
+            return validMatch;
         }
     }
 }

@@ -35,22 +35,56 @@ const ScreenRoutes = () => {
 };
 
 const PaymentLayout = () => {
+    const [paymentModel, setPaymentModel] = useState({
+        owner: '',
+        cardNumber: '',
+        expirationDate: '',
+        cvc: ''
+    });
+
+    const setChanges = (e) => {
+        setPaymentModel({
+            ...paymentModel,
+            [e.target.name]: e.target.value
+        });
+    };
+
+    const onSubmit = async (e) => {
+        e.preventDefault();
+
+        const response = await fetch("https://localhost:7269/payment", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(paymentModel)
+        });
+
+        if (response.ok) {
+            console.log('Paid successfully');
+        } else {
+            const errorMessage = await response.text();
+            console.log(`Error submitting payment -> ${errorMessage}`);
+        }
+    }
+
+
     return (
         <div>
-            <form action="/payment">
+            <form onSubmit={onSubmit}>
 
                 <div className="paymentFrame">
                     <h4>Payment Information</h4>
                     <div className="pay-inputs debug-border">
                         
-                        <label>Owner</label>
-                        <input type="text"></input>
-                        <label>Card Number</label>
-                        <input type="text"></input>
-                        <label>Expiration Date</label>
-                        <input type="text"></input>
-                        <label>CVC</label>
-                        <input type="text"></input>
+                        <label htmlFor="owner">Owner</label>
+                        <input onChange={setChanges} type="text" name="owner" id="owner" value={paymentModel.owner}></input>
+                        <label htmlFor="cardNumber">Card Number</label>
+                        <input onChange={setChanges} type="text" name="cardNumber" id="cardNumber" value={paymentModel.cardNumber}></input>
+                        <label htmlFor="expirationDate">Expiration Date</label>
+                        <input onChange={setChanges} type="text" name="expirationDate" id="expirationDate" value={paymentModel.expirationDate}></input>
+                        <label htmlFor="cvc">CVC</label>
+                        <input onChange={setChanges} type="text" name="cvc" id="cvc" value={paymentModel.cvc}></input>
                         <br />
                         <div className="total">
                             <h6>Tax: $6.00</h6>
@@ -58,9 +92,9 @@ const PaymentLayout = () => {
                             <h4>Total: $150.00</h4>
 
                         </div>
-                        <div className="buyBtn" style={{ color: 'white' }}>
+                        <button className="buyBtn" style={{ color: 'white' }} type="submit">
                             Purchase
-                        </div>
+                        </button>
                     </div>
                 </div>
             </form>

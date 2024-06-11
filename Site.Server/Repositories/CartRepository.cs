@@ -45,7 +45,7 @@ namespace Site.Server.Repositories
 
         public List<ProductModel> GetCartByUsername(string username)
         {
-           List<ProductModel> productsByUsername = GetAllProducts().Result.Where(x => x.Username == username).ToList();
+           List<ProductModel> productsByUsername = GetAllProducts()!.Result.Where(x => x.Username == username).ToList();
            return productsByUsername;
         }
 
@@ -147,10 +147,5 @@ namespace Site.Server.Repositories
             }
         }
 
-        [HttpPost]
-        public async Task Payment([FromBody] PaymentModel paymentModel)
-        {
-
-        }
     }
 }

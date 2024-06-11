@@ -7,7 +7,6 @@ namespace Site.Server.Models
     {
         public string Username { get; set; }
         public string Owner { get; set; }
-        [CreditCard]
         public string CardNumber { get; set; }
         [ExpirationDate]
         public string ExpirationDate { get; set; }
