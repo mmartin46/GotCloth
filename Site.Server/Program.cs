@@ -5,6 +5,7 @@ using Site.Server.Options;
 using Site.Server.Repositories;
 using System.Threading.RateLimiting;
 using System.Net;
+using Site.Server.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
@@ -44,6 +45,8 @@ builder.Services.AddRateLimiter(options =>
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddAuthenticationRateLimiter();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -79,6 +82,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseAuthenticationRateLimiter();
 app.UseCors();
 
 app.UseAuthorization();

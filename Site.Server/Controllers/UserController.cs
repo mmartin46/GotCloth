@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using Site.Server.Models;
 using Site.Server.Repositories;
 
@@ -17,6 +18,7 @@ namespace Site.Server.Controllers
             _userRepository = userRepository;
         }
 
+        [EnableRateLimiting("register")]
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] UserModel userModel)
         {
@@ -42,6 +44,7 @@ namespace Site.Server.Controllers
             return Json(userModel);
         }
 
+        [EnableRateLimiting("login")]
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginModel userModel)
         {

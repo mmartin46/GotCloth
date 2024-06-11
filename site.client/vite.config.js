@@ -55,6 +55,10 @@ export default defineConfig({
         https: {
             key: fs.readFileSync(keyFilePath),
             cert: fs.readFileSync(certFilePath),
+        },
+        fs: {
+            strict: false,
+            allow: ['src'],
         }
     }
 })
