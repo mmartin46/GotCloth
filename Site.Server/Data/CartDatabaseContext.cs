@@ -10,5 +10,6 @@ namespace Site.Server.Data
         }
 
         public DbSet<Products> Carts { get; set; }
+        public DbSet<Payments> Cards { get; set; }
     }
 }

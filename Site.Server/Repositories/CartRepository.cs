@@ -148,7 +148,7 @@ namespace Site.Server.Repositories
         }
 
         [HttpPost]
-        public async Task PaymentProcess()
+        public async Task Payment([FromBody] PaymentModel)
         {
 
         }
