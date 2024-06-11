@@ -18,29 +18,6 @@ builder.Services.AddDbContext<CartDatabaseContext>(options => options.UseSqlServ
     configuration.GetConnectionString("Carts")     
 ));
 
-/*
-builder.Services.AddRateLimiter(options =>
-{
-    options.GlobalLimiter = PartitionedRateLimiter.CreateChained(
-        PartitionedRateLimiter.Create<HttpContext, string>(httpContext =>
-            RateLimitPartition.GetFixedWindowLimiter(httpContext.Connection.RemoteIpAddress.ToString(), partition =>
-                new FixedWindowRateLimiterOptions
-                {
-                    AutoReplenishment = true,
-                    PermitLimit = 2,
-                    Window = TimeSpan.FromMinutes(1)
-                })),
-        PartitionedRateLimiter.Create<HttpContext, string>(httpContext =>
-             RateLimitPartition.GetFixedWindowLimiter(httpContext.Connection.RemoteIpAddress.ToString(), partition =>
-                 new FixedWindowRateLimiterOptions
-                 {
-                     AutoReplenishment = true,
-                     PermitLimit = 3,
-                     Window = TimeSpan.FromMinutes(5)
-                 }))
-        );
-});
-*/
 
 // Add services to the container.
 

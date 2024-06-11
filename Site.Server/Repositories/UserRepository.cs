@@ -23,7 +23,8 @@ namespace Site.Server.Repositories
                     {
                         Username = user.Username,
                         Password = user.Password,
-                        Email = user.Email
+                        Email = user.Email,
+                        AmountDue = user.AmountDue,
                     }
                 );
             }
@@ -38,7 +39,8 @@ namespace Site.Server.Repositories
                 {
                     Username = userModel.Username,
                     Password = userModel.Password,
-                    Email = userModel.Email
+                    Email = userModel.Email,
+                    AmountDue = userModel.AmountDue,
                 }
             );
 
@@ -56,6 +58,21 @@ namespace Site.Server.Repositories
             var users = await GetUsers();
             return users.Any(user => user.Username.Equals(userModel.Username) &&
                                      user.Password.Equals(userModel.Password));
+        }
+
+        // Not tested
+        public async Task UpdateTotalDue(string username, double amountDue)
+        {
+            var user = _databaseContext.GotClothUsers.FirstOrDefault(x => x.Username.Equals(username));
+
+            if (user != null)
+            {
+                user.AmountDue = amountDue;
+                _databaseContext.Attach(user);
+                _databaseContext.Entry(user).State = EntityState.Modified;
+
+                await _databaseContext.SaveChangesAsync();
+            }
         }
     }
 }

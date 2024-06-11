@@ -9,5 +9,6 @@ namespace Site.Server.Models
         public string ConfirmPassword { get; set; }
         public string Email { get; set; }
         public string ConfirmEmail { get; set; }
+        public double AmountDue {  get; set; }
     }
 }
