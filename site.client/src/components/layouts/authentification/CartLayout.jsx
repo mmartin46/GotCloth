@@ -68,6 +68,28 @@ const CartLayout = () => {
         }));
     };
 
+    const appendTotal = async () => {
+        console.log('This the username ', username);
+        console.log('This the password ', cartInfo["total"].toFixed(2));
+
+        const response = await fetch("https://localhost:7269/appendTotal", {
+            method: 'PATCH',
+            body: JSON.stringify({
+                Name: username,
+                Price: cartInfo["total"].toFixed(2)
+            }),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        });
+
+        if (response.ok) {
+            console.log('Total appended');
+        } else {
+            console.log('Error occurred appending total');
+        }
+    };
+
 
     useEffect(() => {
         recalculateTotal();
@@ -117,7 +139,7 @@ const CartLayout = () => {
                                 <h3 className="total-price">Total: ${cartInfo["total"].toFixed(2)}</h3>
 
                                 <PlainLink to="/payment" fontColor="white">
-                                    <div className="buyBtn">
+                                    <div className="buyBtn" onClick={appendTotal}>
                                         Buy Now
                                     </div>
                                 </PlainLink>
