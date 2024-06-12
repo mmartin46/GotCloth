@@ -40,5 +40,11 @@ namespace Site.Server.Controllers
             await _userRepository.UpdateTotalDue(priceModel.Name, priceModel.Price);
             return Ok();
         }
+
+        [HttpGet]
+        public async Task GetTotal()
+        {
+
+        }
     }
 }
