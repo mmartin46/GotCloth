@@ -42,9 +42,10 @@ namespace Site.Server.Controllers
         }
 
         [HttpGet]
-        public async Task GetTotal()
+        [Route("/getTotal")]
+        public async Task GetTotal([FromBody] string username)
         {
-
+            await _userRepository.GetTotalDue(username);
         }
     }
 }

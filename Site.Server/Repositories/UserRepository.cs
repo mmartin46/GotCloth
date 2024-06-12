@@ -50,7 +50,7 @@ namespace Site.Server.Repositories
         public async Task<Boolean> AuthenticateUser(UserModel userModel)
         {
             List<UserModel> users = await GetUsers();
-            return users.Any(user => user.Username.Equals(userModel.Username)); 
+            return users.Any(user => user.Username.Equals(userModel.Username));
         }
 
         public async Task<Boolean> AuthenticateUserWithPassword(LoginModel userModel)
@@ -60,7 +60,6 @@ namespace Site.Server.Repositories
                                      user.Password.Equals(userModel.Password));
         }
 
-        // Not tested
         public async Task UpdateTotalDue(string username, double amountDue)
         {
             var user = _databaseContext.GotClothUsers.FirstOrDefault(x => x.Username.Equals(username));
@@ -73,6 +72,16 @@ namespace Site.Server.Repositories
 
                 await _databaseContext.SaveChangesAsync();
             }
+        }
+
+        public async Task<Double?> GetTotalDue(string username)
+        {
+            var user = _databaseContext.GotClothUsers.FirstOrDefault(x => x.Username.Equals(username));
+            if (user != null)
+            {
+                return user.AmountDue;
+            }
+            return null;
         }
     }
 }
