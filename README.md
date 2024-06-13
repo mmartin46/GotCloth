@@ -18,8 +18,11 @@ A functional e-commerce website for a clothing store utilzing ASP.NET Core for t
 
 ### Screenshots
 
-<a href='https://postimg.cc/bSdZ5qFh' target='_blank'><img src='https://i.postimg.cc/bSdZ5qFh/Screenshot-2024-06-13-105415.png' border='0' alt='Screenshot-2024-06-13-105415'/></a>
-<a href='https://postimages.org/' target='_blank'><img src='https://i.postimg.cc/QCfkfCHv/Screenshot-2024-06-13-105152.png' border='0' alt='Screenshot-2024-06-13-105152'/></a><br /><a href='https://postimages.org/'></a><br />
+<a href='https://postimg.cc/bSdZ5qFh' target='_blank'><img src='https://i.postimg.cc/bSdZ5qFh/Screenshot-2024-06-13-105415.png' border='0' alt='Screenshot-2024-06-13-105415'/></a><a href='https://postimages.org/' target='_blank'><img src='https://i.postimg.cc/QCfkfCHv/Screenshot-2024-06-13-105152.png' border='0' alt='Screenshot-2024-06-13-105152'/></a><br /><a href='https://postimages.org/'></a><br />
+<a href='https://postimg.cc/0KJwQ8GC' target='_blank'><img src='https://i.postimg.cc/0KJwQ8GC/Screenshot-2024-06-13-105152.png' border='0' alt='Screenshot-2024-06-13-105152'/></a>
+<a href='https://postimg.cc/rKXJrbdp' target='_blank'><img src='https://i.postimg.cc/rKXJrbdp/Screenshot-2024-06-13-105435.png' border='0' alt='Screenshot-2024-06-13-105435'/></a>
+
+
 ### Technologies Used
 #### Backend: ASP.NET Core, Entity Framework Core, MSSQL
 
