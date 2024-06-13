@@ -7,6 +7,7 @@ namespace Site.Server.Repositories
     public class UserRepository : IUserRepository
     {
         private readonly UserDatabaseContext _databaseContext;
+        private const double defaultPrice = 0.00;
         public UserRepository(UserDatabaseContext databaseContext)
         {
             _databaseContext = databaseContext;
@@ -74,14 +75,14 @@ namespace Site.Server.Repositories
             }
         }
 
-        public async Task<Double?> GetTotalDue(string username)
+        public async Task<Double> GetTotalDue(string username)
         {
             var user = _databaseContext.GotClothUsers.FirstOrDefault(x => x.Username.Equals(username));
             if (user != null)
             {
                 return user.AmountDue;
             }
-            return null;
+            return defaultPrice;
         }
     }
 }

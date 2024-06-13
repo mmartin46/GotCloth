@@ -37,6 +37,8 @@ const ScreenRoutes = () => {
 };
 
 const PaymentLayout = () => {
+    const [total, setTotal] = useState(0);
+
     const { username } = useUsername();
 
     const [paymentModel, setPaymentModel] = useState({
@@ -54,6 +56,32 @@ const PaymentLayout = () => {
             [e.target.name]: e.target.value,
         });
     };
+
+    useEffect(() => {
+        const getTotal = async () => {
+
+            const response = await fetch("https://localhost:7269/getTotal", {
+                method: "GET",
+                body: JSON.stringify({
+                    username: username
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                const result = await response.json();
+                setTotal(result);
+            } else {
+                const errorMessage = await response.text();
+                console.log('Username fetch failed: ', errorMessage);
+            }
+        };
+
+        getTotal();
+    }, [username]);
+
 
 
 
@@ -94,10 +122,7 @@ const PaymentLayout = () => {
                         <input onChange={setChanges} type="text" name="cvc" id="cvc" value={paymentModel.cvc}></input>
                         <br />
                         <div className="total">
-                            <h6>Tax: $6.00</h6>
-                            <h6>Subtotal: $6.00</h6>
-                            <h4>Total: $150.00</h4>
-
+                            <h4>Total: $1{total.toFixed(2)}</h4>
                         </div>
                         <button className="buyBtn" style={{ color: 'white' }} type="submit">
                             Purchase
