@@ -27,7 +27,6 @@ const CartLayout = () => {
         if (savedUsername) {
             setUsername(savedUsername);
         }
-        console.log('found the ', username);
     }, []);
 
     useEffect(() => {
@@ -40,7 +39,6 @@ const CartLayout = () => {
                 fetch(`https://localhost:7269/GetCart?username=${username}`)
                     .then((response) => response.json())
                     .then((json) => {
-                        console.log(json);
                         setCartItems(json);
                     });
             }
@@ -69,8 +67,6 @@ const CartLayout = () => {
     };
 
     const appendTotal = async () => {
-        console.log('This the username ', username);
-        console.log('This the password ', cartInfo["total"].toFixed(2));
 
         const response = await fetch("https://localhost:7269/appendTotal", {
             method: 'PATCH',
@@ -83,9 +79,7 @@ const CartLayout = () => {
             }
         });
 
-        if (response.ok) {
-            console.log('Total appended');
-        } else {
+        if (!response.ok) {
             console.log('Error occurred appending total');
         }
     };

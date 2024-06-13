@@ -19,8 +19,7 @@ const ImageColumns = (props) => {
         cartLink = '/cart';
     }
 
-    console.log(cartLink);
-    console.log(username);
+
 
     const addToCart = async (username, title) => {
         try {
@@ -55,7 +54,6 @@ const ImageColumns = (props) => {
                     throw new Error(`Error getting ${name} data`);
                 }
                 const data = await response.json();
-                console.log(data);
                 setPantsImages(data);
             } catch (error) {
                 console.error('Couldn\'t fetch images');

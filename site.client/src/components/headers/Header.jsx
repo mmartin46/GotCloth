@@ -9,8 +9,6 @@ const Header = () => {
     let cartLink = username !== 'Guest' ? '/cart' : '/login';
 
 
-    console.log(`Header() => ${cartLink} ${username}`);
-
     return (
         <div className="header">
             <ul>

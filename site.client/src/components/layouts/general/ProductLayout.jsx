@@ -26,10 +26,8 @@ const ProductLayout = () => {
                 return response.json();
             })
             .then(data => {
-                console.log(data);
                 setImageData(data);
-            })
-            .catch(error => { 'Failed fetch', error });
+            });
 
     }, []);
 
@@ -52,7 +50,6 @@ const ProductLayout = () => {
             }
 
             const json = await response.json();
-            console.log(json);
         } catch (error) {
             console.error('Error adding to cart:', error);
         }

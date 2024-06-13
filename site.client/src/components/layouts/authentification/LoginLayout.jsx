@@ -46,7 +46,6 @@ const LoginLayout = () => {
         if (response.ok) {
             const result = await response.json();
             setSuccessMessage("Sucessfully Logged In!");
-            console.log("Logged in successfully:", result);
 
             localStorage.setItem('username', result.username);
             setUsername(result.username);

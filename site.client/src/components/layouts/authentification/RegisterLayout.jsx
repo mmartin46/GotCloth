@@ -38,7 +38,6 @@ const RegisterLayout = () => {
         if (response.ok) {
             const result = await response.json();
             setSuccessMessage("Account Created!");
-            console.log("Registration submitted successfully:", result);
         } else {
             const errorMessage = await response.text();
             console.error("Registration submission failed");

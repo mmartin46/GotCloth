@@ -24,8 +24,7 @@ const BodySection = (props) => {
     if (username !== 'Guest') {
         cartLink = '/cart';
     }
-    console.log(cartLink);
-    console.log(username);
+
 
     useEffect(() => {
         const fetchImages = async () => {
@@ -35,7 +34,6 @@ const BodySection = (props) => {
                     throw new Error(`Error getting ${route} data`);
                 }
                 const data = await response.json();
-                console.log(data);
                 setImages(data);
             } catch (error) {
                 console.error('Couldn\'t fetch images');
