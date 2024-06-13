@@ -19,8 +19,7 @@ A functional e-commerce website for a clothing store utilzing ASP.NET Core for t
 ### Screenshots
 
 <a href='https://postimg.cc/bSdZ5qFh' target='_blank'><img src='https://i.postimg.cc/bSdZ5qFh/Screenshot-2024-06-13-105415.png' border='0' alt='Screenshot-2024-06-13-105415'/></a>
-<a href='https://postimg.cc/bdGY4Vwp' target='_blank'><img src='https://i.postimg.cc/bdGY4Vwp/Screenshot-2024-06-13-105222.png' border='0' alt='Screenshot-2024-06-13-105222'/></a>
-
+<a href='https://postimages.org/' target='_blank'><img src='https://i.postimg.cc/QCfkfCHv/Screenshot-2024-06-13-105152.png' border='0' alt='Screenshot-2024-06-13-105152'/></a><br /><a href='https://postimages.org/'></a><br />
 ### Technologies Used
 #### Backend: ASP.NET Core, Entity Framework Core, MSSQL
 
