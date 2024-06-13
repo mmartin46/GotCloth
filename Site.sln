@@ -7,6 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Site.Server", "Site.Server\
 EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "site.client", "site.client\site.client.esproj", "{EC27494A-7F1E-4F27-91EE-7C97A1B3EA7D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{17BD4AD3-FE22-4B9B-BF75-F66065FCB2B6}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

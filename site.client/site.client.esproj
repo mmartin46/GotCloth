@@ -15,7 +15,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="src\components\layouts\featured\" />
     <Folder Include="src\components\layouts\general\" />
   </ItemGroup>
 </Project>
