@@ -39,7 +39,8 @@ const CartLayout = () => {
                 fetch(`https://localhost:7269/GetCart?username=${username}`)
                     .then((response) => response.json())
                     .then((json) => {
-                        setCartItems(json);
+                        let filteredItems = json.filter(item => item.quantity > 0);
+                        setCartItems(filteredItems);
                     });
             }
 
@@ -95,7 +96,11 @@ const CartLayout = () => {
             newItems[index].quantity = newQuantity;
             return newItems;
         });
-    }
+    };
+
+    const handleRemoveProduct = (name) => {
+        setCartItems(prevItems => prevItems.filter(item => item.title.includes(name)));
+    };
 
     return (
         <div>
@@ -120,6 +125,7 @@ const CartLayout = () => {
                                         name={item.title}
                                         link={item.link}
                                         defaultValue={item.quantity}
+                                        onRemove={() => handleRemoveProduct(item.title)}
                                         price={(item.quantity * 10.00).toFixed(2)}
                                         onQuantityChange={(newQuantity) => handleQuantityChange(index, newQuantity)}
                                     />

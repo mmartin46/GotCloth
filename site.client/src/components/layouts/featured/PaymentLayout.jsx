@@ -24,23 +24,23 @@ const PaymentLayout = () => {
 
     useEffect(() => {
         const getTotal = async () => {
+            try {
+                const response = await fetch(`https://localhost:7269/getTotal?username=${encodeURIComponent(username)}`, {
+                    method: "GET",
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
 
-            const response = await fetch("https://localhost:7269/getTotal", {
-                method: "GET",
-                body: JSON.stringify({
-                    username: username
-                }),
-                headers: {
-                    'Content-Type': 'application/json'
+                if (response.ok) {
+                    const result = await response.json();
+                    setTotal(result);
+                } else {
+                    const errorMessage = await response.text();
+                    console.log('Username fetch failed: ', errorMessage);
                 }
-            });
-
-            if (response.ok) {
-                const result = await response.json();
-                setTotal(result);
-            } else {
-                const errorMessage = await response.text();
-                console.log('Username fetch failed: ', errorMessage);
+            } catch (error) {
+                console.error('Problem loading total');
             }
         };
 

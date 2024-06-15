@@ -6,7 +6,7 @@ import { useEffect, useState, useCallback } from 'react';
 
 
 const Product = (props) => {
-    const { username, name, link, defaultValue, price, onQuantityChange } = props;
+    const { username, name, link, defaultValue, price, onQuantityChange, onRemove } = props;
     const [quantity, setQuantity] = useState(defaultValue);
     const [, updateState] = useState();
     const rerender = useCallback(() => updateState({}), []);
@@ -57,6 +57,7 @@ const Product = (props) => {
         if (response.ok) {
             console.log('successfully deleted!');
             updateState({});
+            onRemove();
         } else {
             console.log('Failed to delete ', await response.text());
         }
