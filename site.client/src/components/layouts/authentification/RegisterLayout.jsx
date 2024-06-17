@@ -41,7 +41,12 @@ const RegisterLayout = () => {
         } else {
             const errorMessage = await response.text();
             console.error("Registration submission failed");
-            setError(errorMessage);
+
+            if (errorMessage.includes("400")) {
+                setError("Please fill in all fields");
+            } else {
+                setError(errorMessage);
+            }
         }
     };
 

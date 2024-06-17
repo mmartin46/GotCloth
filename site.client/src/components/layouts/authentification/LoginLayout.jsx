@@ -52,7 +52,11 @@ const LoginLayout = () => {
         } else {
             const errorMessage = await response.text();
             console.error("Login failed");
-            setError(errorMessage);
+            if (errorMessage.includes("400")) {
+                setError("Please fill in all fields");
+            } else {
+                setError(errorMessage);
+            }
         }
     };
 
