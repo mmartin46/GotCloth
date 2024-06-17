@@ -91,7 +91,7 @@ const PaymentLayout = () => {
                         <input onChange={setChanges} type="text" name="cvc" id="cvc" value={paymentModel.cvc}></input>
                         <br />
                         <div className="total">
-                            <h4>Total: $1{total.toFixed(2)}</h4>
+                            <h4>Total: ${total.toFixed(2)}</h4>
                         </div>
                         <button className="buyBtn" style={{ color: 'white' }} type="submit">
                             Purchase
