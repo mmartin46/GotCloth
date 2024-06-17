@@ -5,6 +5,7 @@ import '../../../index.css';
 import '../../../App.css';
 
 const RegisterLayout = () => {
+    const errorCode = "400";
     const [registrationProps, setRegistrationProps] = useState({
         username: "",
         password: "",
@@ -42,7 +43,7 @@ const RegisterLayout = () => {
             const errorMessage = await response.text();
             console.error("Registration submission failed");
 
-            if (errorMessage.includes("400")) {
+            if (errorMessage.includes(errorCode)) {
                 setError("Please fill in all fields");
             } else {
                 setError(errorMessage);

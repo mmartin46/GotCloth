@@ -6,6 +6,8 @@ import '../../../App.css';
 import { useUsername } from '../../UseUsername.jsx';
 
 const LoginLayout = () => {
+    const errorCode = "400";
+
     const [registrationProps, setRegistrationProps] = useState({
         username: "",
         password: ""
@@ -52,7 +54,7 @@ const LoginLayout = () => {
         } else {
             const errorMessage = await response.text();
             console.error("Login failed");
-            if (errorMessage.includes("400")) {
+            if (errorMessage.includes(errorCode)) {
                 setError("Please fill in all fields");
             } else {
                 setError(errorMessage);
