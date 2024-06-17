@@ -22,12 +22,7 @@ const CartLayout = () => {
         "total": 0
     });
 
-    useEffect(() => {
-        const savedUsername = localStorage.getItem('username');
-        if (savedUsername) {
-            setUsername(savedUsername);
-        }
-    }, []);
+
 
     useEffect(() => {
         const fetchProducts = async () => {

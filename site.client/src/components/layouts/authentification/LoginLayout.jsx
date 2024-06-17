@@ -18,12 +18,6 @@ const LoginLayout = () => {
     const [error, setError] = useState("");
     const [successMessage, setSuccessMessage] = useState("");
 
-    useEffect(() => {
-        const savedUsername = localStorage.getItem('username');
-        if (savedUsername) {
-            setUsername(savedUsername);
-        }
-    }, []);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
