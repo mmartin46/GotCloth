@@ -14,7 +14,7 @@
 }
 
 .generic-page {
-    background-color: red;
+    background-color: rgba(200, 0, 0, 1);
     padding: 10%;
     text-align: center;
 }

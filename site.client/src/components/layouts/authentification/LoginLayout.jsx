@@ -45,7 +45,12 @@ const LoginLayout = () => {
             const result = await response.json();
             setSuccessMessage("Sucessfully Logged In!");
 
+
+            let token = Math.random().toString(36).substr(2);
+            localStorage.setItem('token', token);
             localStorage.setItem('username', result.username);
+
+
             setUsername(result.username);
             navigate("/loginSuccess");
         } else {
