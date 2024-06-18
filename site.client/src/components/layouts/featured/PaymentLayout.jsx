@@ -6,6 +6,7 @@ const PaymentLayout = () => {
     const [total, setTotal] = useState(0);
     const navigate = useNavigate();
     const { username } = useUsername();
+    const [error, setError] = useState(null);
 
     const [paymentModel, setPaymentModel] = useState({
         username: username,
@@ -71,6 +72,7 @@ const PaymentLayout = () => {
             navigate("/paymentSuccess");
         } else {
             const errorMessage = await response.text();
+            setError("Please fill all fields correctly");
             console.log(`Error submitting payment -> ${errorMessage}`);
         }
     }
@@ -82,6 +84,7 @@ const PaymentLayout = () => {
 
                 <div className="paymentFrame">
                     <h4>Payment Information</h4>
+                    {error && <h6>{error}</h6> }
                     <div className="pay-inputs debug-border">
                         <label htmlFor="owner">Owner</label>
                         <input onChange={setChanges} type="text" name="owner" id="owner" value={paymentModel.owner}></input>
