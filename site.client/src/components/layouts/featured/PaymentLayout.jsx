@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useUsername } from '../../UseUsername.jsx';
+import { useNavigate } from 'react-router-dom';
 
 const PaymentLayout = () => {
     const [total, setTotal] = useState(0);
-
+    const navigate = useNavigate();
     const { username } = useUsername();
 
     const [paymentModel, setPaymentModel] = useState({
@@ -67,6 +68,7 @@ const PaymentLayout = () => {
 
         if (response.ok) {
             console.log('Paid successfully');
+            navigate("/paymentSuccess");
         } else {
             const errorMessage = await response.text();
             console.log(`Error submitting payment -> ${errorMessage}`);
