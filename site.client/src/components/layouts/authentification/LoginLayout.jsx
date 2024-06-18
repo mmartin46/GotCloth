@@ -4,9 +4,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../../index.css';
 import '../../../App.css';
 import { useUsername } from '../../UseUsername.jsx';
+import { useNavigate } from 'react-router-dom';
 
 const LoginLayout = () => {
     const errorCode = "400";
+    const navigate = useNavigate();
 
     const [registrationProps, setRegistrationProps] = useState({
         username: "",
@@ -45,6 +47,7 @@ const LoginLayout = () => {
 
             localStorage.setItem('username', result.username);
             setUsername(result.username);
+            navigate("/loginSuccess");
         } else {
             const errorMessage = await response.text();
             console.error("Login failed");

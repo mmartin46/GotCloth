@@ -13,6 +13,16 @@
     background-color: rgba(200, 0, 0, 1);
 }
 
+.generic-page {
+    background-color: red;
+    padding: 10%;
+    text-align: center;
+}
+
+.generic-page > * {
+    color: white;
+}
+
 html, body {
     overflow-x: hidden;
     max-width: 100%;

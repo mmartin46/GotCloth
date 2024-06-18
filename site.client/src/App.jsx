@@ -19,6 +19,17 @@ import ProductLayout from './components/layouts/general/ProductLayout.jsx';
 import { MainLayout } from './components/layouts/general/MainLayout.jsx';
 import PaymentLayout from './components/layouts/featured/PaymentLayout.jsx';
 
+
+const GenericLayout = (props) => {
+    const { message } = props;
+    return (
+        <div className="generic-page">
+            <h3>{message}</h3>
+        </div>
+    );
+};
+
+
 const ScreenRoutes = () => {
     return (
        <Routes>
@@ -30,7 +41,9 @@ const ScreenRoutes = () => {
            <Route path="login" element={<LoginLayout />} />
            <Route path="product" element={<ProductLayout />} />
            <Route path="cart" element={<CartLayout />} />
-           <Route path="payment" element={<PaymentLayout />} />
+            <Route path="payment" element={<PaymentLayout />} />
+            <Route path="paymentSuccess" element={<GenericLayout message="Payment successful" />}/>
+            <Route path="loginSuccess" element={<GenericLayout message="Login Successful" />} />
         </Routes>
     );
 };
