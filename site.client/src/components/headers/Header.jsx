@@ -25,9 +25,17 @@ const Header = () => {
                                     </PlainLink>
                                 </div>
                                 <div>
-                                    <PlainLink to="/login" fontColor="white">
-                                        <span>Login</span>&nbsp;
-                                    </PlainLink>
+                                    {username === 'Guest' ? (
+                                        <PlainLink to="/login" fontColor="white">
+                                            <span>Login</span>&nbsp;
+                                        </PlainLink>
+                                    ) : (
+                                            <PlainLink to="/logoutSuccess" fontColor="white">
+                                                <span>Logout</span>&nbsp;
+                                            </PlainLink>
+                                        )
+                                    }
+
                                     <PlainLink to="/register" fontColor="white">
                                         <span>Register</span>&nbsp;
                                     </PlainLink>

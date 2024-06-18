@@ -19,11 +19,26 @@ import ProductLayout from './components/layouts/general/ProductLayout.jsx';
 import { MainLayout } from './components/layouts/general/MainLayout.jsx';
 import PaymentLayout from './components/layouts/featured/PaymentLayout.jsx';
 import GenericLayout from './components/layouts/general/GenericLayout.jsx';
+import { useUsername } from './components/UseUsername.jsx';
 
 
+const LogoutLayout = () => {
 
+    const { username, setUsername } = useUsername();
+
+    useEffect(() => {
+        localStorage.removeItem('token');
+        localStorage.removeItem('username');
+        setUsername('Guest');
+    }, []);
+
+    return (
+        <GenericLayout message="Logout Successful" />
+    );
+}
 
 const ScreenRoutes = () => {
+
     return (
        <Routes>
            <Route path="/" element={<MainLayout />} />
@@ -38,12 +53,23 @@ const ScreenRoutes = () => {
            <Route path="paymentSuccess" element={<GenericLayout message="Payment successful" />}/>
            <Route path="loginSuccess" element={<GenericLayout message="Login Successful" />} />
            <Route path="registerSuccess" element={<GenericLayout message="Registration Successful" />} />
+            <Route path="logoutSuccess" element={<LogoutLayout /> } />
         </Routes>
     );
 };
 
 
 function App() {
+    const { username, setUsername } = useUsername();
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            /* add something here. */
+            const localUsername = localStorage.getItem('username');
+            setUsername(localUsername);
+        }
+    }, [setUsername]);
 
     return (
         <BrowserRouter>

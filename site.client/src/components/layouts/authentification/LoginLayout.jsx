@@ -46,7 +46,7 @@ const LoginLayout = () => {
             setSuccessMessage("Sucessfully Logged In!");
 
 
-            let token = Math.random().toString(36).substr(2);
+            let token = Math.random().toString(36).substring(2);
             localStorage.setItem('token', token);
             localStorage.setItem('username', result.username);
 
