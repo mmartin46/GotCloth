@@ -29,11 +29,10 @@ namespace Site.Server.Repositories
                 allImages.Add(name, images);
             }
         }
-        // NOT TESTED
+        // FIXME: STILL TESTING
         public async Task RemoveProductFromCart(ProductModel cartItem)
         {
             var product = _context.Carts.FirstOrDefault(x => x.Username.Equals(cartItem.Username) &&
-                                                             x.Title.Equals(cartItem.Title) &&
                                                              x.Link.Equals(cartItem.Link));
 
             if (product != null)
