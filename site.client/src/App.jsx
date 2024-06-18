@@ -18,16 +18,9 @@ import { ShoesLayout, PantsLayout, ShirtsLayout } from './components/layouts/gen
 import ProductLayout from './components/layouts/general/ProductLayout.jsx';
 import { MainLayout } from './components/layouts/general/MainLayout.jsx';
 import PaymentLayout from './components/layouts/featured/PaymentLayout.jsx';
+import GenericLayout from './components/layouts/general/GenericLayout.jsx';
 
 
-const GenericLayout = (props) => {
-    const { message } = props;
-    return (
-        <div className="generic-page">
-            <h3>{message}</h3>
-        </div>
-    );
-};
 
 
 const ScreenRoutes = () => {
