@@ -10,6 +10,7 @@ const ProductLayout = () => {
     const [imageData, setImageData] = useState([]);
 
     const { username } = useUsername();
+    const [message, setMessage] = useState(null);
 
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
@@ -46,12 +47,14 @@ const ProductLayout = () => {
             });
 
             if (!response.ok) {
-                throw new Error(`HTTP error! ${response.status}`);
+                const error = await response.text();
+                console.log('A problem occurred with loading the cart');
+            } else {
+                setMessage("Product added to cart");
             }
 
-            const json = await response.json();
         } catch (error) {
-            console.error('Error adding to cart:', error);
+            console.error('Error adding to cart:');
         }
 
     };
@@ -72,6 +75,8 @@ const ProductLayout = () => {
                         <div className="add-cart-btn" onClick={() => addToCart(username, imageData.title)}>
                             Add To Cart
                         </div>
+
+                        {message && <h6 style={{ color: 'red' }}>{message}</h6>}
                     </div>
                 </div>
             }

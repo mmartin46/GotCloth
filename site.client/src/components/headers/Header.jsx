@@ -4,7 +4,6 @@ import PlainLink from '../buttons/PlainLink';
 import { useUsername } from '../UseUsername';
 
 const Header = () => {
-    // FIXME: Not fully implemented
     const { username } = useUsername();
     let cartLink = username !== 'Guest' ? '/cart' : '/login';
 

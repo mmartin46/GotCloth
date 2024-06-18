@@ -24,13 +24,13 @@ import { useUsername } from './components/UseUsername.jsx';
 
 const LogoutLayout = () => {
 
-    const { username, setUsername } = useUsername();
+    const { setUsername } = useUsername();
 
     useEffect(() => {
         localStorage.removeItem('token');
         localStorage.removeItem('username');
         setUsername('Guest');
-    }, []);
+    }, [setUsername]);
 
     return (
         <GenericLayout message="Logout Successful" />
