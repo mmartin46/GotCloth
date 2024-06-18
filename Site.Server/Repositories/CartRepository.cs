@@ -32,8 +32,9 @@ namespace Site.Server.Repositories
         // FIXME: STILL TESTING
         public async Task RemoveProductFromCart(ProductModel cartItem)
         {
+            string title = cartItem.Title.Length >= 6 ? cartItem.Title.Substring(0, 6) : cartItem.Title;
             var product = _context.Carts.FirstOrDefault(x => x.Username.Equals(cartItem.Username) &&
-                                                             x.Link.Equals(cartItem.Link));
+                                                             x.Title.Contains(title));
 
             if (product != null)
             {
