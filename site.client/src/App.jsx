@@ -41,9 +41,10 @@ const ScreenRoutes = () => {
            <Route path="login" element={<LoginLayout />} />
            <Route path="product" element={<ProductLayout />} />
            <Route path="cart" element={<CartLayout />} />
-            <Route path="payment" element={<PaymentLayout />} />
-            <Route path="paymentSuccess" element={<GenericLayout message="Payment successful" />}/>
-            <Route path="loginSuccess" element={<GenericLayout message="Login Successful" />} />
+           <Route path="payment" element={<PaymentLayout />} />
+           <Route path="paymentSuccess" element={<GenericLayout message="Payment successful" />}/>
+           <Route path="loginSuccess" element={<GenericLayout message="Login Successful" />} />
+           <Route path="registerSuccess" element={<GenericLayout message="Registration Successful" />} />
         </Routes>
     );
 };

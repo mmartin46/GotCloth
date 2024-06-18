@@ -3,9 +3,12 @@ import { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../../index.css';
 import '../../../App.css';
+import { useNavigate } from 'react-router-dom';
 
 const RegisterLayout = () => {
     const errorCode = "400";
+    const navigate = useNavigate();
+
     const [registrationProps, setRegistrationProps] = useState({
         username: "",
         password: "",
@@ -39,6 +42,7 @@ const RegisterLayout = () => {
         if (response.ok) {
             const result = await response.json();
             setSuccessMessage("Account Created!");
+            navigate("/registerSuccess");
         } else {
             const errorMessage = await response.text();
             console.error("Registration submission failed");
