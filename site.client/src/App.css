@@ -17,6 +17,8 @@
 }
 
 
+
+
 .paymentFrame {
     background-color: rgba(200, 0, 0, 1);
 }
@@ -774,12 +776,18 @@ html, body {
     max-width: 35px;
 }
 
+.animate-up {
+    z-index: 0;
+}
+
 .footer {
+    position: relative;
     padding-top: 20px;
     height: fit-content;
     padding-bottom: 50px;
     background-color: rgba(0, 0, 0, 0.85);
     color: rgba(255, 255, 255, 0.7);
+    z-index: 30;
 }
 
 

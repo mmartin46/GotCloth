@@ -40,14 +40,17 @@ const MainLayout = () => {
         <div>
             <PageCarousel images={images} />
             <HeaderProducts />
-            <BodySection title="CHEAP SHOES"
-                description="Need some solid deals for shoes as low as $10.99. Check here!"
-                route="shoe"
-                color="antiquewhite" />
-            <BodySection title="LOW-PRICE DEALS"
-                description="Looking for low-price pants, feel free to look. Check here!"
-                croute="pants"
-                color="white" />
+
+            <div className="animate-up">
+                <BodySection title="CHEAP SHOES"
+                    description="Need some solid deals for shoes as low as $10.99. Check here!"
+                    route="shoe"
+                    color="antiquewhite" />
+                <BodySection title="LOW-PRICE DEALS"
+                    description="Looking for low-price pants, feel free to look. Check here!"
+                    croute="pants"
+                    color="white" />
+            </div>
         </div>
     );
 };

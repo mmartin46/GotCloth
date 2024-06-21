@@ -61,7 +61,7 @@ const ProductLayout = () => {
 
 
     return (
-        <div className="prod-bkg">
+        <div className="animate-up prod-bkg">
             {imageData &&
                 <div className="row prod-row">
                     <div className="col">
