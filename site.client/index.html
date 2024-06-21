@@ -17,40 +17,26 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
 
-        $(document).on('load', function () {
-            $(".animate-up").css({
-                opacity: 0.0,
-                position: "relative"
-            });
-
-            $(".animate-up").animate({
-                top: '+=50px'
-            }, 0);
-
-            $(".animate-up").animate({
-                opacity: 1,
-                top: '-=50px'
-            }, 1000);
-        });
 
         $(document).ready(function () {
 
             const mobileLimitWidth = 900;
 
-            
-            $(".animate-up").css({
-                opacity: 0.0,
-                position: "relative"
-            });
+            function fadeUp() {
+                $(".animate-up").css({
+                    opacity: 0.0,
+                    position: "relative"
+                });
 
-            $(".animate-up").animate({
-                top: '+=50px'
-            }, 0);
+                $(".animate-up").animate({
+                    top: '+=50px'
+                }, 0);
 
-            $(".animate-up").animate({
-                opacity: 1,
-                top: '-=50px'
-            }, 1000);
+                $(".animate-up").animate({
+                    opacity: 1,
+                    top: '-=50px'
+                }, 1000);
+            }    
 
             function onWindowResize(width) {
                 if ($(window).width() > width) {
@@ -62,11 +48,14 @@
                 }
             }
 
+            fadeUp();
             onWindowResize(mobileLimitWidth);
 
             $(window).resize(function () {
                 onWindowResize(mobileLimitWidth);
             });
+
+
         });
     </script>
   </body>
