@@ -20,8 +20,8 @@ A functional e-commerce website for a clothing store utilzing ASP.NET Core for t
 
 <a href='https://postimg.cc/4mFyQSbH' target='_blank'><img src='https://i.postimg.cc/4mFyQSbH/Screenshot-2024-06-21-081724.png' border='0' alt='Screenshot-2024-06-21-081724'/></a>
 <a href='https://postimg.cc/pyFsHwyR' target='_blank'><img src='https://i.postimg.cc/pyFsHwyR/Screenshot-2024-06-21-081814.png' border='0' alt='Screenshot-2024-06-21-081814'/></a>
-<a href='https://postimg.cc/rKXJrbdp' target='_blank'><img src='https://i.postimg.cc/rKXJrbdp/Screenshot-2024-06-13-105435.png' border='0' alt='Screenshot-2024-06-13-105435'/></a>
-<a href='https://postimg.cc/0MvtTGyh' target='_blank'><img src='https://i.postimg.cc/0MvtTGyh/Screenshot-2024-06-15-082251.png' border='0' alt='Screenshot-2024-06-15-082251'/></a>
+<a href='https://postimg.cc/CZRQfzMf' target='_blank'><img src='https://i.postimg.cc/CZRQfzMf/scr-3.png' border='0' alt='scr-3'/></a>
+<a href='https://postimg.cc/v4kphWNv' target='_blank'><img src='https://i.postimg.cc/v4kphWNv/scr-4.png' border='0' alt='scr-4'/></a>
 
 ##### (Bugs Visible)
 
