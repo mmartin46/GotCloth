@@ -16,13 +16,10 @@ A functional e-commerce website for a clothing store utilzing ASP.NET Core for t
 
 - Users can utilize CRUD operations to manage their shopping carts.
 
-### Screenshots
+### Footage (Bugs Involved)
 
-<a href='https://postimg.cc/bSdZ5qFh' target='_blank'><img src='https://i.postimg.cc/bSdZ5qFh/Screenshot-2024-06-13-105415.png' border='0' alt='Screenshot-2024-06-13-105415'/></a>
-<a href='https://postimg.cc/0KJwQ8GC' target='_blank'><img src='https://i.postimg.cc/0KJwQ8GC/Screenshot-2024-06-13-105152.png' border='0' alt='Screenshot-2024-06-13-105152'/></a>
-<a href='https://postimg.cc/rKXJrbdp' target='_blank'><img src='https://i.postimg.cc/rKXJrbdp/Screenshot-2024-06-13-105435.png' border='0' alt='Screenshot-2024-06-13-105435'/></a>
-<a href='https://postimg.cc/0MvtTGyh' target='_blank'><img src='https://i.postimg.cc/0MvtTGyh/Screenshot-2024-06-15-082251.png' border='0' alt='Screenshot-2024-06-15-082251'/></a>
-### Technologies Used
+<a href='https://postimg.cc/JtgXx0QQ' target='_blank'><img src='https://i.postimg.cc/JtgXx0QQ/ezgif-5-63db8becff.gif' border='0' alt='ezgif-5-63db8becff'/></a>### Technologies Used
+
 #### Backend: ASP.NET Core, Entity Framework Core, T-SQL
 
 #### Frontend: React, AJAX, Bootstrap, JQuery 

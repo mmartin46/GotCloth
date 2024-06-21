@@ -9,6 +9,14 @@
     white-space: nowrap;
 }
 
+* {
+    font-family: "Quicksand", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: <weight>;
+    font-style: normal;
+}
+
+
 .paymentFrame {
     background-color: rgba(200, 0, 0, 1);
 }
@@ -403,12 +411,7 @@ html, body {
     color: white;
 }
 
-* {
-    font-family: "Reddit Mono", monospace;
-    font-optical-sizing: auto;
-    font-weight: 500;
-    font-style: normal;
-}
+
 
 
 .buy-now {
