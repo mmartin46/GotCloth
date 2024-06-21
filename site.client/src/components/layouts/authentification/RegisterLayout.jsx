@@ -56,10 +56,10 @@ const RegisterLayout = () => {
     };
 
     return (
-        <div className="whole-reg ">
+        <div className=" whole-reg ">
 
             <div className="frame">
-                <form className="regForm" onSubmit={onSubmit}>
+                <form className="animate-up regForm" onSubmit={onSubmit}>
                     <br />
                     <h1 className="text-center">Sign Up</h1>
                     <br />

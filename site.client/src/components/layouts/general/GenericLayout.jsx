@@ -7,7 +7,7 @@ const GenericLayout = (props) => {
     const { message } = props;
     return (
         <div className="generic-page">
-            <h3>{message}</h3>
+            <h3 className="animate-up">{message}</h3>
         </div>
     );
 };

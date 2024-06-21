@@ -22,8 +22,10 @@ const BigLabel = (props) => {
     return (
         <>
             <div className="big-label" style={{ backgroundColor: chosenColor }}>
-                <h1 className="text-center">{header.toUpperCase()}</h1>
-                <h4 className="text-center">{subheader}</h4>
+                <span className="animate-up">
+                    <h1 className="text-center">{header.toUpperCase()}</h1>
+                    <h4 className="text-center">{subheader}</h4>
+                </span>
             </div>
         </>
     );

@@ -39,7 +39,10 @@ const MainLayout = () => {
     return (
         <div>
             <PageCarousel images={images} />
-            <HeaderProducts />
+
+            <div className="animate-up">
+                <HeaderProducts />
+            </div>
 
             <div className="animate-up">
                 <BodySection title="CHEAP SHOES"

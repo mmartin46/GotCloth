@@ -67,7 +67,7 @@ const LoginLayout = () => {
     return (
         <div className="whole-reg">
 
-            <div className="frame">
+            <div className="animate-up frame">
                 <form className="regForm" onSubmit={onSubmit}>
                     <br />
                     <h1 className="text-center">Login Page</h1>
