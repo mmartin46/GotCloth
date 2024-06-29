@@ -17,14 +17,14 @@ namespace Site.Server.Controllers
         [EnableRateLimiting("cart")]
         [HttpPost]
         [Route("/AddToCart")]
-        public async Task<IActionResult> AddToCart([FromBody] CartItemModel cartItem)
+        public IActionResult AddToCart([FromBody] CartItemModel cartItem)
         {
-            if (cartItem == null)
+            if (cartItem is null || cartItem.Title is null)
             {
                 return BadRequest();
             }
 
-            await _cartRepository.AddToCart(cartItem);
+            _cartRepository.AddToCart(cartItem);
             return Ok();
         }
 

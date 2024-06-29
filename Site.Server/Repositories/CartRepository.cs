@@ -15,11 +15,12 @@ namespace Site.Server.Repositories
         {
             _context = context;
             _imageRepository = imageRepository;
+            InitializeImageDictonary();
         }
 
 
 
-        private async Task InitializeImageDictonary()
+        private void InitializeImageDictonary()
         {
             allImages = new Dictionary<string, ImageModel[]>();
             string[] names = { "pants", "shirt", "shoe", "shoes" };
@@ -29,7 +30,7 @@ namespace Site.Server.Repositories
             {
                 foreach (string name in names)
                 {
-                    ImageModel[] images = await _imageRepository.GetImages(name);
+                    ImageModel[] images = _imageRepository.GetImages(name).Result;
                     allImages.Add(name, images);
                 }
             }
@@ -139,7 +140,6 @@ namespace Site.Server.Repositories
 
         public async Task AddToCart(CartItemModel cartItem)
         {
-            await InitializeImageDictonary();
             if (_context is not null)
             {
                 var productsFromDb = await _context.Carts.ToListAsync();
