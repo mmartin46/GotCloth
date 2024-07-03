@@ -51,7 +51,7 @@ const MainLayout = () => {
                     color="antiquewhite" />
                 <BodySection title="LOW-PRICE DEALS"
                     description="Looking for low-price pants, feel free to look. Check here!"
-                    croute="pants"
+                    route="pants"
                     color="white" />
             </div>
         </div>
