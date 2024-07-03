@@ -23,7 +23,7 @@ A functional e-commerce website for a clothing store utilzing ASP.NET Core for t
 <a href='https://postimg.cc/CZRQfzMf' target='_blank'><img src='https://i.postimg.cc/CZRQfzMf/scr-3.png' border='0' alt='scr-3'/></a>
 <a href='https://postimg.cc/v4kphWNv' target='_blank'><img src='https://i.postimg.cc/v4kphWNv/scr-4.png' border='0' alt='scr-4'/></a>
 
-
+<a href='https://postimg.cc/Yh9Y670Z' target='_blank'><img src='https://i.postimg.cc/Yh9Y670Z/ezgif-2-a41b6a8639.gif' border='0' alt='ezgif-2-a41b6a8639'/></a>
 <a href='https://postimg.cc/JtgXx0QQ' target='_blank'><img src='https://i.postimg.cc/JtgXx0QQ/ezgif-5-63db8becff.gif' border='0' alt='ezgif-5-63db8becff'/></a>
 <a href='https://postimg.cc/kDXwYXZY' target='_blank'><img src='https://i.postimg.cc/kDXwYXZY/Screen-Recording-2024-07-02-092440.gif' border='0' alt='Screen-Recording-2024-07-02-092440'/></a>
 ### Technologies Used
