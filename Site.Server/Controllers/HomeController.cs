@@ -25,16 +25,16 @@ namespace Site.Server.Controllers
 
             string? layout = null;
             layout = (whichImage == null) ? _options.Value?.Layout : whichImage;
-            ImageModel[] imageData;
+            List<ImageModel> imageData;
             try
             {
-                imageData = await _imageRepository.GetImages(layout);
+                imageData = (_imageRepository.GetImages(layout).Result).ToList();
             }
             catch
             {
                 return BadRequest(new { message = "Images couldn't be retrieved" });
             }
-            return Json(imageData);
+            return Json(imageData.ToArray());
         }
 
 
