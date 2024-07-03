@@ -48,11 +48,13 @@ const MainLayout = () => {
                 <BodySection title="CHEAP SHOES"
                     description="Need some solid deals for shoes as low as $10.99. Check here!"
                     route="shoe"
-                    color="antiquewhite" />
+                    color="rgb(200, 0,0)"
+                    textColor="white" />
                 <BodySection title="LOW-PRICE DEALS"
                     description="Looking for low-price pants, feel free to look. Check here!"
                     route="pants"
-                    color="white" />
+                    color="white"
+                    textColor="red"                />
             </div>
         </div>
     );

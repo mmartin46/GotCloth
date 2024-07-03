@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import PlainLink from '../buttons/PlainLink';
 
 const BodySection = (props) => {
-    const { title, description, route, color } = props;
+    const { title, description, route, color, textColor } = props;
 
     const [images, setImages] = useState([]);
     const url = `https://localhost:7269/Images/${route}`;
@@ -45,7 +45,7 @@ const BodySection = (props) => {
     }, [url]);
 
     return (
-        <div className="body-section" style={{ backgroundColor: `${color}` }}>
+        <div className="body-section" style={{ backgroundColor: `${color}`, color: `${textColor}` }}>
             <div className="text-center">
                 <h1>
                     {title}
@@ -79,7 +79,7 @@ const BodySection = (props) => {
                 {!images && (<div className="text-center"><h6>No products found :(</h6></div>)}
             </div>
             <PlainLink to={linkRoute} fontColor='black'>
-                {images && (<h4 className="sec text-center add-pad">View More</h4>)}
+                {images && (<h4 style={{ color: `${textColor}` }} className="sec text-center add-pad">View More</h4>)}
             </PlainLink>
 
         </div>

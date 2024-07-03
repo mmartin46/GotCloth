@@ -277,6 +277,15 @@ html, body {
 
 .lowerHeader {
     padding-left: 5%;
+    background-color: rgba(200, 0, 0, 1);
+}
+
+.header ul {
+    padding: 10px;
+}
+
+.lowerHeader .col > * {
+    color: black;
 }
 
 
