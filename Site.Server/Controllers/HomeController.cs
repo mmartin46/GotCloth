@@ -20,12 +20,20 @@ namespace Site.Server.Controllers
 
         [HttpGet]
         [Route("/Images/{whichImage:alpha?}")]
-        public async Task<JsonResult> Images(string? whichImage)
+        public async Task<IActionResult> Images(string? whichImage)
         {
 
             string? layout = null;
             layout = (whichImage == null) ? _options.Value?.Layout : whichImage;
-            var imageData = await _imageRepository.GetImages(layout);
+            ImageModel[] imageData;
+            try
+            {
+                imageData = await _imageRepository.GetImages(layout);
+            }
+            catch
+            {
+                return BadRequest(new { message = "Images couldn't be retrieved" });
+            }
             return Json(imageData);
         }
 
