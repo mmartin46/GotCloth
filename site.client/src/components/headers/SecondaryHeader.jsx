@@ -20,13 +20,13 @@ const SecondaryHeader = () => {
             </div>
             <div className="innerLinkHeader row">
                 <div className="col">
-                    <PlainLink to="/pants" fontColor="black"><h4 className="click-link">PANTS</h4></PlainLink>
+                    <PlainLink to="/pants" fontColor="black"><h4 className="click-link">Pants</h4></PlainLink>
                 </div>
                 <div className="col">
-                    <PlainLink to="/shirts" fontColor="black"><h4 className="click-link">SHIRTS</h4></PlainLink>
+                    <PlainLink to="/shirts" fontColor="black"><h4 className="click-link">Shirts</h4></PlainLink>
                 </div>
                 <div className="col">
-                    <PlainLink to="/shoes" fontColor="black"><h4 className="click-link">SHOES</h4></PlainLink>
+                    <PlainLink to="/shoes" fontColor="black"><h4 className="click-link">Shoes</h4></PlainLink>
                 </div>
             </div>
 
