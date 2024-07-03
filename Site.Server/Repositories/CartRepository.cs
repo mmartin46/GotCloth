@@ -142,7 +142,8 @@ namespace Site.Server.Repositories
         {
             if (_context is not null)
             {
-                var productsFromDb = await _context.Carts.ToListAsync();
+                List<Products> productsFromDb = _context.Carts.ToListAsync().Result;
+                productsFromDb = productsFromDb.ToList();
 
                 if (allImages != null)
                 {
@@ -151,17 +152,39 @@ namespace Site.Server.Repositories
                         ImageModel? match = entry.Value.Where(x => x.Title.Contains(cartItem.Title.Substring(0, 5))).ToList().FirstOrDefault();
                         if (match != null)
                         {
-                            Products products = new Products()
+                            bool productExists = (from product in productsFromDb
+                                          where product.Title.Equals(match.Title) &&
+                                                product.Link.Equals(match.Link) &&
+                                                product.Username.Equals(cartItem.Username)
+                                          select product).Any();
+
+                            if (!productExists)
                             {
-                                Username = cartItem.Username,
-                                Title = match.Title,
-                                Link = match.Link,
-                                Price = 10.00
-                            };
-                            await _context.Carts.AddAsync(products);
-                            await _context.SaveChangesAsync();
+                                Products products = new Products()
+                                {
+                                    Username = cartItem.Username,
+                                    Title = match.Title,
+                                    Link = match.Link,
+                                    Price = 10.00,
+                                    Quantity = 1
+                                };
+                                await _context.Carts.AddAsync(products);
+                                await _context.SaveChangesAsync();
+                            }
+                            else
+                            {
+                                var selectedProduct = _context.Carts.FirstOrDefaultAsync(x => x.Username.Equals(cartItem.Username) &&
+                                                                        x.Title.Equals(match.Title) &&
+                                                                        x.Link.Equals(match.Link)).Result;
+                                if (selectedProduct != null)
+                                {
+                                    _context.Carts.Update(selectedProduct);
+                                    await _context.SaveChangesAsync();
+                                }
+                            }
                             break;
                         }
+
                     }
                 }
             }

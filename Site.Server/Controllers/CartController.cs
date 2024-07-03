@@ -23,8 +23,14 @@ namespace Site.Server.Controllers
             {
                 return BadRequest();
             }
-
-            _cartRepository.AddToCart(cartItem);
+            try
+            {
+                _cartRepository.AddToCart(cartItem);
+            }
+            catch
+            {
+                return BadRequest();
+            }
             return Ok();
         }
 
