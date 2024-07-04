@@ -178,6 +178,7 @@ namespace Site.Server.Repositories
                                                                         x.Link.Equals(match.Link)).Result;
                                 if (selectedProduct != null)
                                 {
+                                    selectedProduct.Quantity += 1;
                                     _context.Carts.Update(selectedProduct);
                                     await _context.SaveChangesAsync();
                                 }
