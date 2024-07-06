@@ -219,11 +219,12 @@ html, body {
         display: flex;
         align-items: center;
     }
-    .secondaryHeader .row {
-        flex: 1;
-        display: flex;
-        justify-content: center;
-    }
+        .secondaryHeader .row {
+            padding-top: 8px;
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
     .innerLinkHeader {
         padding-left: 50%;
         padding-right: 20px;
@@ -253,7 +254,7 @@ html, body {
     flex-direction: row;
     align-items: stretch;
     justify-content: flex-start;
-    gap: 10px;
+    gap: 8px;
 }
 
 .pay-inputs {

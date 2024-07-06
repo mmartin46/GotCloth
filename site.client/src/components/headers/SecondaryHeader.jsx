@@ -15,18 +15,18 @@ const SecondaryHeader = () => {
         <div className="secondaryHeader ">
             <div className="row">
                 <PlainLink to="/" fontColor="red">
-                    <h2 className="click-link">Hello, {username}</h2>
+                    <h5 className="click-link">Hello, {username}</h5>
                 </PlainLink>
             </div>
             <div className="innerLinkHeader row">
                 <div className="col">
-                    <PlainLink to="/pants" fontColor="red"><h4 className="click-link">Pants</h4></PlainLink>
+                    <PlainLink to="/pants" fontColor="red"><h5 className="click-link">Pants</h5></PlainLink>
                 </div>
                 <div className="col">
-                    <PlainLink to="/shirts" fontColor="red"><h4 className="click-link">Shirts</h4></PlainLink>
+                    <PlainLink to="/shirts" fontColor="red"><h5 className="click-link">Shirts</h5></PlainLink>
                 </div>
                 <div className="col">
-                    <PlainLink to="/shoes" fontColor="red"><h4 className="click-link">Shoes</h4></PlainLink>
+                    <PlainLink to="/shoes" fontColor="red"><h5 className="click-link">Shoes</h5></PlainLink>
                 </div>
             </div>
 
