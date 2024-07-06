@@ -94,7 +94,7 @@ const CartLayout = () => {
     };
 
     const handleRemoveProduct = (name) => {
-        setCartItems(prevItems => prevItems.filter(item => item.title.includes(name)));
+        setCartItems(prevItems => prevItems.filter(item => !item.title.includes(name)));
         appendTotal();
     };
 
