@@ -11,6 +11,7 @@ const ProductLayout = () => {
 
     const { username } = useUsername();
     const [message, setMessage] = useState(null);
+    const [currentQuantity, setCurrrentQuantity] = useState(0);
 
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
@@ -32,6 +33,34 @@ const ProductLayout = () => {
 
     }, []);
 
+    useEffect(() => {
+
+        const getUserDetails = async () => {
+            try {
+                const response = await fetch(`https://localhost:7269/api/User?username=${username}`, {
+                    method: "POST",
+                    body: JSON.stringify({
+                        username: username
+                    }),
+                    headers: {
+                        "Content-type": "application/json; charset=UTF-8"
+                    }
+                });
+                if (response.ok) {
+                    setCurrrentQuantity(response.amountDue);
+                    console.log(currentQuantity);
+                } else {
+                    console.log("Couldn't retrieve user details");
+                }
+
+            } catch (error) {
+                console.log("Problem fetching user details");
+            }
+        };
+
+        getUserDetails();
+    }, [username, currentQuantity])
+
 
     const addToCart = async (username, title) => {
         try {
@@ -50,7 +79,8 @@ const ProductLayout = () => {
                 const error = await response.text();
                 console.log('A problem occurred with loading the cart');
             } else {
-                setMessage("Product added to cart");
+
+                setMessage(`Product added to cart x${currentQuantity}`);
             }
 
         } catch (error) {

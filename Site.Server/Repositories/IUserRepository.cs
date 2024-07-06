@@ -10,5 +10,6 @@ namespace Site.Server.Repositories
         Task<Boolean> AuthenticateUserWithPassword(LoginModel userModel);
         Task UpdateTotalDue(string username, double amountDue);
         Task<Double> GetTotalDue(string username);
+        UserModel? GetUser(string username);
     }
 }

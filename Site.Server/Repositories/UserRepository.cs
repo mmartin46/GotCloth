@@ -32,6 +32,12 @@ namespace Site.Server.Repositories
             return userModels;
         }
 
+        public UserModel? GetUser(string username)
+        {
+            var user = GetUsers().Result.FirstOrDefault();
+            return user;
+        }
+
         public async Task InsertUser(UserModel userModel)
         {
             await _databaseContext.GotClothUsers.AddAsync

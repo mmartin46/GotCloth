@@ -18,6 +18,14 @@ namespace Site.Server.Controllers
             _userRepository = userRepository;
         }
 
+        [HttpPost]
+        public JsonResult Get([FromQuery] string username)
+        {
+            var user = _userRepository.GetUser(username);
+            return Json(user);
+        }
+
+
         [EnableRateLimiting("register")]
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] UserModel userModel)
