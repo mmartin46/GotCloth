@@ -11,7 +11,7 @@ const ProductLayout = () => {
 
     const { username } = useUsername();
     const [message, setMessage] = useState(null);
-    const [currentQuantity, setCurrrentQuantity] = useState(0);
+    const [currentQuantity, setCurrrentQuantity] = useState(1);
 
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
@@ -33,33 +33,33 @@ const ProductLayout = () => {
 
     }, []);
 
-    useEffect(() => {
 
-        const getUserDetails = async () => {
-            try {
-                const response = await fetch(`https://localhost:7269/api/User?username=${username}`, {
-                    method: "POST",
-                    body: JSON.stringify({
-                        username: username
-                    }),
-                    headers: {
-                        "Content-type": "application/json; charset=UTF-8"
-                    }
-                });
-                if (response.ok) {
-                    setCurrrentQuantity(response.amountDue);
-                    console.log(currentQuantity);
-                } else {
-                    console.log("Couldn't retrieve user details");
+    const getUserDetails = async () => {
+        try {
+            const response = await fetch(`https://localhost:7269/api/User?username=${username}`, {
+                method: "GET",
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
                 }
+            });
 
-            } catch (error) {
-                console.log("Problem fetching user details");
+            if (response.ok) {
+                const result = await response.json();
+                console.log(result);
+                setCurrrentQuantity(parseInt(result.amountDue / 10));
+                console.log(currentQuantity);
+            } else {
+                console.log("Couldn't retrieve user details");
             }
-        };
 
+        } catch (error) {
+            console.log("Problem fetching user details");
+        }
+    };
+
+    useEffect(() => {
         getUserDetails();
-    }, [username, currentQuantity])
+    }, [currentQuantity]);
 
 
     const addToCart = async (username, title) => {
@@ -79,7 +79,7 @@ const ProductLayout = () => {
                 const error = await response.text();
                 console.log('A problem occurred with loading the cart');
             } else {
-
+                await getUserDetails();
                 setMessage(`Product added to cart x${currentQuantity}`);
             }
 

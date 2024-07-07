@@ -18,8 +18,8 @@ namespace Site.Server.Controllers
             _userRepository = userRepository;
         }
 
-        [HttpPost]
-        public JsonResult Get([FromQuery] string username)
+        [HttpGet]
+        public JsonResult GetUser([FromQuery] string username)
         {
             var user = _userRepository.GetUser(username);
             return Json(user);
