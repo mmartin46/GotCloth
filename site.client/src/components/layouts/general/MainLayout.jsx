@@ -1,5 +1,4 @@
-import headImage from 'C:\\Users\\mitch\\Downloads\\WebApp\\Site\\site.client\\src\\images\\headimage.jpg';
-import shutterImage from 'C:\\Users\\mitch\\Downloads\\shutterstock_266498825.jpg';
+
 import PageCarousel from '../../general/PageCarousel';
 import HeaderProducts from '../../sections/HeaderProducts';
 import BodySection from '../../sections/BodySection';
@@ -21,14 +20,14 @@ class Image {
 const MainLayout = () => {
     const images = [];
     images.push(new Image(
-        headImage,
+        '/headimage.jpg',
         '/shirts',
         '40% Off Shirts',
         'With a purchase over $25.00',
         'Shop Now'
     ));
     images.push(new Image(
-        shutterImage,
+        '/shutterstock_266498825.jpg',
         '/pants',
         '30% Off Pants',
         'With a purchase over $15.00',
