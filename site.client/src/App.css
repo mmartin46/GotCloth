@@ -503,21 +503,21 @@ html, body {
 
 
 #shirt {
-    background: url('C:\\Users\\mitch\\Downloads\\WebApp\\Site\\site.client\\src\\images\\store_0.jpg');
+    background: url('/public/store_0.jpg');
     background-size: cover;
     width: 100%;
     height: 100%;
 }
 
 #jeans {
-    background: url('C:\\Users\\mitch\\Downloads\\WebApp\\Site\\site.client\\src\\images\\store_1.jpg');
+    background: url('/public/store_1.jpg');
     background-size: cover;
     width: 100%;
     height: 100%;
 }
 
 #shoes {
-    background: url('C:\\Users\\mitch\\Downloads\\WebApp\\Site\\site.client\\src\\images\\store_2.jpg');
+    background: url('/public/store_2.jpg');
     background-size: cover;
     width: 100%;
     height: 100%;

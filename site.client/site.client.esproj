@@ -16,5 +16,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="src\components\layouts\general\" />
+    <Folder Include="src\images\" />
   </ItemGroup>
 </Project>
