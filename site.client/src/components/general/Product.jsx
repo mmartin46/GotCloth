@@ -101,7 +101,7 @@ const Product = (props) => {
                             onChange={handleQuantityChange}>
                         </input>
                     </span>
-                    <span>
+                    <span className="product-title">
                         {name}
                     </span>
                     <span>${price}</span>

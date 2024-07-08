@@ -179,7 +179,8 @@ namespace Site.Server.Repositories
                                 if (selectedProduct != null)
                                 {
                                     selectedProduct.Quantity += 1;
-                                    _context.Carts.Update(selectedProduct);
+                                    _context.Attach(selectedProduct);
+                                    _context.Entry(selectedProduct).Property(p => p.Quantity).IsModified = true;
                                     await _context.SaveChangesAsync();
                                 }
                             }
