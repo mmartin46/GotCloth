@@ -8,6 +8,7 @@ using System.Net;
 using Site.Server.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
+
 var configuration = builder.Configuration;
 
 builder.Services.AddDbContext<UserDatabaseContext>(options => options.UseSqlServer(
@@ -44,7 +45,10 @@ builder.Services.AddCors(options =>
         });
 });
 
+builder.WebHost.UseUrls("https://localhost:7269");
+
 var app = builder.Build();
+
 
 app.UseDefaultFiles();
 app.UseStaticFiles();

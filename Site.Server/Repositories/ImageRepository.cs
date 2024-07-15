@@ -7,7 +7,7 @@ namespace Site.Server.Repositories
 {
     public class ImageRepository : IImageRepository
     {
-        private readonly string[] keys = { "AIzaSyDBjFaZpOwX2m-0z8JulXEi7OGEMVR0EpQ", "AIzaSyA8d3a43sQt5Uoz6u4IaWyppCdOD8NHrXY" };
+        private readonly string[] keys = { "AIzaSyDBjFaZpOwX2m-0z8JulXEi7OGEMVR0EpQ" };
 
         public async Task<ImageModel[]> GetImages(string nameToSearch = "pants", int keyIndex = 0)
         {

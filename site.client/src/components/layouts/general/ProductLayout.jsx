@@ -80,7 +80,7 @@ const ProductLayout = () => {
                 console.log('A problem occurred with loading the cart');
             } else {
                 await getUserDetails();
-                setMessage(`Product added to cart x${currentQuantity}`);
+                setMessage(`Product added to cart x1`);
             }
 
         } catch (error) {
