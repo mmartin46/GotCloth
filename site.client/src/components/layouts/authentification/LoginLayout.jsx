@@ -1,5 +1,5 @@
 
-import { useState, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../../index.css';
 import '../../../App.css';
@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 const LoginLayout = () => {
     const errorCode = "400";
     const navigate = useNavigate();
+    const usernameRef = useRef();
 
     const [registrationProps, setRegistrationProps] = useState({
         username: "",
@@ -58,6 +59,7 @@ const LoginLayout = () => {
             console.error("Login failed");
             if (errorMessage.includes(errorCode)) {
                 setError("Please fill in all fields");
+                usernameRef.current.focus();
             } else {
                 setError(errorMessage);
             }
@@ -76,7 +78,7 @@ const LoginLayout = () => {
                         {error && !successMessage && < h6 style={{ color: 'white', opacity: '0.7' }}>{error}</h6>}
                         {successMessage && <h6 style={{ color: 'white', opacity: '0.7' }}>Sucessfully Logged In</h6>}
                         <label htmlFor="username">Username</label>
-                        <input type="text" name="username" id="username"
+                        <input ref={usernameRef} type="text" name="username" id="username"
                             value={registrationProps.username}
                             onChange={handleChange} />
                     </div>

@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../../index.css';
 import '../../../App.css';
@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 const RegisterLayout = () => {
     const errorCode = "400";
     const navigate = useNavigate();
+    const usernameRef = useRef();
 
     const [registrationProps, setRegistrationProps] = useState({
         username: "",
@@ -49,6 +50,7 @@ const RegisterLayout = () => {
 
             if (errorMessage.includes(errorCode)) {
                 setError("Please fill in all fields");
+                usernameRef.current.focus();
             } else {
                 setError(errorMessage);
             }
@@ -67,7 +69,7 @@ const RegisterLayout = () => {
                         {error && !successMessage && < h6 style={{ color: 'white', opacity: '0.7' }}>{error}</h6>}
                         {successMessage && <h6 style={{ color: 'white', opacity: '0.7' }}>Account Created</h6>}
                         <label htmlFor="username">Username</label>
-                        <input type="text" name="username" id="username"
+                        <input type="text" ref={usernameRef} name="username" id="username"
                             value={registrationProps.username}
                             onChange={handleChange} />
                     </div>
