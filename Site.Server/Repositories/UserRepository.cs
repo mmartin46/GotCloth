@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using Site.Server.Data;
 using Site.Server.Models;
 
@@ -8,9 +9,11 @@ namespace Site.Server.Repositories
     {
         private readonly UserDatabaseContext _databaseContext;
         private const double defaultPrice = 0.00;
-        public UserRepository(UserDatabaseContext databaseContext)
+        private readonly IMapper _mapper;
+        public UserRepository(UserDatabaseContext databaseContext, IMapper mapper)
         {
             _databaseContext = databaseContext;
+            _mapper = mapper;
         }
 
         public async Task<List<UserModel>> GetUsers()
@@ -19,15 +22,8 @@ namespace Site.Server.Repositories
             List<Users> users = await _databaseContext.GotClothUsers.ToListAsync();
             foreach (Users user in users)
             {
-                userModels.Add(
-                    new UserModel()
-                    {
-                        Username = user.Username,
-                        Password = user.Password,
-                        Email = user.Email,
-                        AmountDue = user.AmountDue,
-                    }
-                );
+                var model = _mapper.Map<UserModel>(user);
+                userModels.Add(model);
             }
             return userModels;
         }
@@ -40,16 +36,8 @@ namespace Site.Server.Repositories
 
         public async Task InsertUser(UserModel userModel)
         {
-            await _databaseContext.GotClothUsers.AddAsync
-            (
-                new Users()
-                {
-                    Username = userModel.Username,
-                    Password = userModel.Password,
-                    Email = userModel.Email,
-                    AmountDue = userModel.AmountDue,
-                }
-            );
+            var user = _mapper.Map<Users>(userModel);
+            await _databaseContext.GotClothUsers.AddAsync(user);
 
             await _databaseContext.SaveChangesAsync();
         }

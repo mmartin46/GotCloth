@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Site.Server.Data;
 using Site.Server.Models;
@@ -11,10 +12,13 @@ namespace Site.Server.Repositories
         private CartDatabaseContext? _context = null;
         private readonly IImageRepository? _imageRepository = null;
         private Dictionary<string, ImageModel[]>? allImages = null;
-        public CartRepository(CartDatabaseContext context, IImageRepository imageRepository)
+        private readonly IMapper _mapper;
+
+        public CartRepository(CartDatabaseContext context, IImageRepository imageRepository, IMapper mapper)
         {
             _context = context;
             _imageRepository = imageRepository;
+            _mapper = mapper;
             InitializeImageDictonary();
         }
 
@@ -65,20 +69,29 @@ namespace Site.Server.Repositories
                 var product = _context.Carts.FirstOrDefault(x => x.Username.Equals(cartItem.Username) &&
                                                                           x.Title.Equals(cartItem.Title));
 
-                if (product != null)
+                if (product != null && _context == null)
                 {
-                    product.Quantity = cartItem.Quantity;
-                    product.Title = cartItem.Title;
-                    product.Username = cartItem.Username;
-                    product.Price = cartItem.Price;
-                    product.Link = cartItem.Link;
-
+                    product = _mapper.Map<Products>(cartItem);
                     _context.Carts.Attach(product);
                     _context.Entry(product).State = EntityState.Modified;
 
 
                     await _context.SaveChangesAsync();
                 }
+            }
+        }
+
+        private async Task AdjustProduct(Products product, ProductModel cartItem)
+        {
+            if (product != null && _context == null)
+            {
+                product = _mapper.Map<Products>(cartItem);
+
+                _context.Carts.Attach(product);
+                _context.Entry(product).State = EntityState.Modified;
+
+
+                await _context.SaveChangesAsync();
             }
         }
 
@@ -116,15 +129,8 @@ namespace Site.Server.Repositories
 
                     if (!existingCartItems.Any())
                     {
-                        models.Add(
-                        new ProductModel
-                        {
-                            Title = product.Title,
-                            Link = product.Link,
-                            Price = product.Price,
-                            Username = product.Username,
-                            Quantity = product.Quantity
-                        });
+                        var model = _mapper.Map<ProductModel>(product);
+                        models.Add(model);
                     }
                     else
                     {

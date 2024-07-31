@@ -6,6 +6,8 @@ using Site.Server.Repositories;
 using System.Threading.RateLimiting;
 using System.Net;
 using Site.Server.Middleware;
+using AutoMapper;
+using Site.Server.Mapping;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,6 +35,13 @@ builder.Services.Configure<AppOptions>(builder.Configuration.GetSection(nameof(A
 builder.Services.AddSingleton<IImageRepository, ImageRepository>();
 builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<ICartRepository, CartRepository>();
+
+var mapperConfig = new MapperConfiguration(mc =>
+{
+    mc.AddProfile(new AutoMapperProfile());
+});
+IMapper mapper = mapperConfig.CreateMapper();
+builder.Services.AddSingleton(mapper);
 
 builder.Services.AddCors(options =>
 {
