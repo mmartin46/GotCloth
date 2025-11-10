@@ -1,0 +1,61 @@
+
+services:
+  # SQL Server
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: gotcloth-sqlserver
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=MyPrettyPassword123!?
+      - MSSQL_PID=Express
+    ports:
+      - "1433:1433"
+    volumes: # For data persistence
+      - sqlserver_data:/var/opt/mssql
+    networks:
+      - gotcloth-network
+    restart: unless-stopped
+
+
+  # Backend
+  backend:
+    build:
+      context: ./Site.Server
+      dockerfile: Dockerfile
+    container_name: gotcloth-backend
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:80
+      - ConnectionStrings__ClothUsers=Server=sqlserver;Database=GotClothUsers;User Id=sa;Password=MyPrettyPassword123!?;Encrypt=False;TrustServerCertificate=True;
+      - ConnectionStrings__Carts=Server=sqlserver;Database=Carts;User Id=sa;Password=MyPrettyPassword123!?;Encrypt=False;TrustServerCertificate=True;
+    ports:
+      - "5000:80"
+    depends_on:
+      - sqlserver
+    networks:
+      - gotcloth-network
+    restart: unless-stopped
+    volumes:
+      - ./Site.Server/wwwroot/images:/app/wwwroot/images
+
+  # Frontend
+  frontend:
+    build:
+      context: ./site.client
+      dockerfile: Dockerfile
+    container_name: gotcloth-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - gotcloth-network
+    restart: unless-stopped
+
+volumes:
+  sqlserver_data:
+    driver: local
+
+networks:
+  gotcloth-network:
+    driver: bridge

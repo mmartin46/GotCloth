@@ -1,0 +1,119 @@
+
+import { useEffect, useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../../../index.css';
+import '../../../App.css';
+import { useUsername } from '../../UseUsername';
+const API_URL = import.meta.env.PROD ? (import.meta.env.VITE_API_URL || '') : 'http://localhost:5000';
+
+
+const ProductLayout = () => {
+    const [imageData, setImageData] = useState([]);
+
+    const { username } = useUsername();
+    const [message, setMessage] = useState(null);
+    const [currentQuantity, setCurrrentQuantity] = useState(1);
+
+    useEffect(() => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const title = urlParams.get('title');
+        const category = urlParams.get('category');
+        console.log(title.substring(0, title.length - 4), category);
+
+        let url = `${API_URL}/Product?title=${title}&category=${category}`;
+        fetch(url)
+            .then(response => {
+                if (!response.ok) {
+                    console.log('Response wasn\'t okay');
+                }
+                return response.json();
+            })
+            .then(data => {
+                setImageData(data);
+            });
+
+    }, []);
+
+
+    const getUserDetails = async () => {
+        try {
+            const response = await fetch(`${API_URL}/api/User?username=${username}`, {
+                method: "GET",
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                }
+            });
+
+            if (response.ok) {
+                const result = await response.json();
+                console.log(result);
+                setCurrrentQuantity(parseInt(result.amountDue / 10));
+                console.log(currentQuantity);
+            } else {
+                console.log("Couldn't retrieve user details");
+            }
+
+        } catch (error) {
+            console.log("Problem fetching user details");
+        }
+    };
+
+    useEffect(() => {
+        getUserDetails();
+    }, [currentQuantity]);
+
+
+    const addToCart = async (username, title) => {
+        try {
+            const response = await fetch(`${API_URL}/AddToCart`, {
+                method: "POST",
+                body: JSON.stringify({
+                    username: username,
+                    title: title
+                }),
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                }
+            });
+
+            if (!response.ok) {
+                const error = await response.text();
+                console.log('A problem occurred with loading the cart');
+            } else {
+                await getUserDetails();
+                setMessage(`Product added to cart x1`);
+            }
+
+        } catch (error) {
+            console.error('Error adding to cart:');
+        }
+
+    };
+
+
+    return (
+        <div className="animate-up prod-bkg">
+            {imageData &&
+                <div className="row prod-row">
+                    <div className="col">
+                        <img src={imageData.link} />
+                    </div>
+                    <div className="col prod-sec">
+                        <h2>{imageData.title}</h2>
+                        <p>Adiqi ipefi aoata usuzu uzeuw ceqbe ifive akodi ounuf egawu, evufe aneyu uzino usaxi utden eiret awogo izalo ufole ipedi, upoir oibob usidu iqaqe avage okozi odaxi ozoxk evata iwuve, pievo uxoye wabea esiro avaxy uqayo ezovp ecife uiowi ucicu.</p>
+                        <h6>$10.00</h6>
+
+                        <div className="add-cart-btn" onClick={() => addToCart(username, imageData.title)}>
+                            Add To Cart
+                        </div>
+
+                        {message && <h6 style={{ color: 'red' }}>{message}</h6>}
+                    </div>
+                </div>
+            }
+            {!imageData && <h3>Product Not Found :(</h3>}
+        </div>
+    );
+};
+
+export default ProductLayout;
