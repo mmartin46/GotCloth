@@ -44,12 +44,51 @@ namespace Site.Server.Controllers
 
         [HttpGet]
         [Route("/Product")]
-        public async Task<JsonResult> Product(string title, string category)
+        public async Task<IActionResult> Product(string title, string category)
         {
-            var imageData = await _imageRepository.GetImages(category);
-            var smallerTitle = title.Substring(0, title.Length - 4);
-            var firstImage = imageData.Where(x => x.Title.Contains(smallerTitle)).First<ImageModel>();
-            return Json(firstImage);
+            try
+            {
+                if (string.IsNullOrEmpty(title) || string.IsNullOrEmpty(category))
+                {
+                    return BadRequest(new { message = "Title and category are required" });
+                }
+
+                ImageModel[] imageData;
+                try
+                {
+                    imageData = await _imageRepository.GetImages(category);
+                }
+                catch (Exception apiEx)
+                {
+                    return StatusCode(500, new { message = $"Failed to retrieve images from API: {apiEx.Message}" });
+                }
+                
+                if (imageData == null || imageData.Length == 0)
+                {
+                    return BadRequest(new { message = "No images found for the specified category" });
+                }
+
+                // Only substring if title is longer than 4 characters
+                string smallerTitle = title.Length > 4 ? title.Substring(0, title.Length - 4) : title;
+                
+                var firstImage = imageData.Where(x => x != null && x.Title != null && x.Title.Contains(smallerTitle)).FirstOrDefault();
+                
+                if (firstImage == null)
+                {
+                    // Return first image if no match found
+                    firstImage = imageData.Where(x => x != null).FirstOrDefault();
+                    if (firstImage == null)
+                    {
+                        return BadRequest(new { message = "No valid images available" });
+                    }
+                }
+                
+                return Json(firstImage);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = $"Error retrieving product: {ex.Message}", stackTrace = ex.StackTrace });
+            }
         }
 
     }

@@ -9,17 +9,20 @@ using Site.Server.Middleware;
 using AutoMapper;
 using Site.Server.Mapping;
 using System.Threading;
+using Pomelo.EntityFrameworkCore.MySql;
 
 var builder = WebApplication.CreateBuilder(args);
 
 var configuration = builder.Configuration;
 
-builder.Services.AddDbContext<UserDatabaseContext>(options => options.UseSqlServer(
-    configuration.GetConnectionString("ClothUsers")
+builder.Services.AddDbContext<UserDatabaseContext>(options => options.UseMySql(
+    configuration.GetConnectionString("ClothUsers"),
+    new MySqlServerVersion(new Version(8, 0, 2))
 ));
 
-builder.Services.AddDbContext<CartDatabaseContext>(options => options.UseSqlServer(
-    configuration.GetConnectionString("Carts")     
+builder.Services.AddDbContext<CartDatabaseContext>(options => options.UseMySql(
+    configuration.GetConnectionString("Carts"),
+    new MySqlServerVersion(new Version(8, 0, 2))
 ));
 
 

@@ -20,6 +20,11 @@ COPY . .
 ENV DOCKER_BUILD=true
 ENV NODE_ENV=production
 
+
+# Accept VITE_API_URL for a build arg
+ARG VITE_API_URL
+ENV VITE_API_URL=$VITE_API_URL
+
 # Build the frontend
 RUN npm run build
 

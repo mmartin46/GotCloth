@@ -7,8 +7,8 @@
   },
   "AllowedHosts": "*",
   "ConnectionStrings": {
-    "ClothUsers": "Server=${RDS_ENDPOINT};Database=GotClothUsers;User Id=${RDS_USERNAME};Password=${RDS_PASSWORD};Encrypt=True;TrustServerCertificate=True;",
-    "Carts": "Server=${RDS_ENDPOINT};Database=Carts;User Id=${RDS_USERNAME};Password=${RDS_PASSWORD};Encrypt=True;TrustServerCertificate=True;"
+    "ClothUsers": "Server=YOUR_RDS_ENDPOINT,3306;Database=GotClothUsers;User Id=YOUR_USERNAME;Password=YOUR_PASSWORD;Encrypt=True;TrustServerCertificate=True;",
+    "Carts": "Server=YOUR_RDS_ENDPOINT,3306;Database=Carts;User Id=YOUR_USERNAME;Password=YOUR_PASSWORD;Encrypt=True;TrustServerCertificate=True;"
   },
   "AppOptions": {
     "Layout": "pants"
@@ -20,3 +20,4 @@
     "SecretAccessKey": "${AWS_SECRET_ACCESS_KEY}"
   }
 }
+

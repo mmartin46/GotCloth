@@ -3,17 +3,30 @@ using Newtonsoft.Json;
 using Site.Server.Responses;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Configuration;
 
 namespace Site.Server.Repositories
 {
     public class ImageRepository : IImageRepository
     {
-        private readonly string[] keys = { "AIzaSyDBjFaZpOwX2m-0z8JulXEi7OGEMVR0EpQ" };
+        // Google Custom Search API key - set via environment variable GOOGLE_API_KEY
+        private readonly string[] keys;
         private readonly IMemoryCache _memoryCache;
 
-        public ImageRepository(IMemoryCache memoryCache)
+        public ImageRepository(IMemoryCache memoryCache, IConfiguration configuration)
         {
             _memoryCache = memoryCache;
+            
+            // Get API key from environment variable or configuration
+            var apiKey = Environment.GetEnvironmentVariable("GOOGLE_API_KEY") 
+                        ?? configuration["GoogleApi:Key"];
+            
+            if (string.IsNullOrEmpty(apiKey))
+            {
+                throw new InvalidOperationException("Google API key not found. Set GOOGLE_API_KEY environment variable or configure GoogleApi:Key in appsettings.");
+            }
+            
+            keys = new[] { apiKey };
         }
 
         public async Task<ImageModel[]> GetImages(string nameToSearch = "pants", int keyIndex = 0)
@@ -25,6 +38,7 @@ namespace Site.Server.Repositories
             }
 
             HttpClient client = new HttpClient();
+            client.Timeout = TimeSpan.FromSeconds(10); // Set 10 second timeout
 
             try
             {
@@ -52,6 +66,16 @@ namespace Site.Server.Repositories
                         return await GetImages(nameToSearch, ++keyIndex);
                     }
                 }
+            }
+            catch (TaskCanceledException)
+            {
+                // Timeout occurred
+                return new ImageModel[0];
+            }
+            catch (HttpRequestException)
+            {
+                // Network or HTTP error
+                return new ImageModel[0];
             }
             catch (Exception)
             {
